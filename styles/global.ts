@@ -11,20 +11,49 @@ export const globalStyles = css`
 
   :root {
     /* spacing */
+    --spacing-8: 0.5rem;
     --spacing-16: 1rem;
+    --spacing-24: 1.5rem;
     --spacing-32: 2rem;
     --spacing-64: 4rem;
     /* font size */
-    --text-18: 1.125rem;
+    --text-16: 1rem;
     --text-24: 1.5rem;
     --text-32: 2rem;
     --text-40: 2.5rem;
+    /* light variants */
+    --color-gold: hsl(43, 37%, 50%);
+    --color-text: hsl(0, 0%, 13%);
+    --color-text-muted: hsl(0, 0%, 28%);
+    --color-text-light: hsl(0, 0%, 100%);
+    --color-primary-bg: hsl(0, 0%, 99%);
+    --color-secondary-bg: hsl(0, 0%, 100%);
+    --color-overlay-bg: hsla(0, 0%, 10%, 60%);
+    --color-input-text: hsl(0, 0%, 52%);
+    --color-input-bg: hsl(0, 0%, 99%);
+    --color-input-border: hsla(0, 0%, 78%, 20%);
+    /* box shadow */
+    --shadow-lg: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    /* radius */
+    --radius-base: 4px;
   }
 
   body {
-    font-family: 'Inter', sans-serif;
-    color: hsl(0, 0%, 98%);
-    background-color: hsl(200, 10%, 10%);
+    font-family: 'Merriweather', serif;
+    font-size: var(--text-16);
+    color: var(--color-text);
+    background-color: var(--color-primary-bg);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: 'Playfair Display', serif;
+  }
+
+  h1,
+  h2 {
+    text-transform: capitalize;
   }
 
   h1 {
@@ -40,13 +69,31 @@ export const globalStyles = css`
   }
 
   p {
-    font-size: var(--text-18);
+    font-weight: 300;
     line-height: 1.6;
   }
 
   img {
     display: block;
     height: 100%;
+    width: 100%;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  a::after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 0;
+    background-color: var(--color-text);
+    transition: width 0.3s;
+  }
+
+  a:hover::after {
     width: 100%;
   }
 `
