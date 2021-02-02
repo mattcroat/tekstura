@@ -22,7 +22,7 @@ export const globalStyles = css`
     --text-32: 2rem;
     --text-40: 2.5rem;
     /* light variants */
-    --color-gold: hsl(43, 37%, 50%);
+    --color-gold: hsl(43, 89.2%, 63.5%);
     --color-text: hsl(0, 0%, 13%);
     --color-text-muted: hsl(0, 0%, 28%);
     --color-text-light: hsl(0, 0%, 100%);
@@ -49,11 +49,12 @@ export const globalStyles = css`
   h2,
   h3 {
     font-family: 'Playfair Display', serif;
+    text-transform: capitalize;
   }
 
-  h1,
-  h2 {
-    text-transform: capitalize;
+  h2,
+  h3 {
+    color: var(--color-text-muted);
   }
 
   h1 {
