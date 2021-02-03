@@ -17,18 +17,19 @@ export const globalStyles = css`
     --spacing-32: 2rem;
     --spacing-64: 4rem;
     /* font size */
-    --text-16: 1rem;
-    --text-24: 1.5rem;
-    --text-32: 2rem;
-    --text-40: 2.5rem;
+    --size-16: 1rem;
+    --size-20: 1.25rem;
+    --size-24: 1.5rem;
+    --size-32: 2rem;
+    --size-40: 2.5rem;
     /* light variants */
-    --color-gold: hsl(43, 89.2%, 63.5%);
-    --color-text: hsl(0, 0%, 13%);
-    --color-text-muted: hsl(0, 0%, 28%);
+    --color-highlight: hsl(43, 89.2%, 63.5%);
+    --color-text-dark: hsl(0, 0%, 13%);
+    --color-text-dark-muted: hsl(0, 0%, 28%);
     --color-text-light: hsl(0, 0%, 100%);
-    --color-primary-bg: hsl(0, 0%, 99%);
-    --color-secondary-bg: hsl(0, 0%, 100%);
-    --color-overlay-bg: hsla(0, 0%, 10%, 60%);
+    --color-bg-light: hsl(0, 0%, 100%);
+    --color-bg-gray: hsl(0, 0%, 98%);
+    --color-bg-overlay: hsla(0, 0%, 10%, 60%);
     --color-input-text: hsl(0, 0%, 52%);
     --color-input-bg: hsl(0, 0%, 99%);
     --color-input-border: hsla(0, 0%, 78%, 20%);
@@ -40,33 +41,32 @@ export const globalStyles = css`
 
   body {
     font-family: 'Merriweather', serif;
-    font-size: var(--text-16);
-    color: var(--color-text);
-    background-color: var(--color-primary-bg);
+    font-size: var(--size-16);
+    color: var(--color-text-dark);
+    background-color: var(--color-bg-light);
   }
 
   h1,
   h2,
   h3 {
     font-family: 'Playfair Display', serif;
-    text-transform: capitalize;
   }
 
   h2,
   h3 {
-    color: var(--color-text-muted);
+    color: var(--color-text-dark-muted);
   }
 
   h1 {
-    font-size: var(--text-40);
+    font-size: var(--size-32);
   }
 
   h2 {
-    font-size: var(--text-32);
+    font-size: var(--size-24);
   }
 
   h3 {
-    font-size: var(--text-24);
+    font-size: var(--size-20);
   }
 
   p {
@@ -90,7 +90,7 @@ export const globalStyles = css`
     display: block;
     height: 1px;
     width: 0;
-    background-color: var(--color-text);
+    background-color: var(--color-text-dark);
     transition: width 0.3s;
   }
 
