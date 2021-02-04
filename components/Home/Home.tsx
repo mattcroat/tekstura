@@ -5,13 +5,9 @@ import { screenSize } from '@/root/styles/mediaQueries'
 
 const Layout = styled.div`
   ${screenSize.sm} {
-    position: relative;
     height: 100vh;
     display: grid;
-    grid-template-rows: auto 1fr;
-    grid-template-areas:
-      'header'
-      'main';
+    grid-template-rows: repeat(2, 1fr);
   }
 
   ${screenSize.lg} {
@@ -29,29 +25,20 @@ const Layout = styled.div`
   }
 `
 
-const Main = styled.main`
-  ${screenSize.sm} {
-    display: grid;
-    grid-template-rows: 1fr 50vh;
-    grid-template-areas:
-      'byline'
-      'recipe';
-  }
-`
-
 const Header = styled.header`
-  margin: var(--spacing-24);
+  height: 100px;
+  padding: var(--spacing-24);
+  z-index: 2;
 
   nav {
     display: none;
   }
 
   ${screenSize.sm} {
-    grid-area: header;
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin: var(--spacing-32) var(--spacing-64) var(--spacing-32)
+    padding: var(--spacing-32) var(--spacing-64) var(--spacing-32)
       var(--spacing-64);
 
     ul {
@@ -69,16 +56,38 @@ const Header = styled.header`
   }
 `
 
+const Main = styled.main`
+  /* take heading into consideration */
+  height: calc(100vh - 100px);
+  display: grid;
+  grid-template-rows: auto 1fr 1fr;
+  gap: var(--spacing-24);
+  z-index: 1;
+
+  ${screenSize.sm} {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    grid-template-rows: none;
+    gap: var(--spacing-32);
+    justify-content: center;
+    align-content: center;
+  }
+
+  ${screenSize.lg} {
+    gap: var(--spacing-64);
+  }
+`
+
 const Byline = styled.div`
-  margin: var(--spacing-64) var(--spacing-24);
+  padding: 0 var(--spacing-24);
 
   h3 {
     margin-top: var(--spacing-8);
   }
 
   ${screenSize.sm} {
-    grid-area: byline;
-    margin: var(--spacing-24) 0 0 0;
+    padding: 0;
     text-align: center;
   }
 `
@@ -86,7 +95,6 @@ const Byline = styled.div`
 const Newsletter = styled.section`
   min-width: 340px;
   padding: var(--spacing-24);
-  margin: var(--spacing-64) 0;
   text-align: center;
   background-color: var(--color-bg-gray);
 
@@ -99,7 +107,7 @@ const Newsletter = styled.section`
   }
 
   h3 {
-    margin: var(--spacing-16) 0;
+    margin: var(--spacing-8) 0;
   }
 
   fieldset {
@@ -131,13 +139,7 @@ const Newsletter = styled.section`
 
   ${screenSize.sm} {
     max-width: 400px;
-
-    z-index: 1;
-    position: absolute;
-    top: 50%;
-    right: 50%;
-    transform: translate(50%, -50%);
-    margin: 0;
+    margin: 0 auto;
     background-color: var(--color-bg-light);
     box-shadow: var(--shadow-lg);
     border-radius: var(--radius-base);
@@ -145,8 +147,40 @@ const Newsletter = styled.section`
 `
 
 const Recipe = styled.div`
+  display: none;
+  color: var(--color-text-light);
+  text-align: center;
+
+  h2 {
+    color: var(--color-highlight);
+  }
+
+  h3 {
+    display: inline-block;
+    margin-top: var(--spacing-8);
+    color: var(--color-bg-secondary);
+  }
+
+  a::after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 100%;
+    background-color: var(--color-bg-light);
+    transition: width 0.3s;
+  }
+
+  a:hover::after {
+    width: 0;
+  }
+
+  ${screenSize.sm} {
+    display: block;
+  }
+`
+
+const RecipeHidden = styled.div`
   position: relative;
-  height: 400px;
   display: grid;
   gap: var(--spacing-24);
   place-content: center;
@@ -158,21 +192,21 @@ const Recipe = styled.div`
   &::before {
     content: '';
     display: block;
-    z-index: -1;
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
     background-color: var(--color-bg-overlay);
+    z-index: -1;
   }
 
   img {
-    z-index: -2;
     position: absolute;
     height: 100%;
     width: 100%;
     object-fit: cover;
+    z-index: -2;
   }
 
   h2 {
@@ -197,8 +231,46 @@ const Recipe = styled.div`
   }
 
   ${screenSize.sm} {
-    grid-area: recipe;
+    display: none;
     height: 100%;
+    padding: 0;
+  }
+`
+
+const Cover = styled.section`
+  position: relative;
+  height: 400px;
+  display: none;
+  gap: var(--spacing-24);
+  place-content: center;
+  place-items: center;
+  padding: 0 var(--spacing-24);
+  color: var(--color-text-light);
+  text-align: center;
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-bg-overlay);
+    z-index: -1;
+  }
+
+  img {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    z-index: -2;
+  }
+
+  ${screenSize.sm} {
+    height: 100%;
+    display: grid;
     padding: 0;
   }
 `
@@ -249,7 +321,6 @@ export function Home() {
         </Newsletter>
 
         <Recipe>
-          <img src="/images/dish.webp" alt="Dish" />
           <h2>Svako Jutro Jedno Jaje Organizmu Snagu Daje</h2>
           <h3>
             <Link href="/recipes/name-of-recipe">
@@ -257,7 +328,21 @@ export function Home() {
             </Link>
           </h3>
         </Recipe>
+
+        <RecipeHidden>
+          <img src="/images/dish.webp" alt="Dish" />
+          <h2>Svako Jutro Jedno Jaje Organizmu Snagu Daje</h2>
+          <h3>
+            <Link href="/recipes/name-of-recipe">
+              <a>recept</a>
+            </Link>
+          </h3>
+        </RecipeHidden>
       </Main>
+
+      <Cover>
+        <img src="/images/dish.webp" alt="Dish" />
+      </Cover>
     </Layout>
   )
 }
