@@ -26,6 +26,8 @@ const menuItem = {
 }
 
 const Layout = styled.div`
+  overflow: hidden;
+
   ${screenSize.sm} {
     height: 100vh;
     display: grid;
@@ -47,7 +49,7 @@ const Layout = styled.div`
   }
 `
 
-const Header = styled.header`
+const Header = styled(motion.header)`
   display: none;
   z-index: 2;
 
@@ -78,7 +80,7 @@ const ToggleMenuIcon = styled.button`
   }
 `
 
-const HeaderMobile = styled.header<HeaderMobile>`
+const HeaderMobile = styled(motion.header)<HeaderMobile>`
   margin-bottom: var(--spacing-32);
   padding: var(--spacing-24) var(--spacing-24) 0 var(--spacing-24);
   background-color: ${({ isMenuOpen }) =>
@@ -127,7 +129,7 @@ const Main = styled.main`
   }
 `
 
-const Byline = styled.div`
+const Byline = styled(motion.div)`
   padding: 0 var(--spacing-24);
 
   h3 {
@@ -140,7 +142,7 @@ const Byline = styled.div`
   }
 `
 
-const Newsletter = styled.section`
+const Newsletter = styled(motion.section)`
   min-width: 340px;
   padding: var(--spacing-24);
   text-align: center;
@@ -159,11 +161,16 @@ const Newsletter = styled.section`
   }
 
   fieldset {
+    position: relative;
     display: inline-block;
     margin-top: var(--spacing-8);
     background-color: var(--color-input-bg);
     border: 1px solid var(--color-input-border);
     border-radius: var(--radius-base);
+  }
+
+  label {
+    display: none;
   }
 
   input {
@@ -195,7 +202,7 @@ const Newsletter = styled.section`
   }
 `
 
-const Recipe = styled.div`
+const Recipe = styled(motion.div)`
   display: none;
   color: var(--color-text-light);
   text-align: center;
@@ -286,7 +293,7 @@ const RecipeHidden = styled.div`
   }
 `
 
-const Cover = styled.section`
+const Cover = styled(motion.section)`
   position: relative;
   height: 400px;
   display: none;
@@ -336,7 +343,7 @@ export function Home() {
 
   return (
     <Layout>
-      <Header>
+      <Header initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
         <h1>Kužina</h1>
         <nav>
           <ul>
@@ -359,7 +366,11 @@ export function Home() {
         </nav>
       </Header>
 
-      <HeaderMobile isMenuOpen={isOpen}>
+      <HeaderMobile
+        isMenuOpen={isOpen}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+      >
         <Flex>
           <h1>Kužina</h1>
           <ToggleMenuIcon onClick={() => setIsOpen(!isOpen)}>
@@ -414,23 +425,38 @@ export function Home() {
       </HeaderMobile>
 
       <Main>
-        <Byline>
+        <Byline
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6 }}
+        >
           <h1>Zdravo!</h1>
           <h3>Zovem se Šargarepa i volim dijeliti izvrsnu hranu sa drugima.</h3>
         </Byline>
 
-        <Newsletter>
+        <Newsletter
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ type: 'spring', bounce: 0 }}
+        >
           <img src="/images/avatar.webp" alt="Avatar" />
           <h3>Besplatno primajte obavijesti u sandučić:</h3>
           <form>
             <fieldset>
-              <input type="text" placeholder="mail@mail.com" />
+              <label aria-hidden="false" htmlFor="email">
+                Email
+              </label>
+              <input type="text" id="email" placeholder="mail@mail.com" />
               <button type="button">Prijava</button>
             </fieldset>
           </form>
         </Newsletter>
 
-        <Recipe>
+        <Recipe
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+        >
           <h2>Svako Jutro Jedno Jaje Organizmu Snagu Daje</h2>
           <h3>
             <Link href="/recipes/name-of-recipe">
@@ -450,7 +476,11 @@ export function Home() {
         </RecipeHidden>
       </Main>
 
-      <Cover>
+      <Cover
+        initial={{ y: '100vh' }}
+        animate={{ y: 0 }}
+        transition={{ type: 'spring', bounce: 0 }}
+      >
         <img src="/images/dish.webp" alt="Dish" />
       </Cover>
     </Layout>
