@@ -85,6 +85,7 @@ export const globalStyles = css`
   }
 
   a {
+    position: relative;
     color: inherit;
     text-decoration: none;
   }
@@ -100,6 +101,18 @@ export const globalStyles = css`
 
   a:hover::after {
     width: 100%;
+  }
+
+  a,
+  input,
+  button {
+    transition: box-shadow 0.3s;
+  }
+
+  *:focus {
+    outline: none;
+    border-radius: 4px;
+    box-shadow: 0 0 0 2px var(--color-highlight);
   }
 
   .line {
