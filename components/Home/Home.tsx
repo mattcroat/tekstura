@@ -160,8 +160,7 @@ const Newsletter = styled(motion.section)`
     margin: var(--spacing-8) 0;
   }
 
-  fieldset {
-    position: relative;
+  form {
     display: inline-block;
     margin-top: var(--spacing-8);
     background-color: var(--color-input-bg);
@@ -174,8 +173,9 @@ const Newsletter = styled(motion.section)`
   }
 
   input {
+    height: 40px;
     width: 200px;
-    padding: 0 var(--spacing-8);
+    padding: var(--spacing-8);
     font-size: inherit;
     color: var(--color-input-text);
     background-color: var(--color-input-bg);
@@ -183,6 +183,7 @@ const Newsletter = styled(motion.section)`
   }
 
   button {
+    height: 40px;
     padding: var(--spacing-8);
     font-family: inherit;
     font-weight: 700;
@@ -442,13 +443,11 @@ export function Home() {
           <img src="/images/avatar.webp" alt="Avatar" />
           <h3>Besplatno primajte obavijesti u sandučić:</h3>
           <form>
-            <fieldset>
-              <label aria-hidden="false" htmlFor="email">
-                Email
-              </label>
-              <input type="text" id="email" placeholder="mail@mail.com" />
-              <button type="button">Prijava</button>
-            </fieldset>
+            <label aria-hidden="false" htmlFor="email">
+              Email
+            </label>
+            <input type="text" id="email" placeholder="mail@mail.com" />
+            <button type="button">Prijava</button>
           </form>
         </Newsletter>
 
