@@ -43,10 +43,11 @@ const Byline = styled(motion.div)`
 const Newsletter = styled(motion.section)`
   min-width: 340px;
   display: grid;
-  place-content: center;
+  justify-items: center;
+  align-content: center;
   padding: var(--spacing-24);
   text-align: center;
-  background-color: var(--color-bg-gray);
+  background-color: var(--alabaster-98);
 
   img {
     height: 84px;
@@ -63,8 +64,8 @@ const Newsletter = styled(motion.section)`
   form {
     display: inline-block;
     margin-top: var(--spacing-8);
-    background-color: var(--color-input-bg);
-    border: 1px solid var(--color-input-border);
+    background-color: var(--alabaster-99);
+    border: 1px solid var(--silver-78);
     border-radius: var(--radius-base);
   }
 
@@ -73,12 +74,11 @@ const Newsletter = styled(motion.section)`
   }
 
   input {
-    height: 40px;
     width: 200px;
     padding: var(--spacing-8);
     font-size: inherit;
-    color: var(--color-input-text);
-    background-color: var(--color-input-bg);
+    color: var(--gray-52);
+    background-color: var(--alabaster-99);
     border: none;
   }
 
@@ -88,16 +88,16 @@ const Newsletter = styled(motion.section)`
     font-family: inherit;
     font-weight: 700;
     font-size: inherit;
-    background-color: var(--color-highlight);
+    background-color: var(--buttercup-50);
     border: none;
-    border-left: 1px solid var(--color-input-border);
+    border-left: 1px solid var(--silver-78);
     cursor: pointer;
   }
 
   ${screenSize.sm} {
     max-width: 400px;
     margin: 0 auto;
-    background-color: var(--color-bg-light);
+    background-color: var(--snow-100);
     box-shadow: var(--shadow-lg);
     border-radius: var(--radius-base);
   }
@@ -105,17 +105,17 @@ const Newsletter = styled(motion.section)`
 
 const Recipe = styled(motion.div)`
   display: none;
-  color: var(--color-text-light);
+  color: var(--snow-100);
   text-align: center;
 
   h2 {
-    color: var(--color-highlight);
+    color: var(--buttercup-50);
   }
 
   h3 {
     display: inline-block;
     margin-top: var(--spacing-8);
-    color: var(--color-bg-secondary);
+    color: var(--snow-100);
   }
 
   a::after {
@@ -123,7 +123,7 @@ const Recipe = styled(motion.div)`
     display: block;
     height: 1px;
     width: 100%;
-    background-color: var(--color-bg-light);
+    background-color: var(--snow-100);
     transition: width 0.3s;
   }
 
@@ -143,7 +143,7 @@ const RecipeHidden = styled.div`
   place-content: center;
   place-items: center;
   padding: 0 var(--spacing-24);
-  color: var(--color-text-light);
+  color: var(--snow-100);
   text-align: center;
 
   &::before {
@@ -154,7 +154,7 @@ const RecipeHidden = styled.div`
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: var(--color-bg-overlay);
+    background-color: var(--cod-gray-10);
     z-index: -1;
   }
 
@@ -167,11 +167,11 @@ const RecipeHidden = styled.div`
   }
 
   h2 {
-    color: var(--color-highlight);
+    color: var(--buttercup-50);
   }
 
   h3 {
-    color: var(--color-bg-secondary);
+    color: var(--snow-100);
   }
 
   a::after {
@@ -179,7 +179,7 @@ const RecipeHidden = styled.div`
     display: block;
     height: 1px;
     width: 100%;
-    background-color: var(--color-bg-light);
+    background-color: var(--snow-100);
     transition: width 0.3s;
   }
 
@@ -202,7 +202,7 @@ const Cover = styled(motion.section)`
   place-content: center;
   place-items: center;
   padding: 0 var(--spacing-24);
-  color: var(--color-text-light);
+  color: var(--snow-100);
   text-align: center;
 
   &::before {
@@ -213,7 +213,7 @@ const Cover = styled(motion.section)`
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: var(--color-bg-overlay);
+    background-color: var(--cod-gray-10);
     z-index: -1;
   }
 

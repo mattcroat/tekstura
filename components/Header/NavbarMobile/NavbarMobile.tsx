@@ -28,8 +28,7 @@ const menuItem = {
 const Container = styled(motion.header)<HeaderMobile>`
   margin-bottom: var(--spacing-32);
   padding: var(--spacing-24) var(--spacing-24) 0 var(--spacing-24);
-  background-color: ${({ isMenuOpen }) =>
-    isMenuOpen && 'var(--color-highlight)'};
+  background-color: ${({ isMenuOpen }) => isMenuOpen && 'var(--buttercup-50)'};
   transition: background-color 0.3s;
   z-index: 2;
 

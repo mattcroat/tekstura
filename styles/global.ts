@@ -22,17 +22,16 @@ export const globalStyles = css`
     --size-24: 1.5rem;
     --size-32: 2rem;
     --size-40: 2.5rem;
-    /* light variants */
-    --color-highlight: hsl(43, 89.2%, 63.5%);
-    --color-text-dark: hsl(0, 0%, 13%);
-    --color-text-dark-muted: hsl(0, 0%, 28%);
-    --color-text-light: hsl(0, 0%, 100%);
-    --color-bg-light: hsl(0, 0%, 100%);
-    --color-bg-gray: hsl(0, 0%, 98%);
-    --color-bg-overlay: hsla(0, 0%, 10%, 60%);
-    --color-input-text: hsl(0, 0%, 52%);
-    --color-input-bg: hsl(0, 0%, 99%);
-    --color-input-border: hsla(0, 0%, 78%, 20%);
+    /* colors */
+    --charcoal-13: hsl(0, 0%, 13%);
+    --charcoal-28: hsl(0, 0%, 28%);
+    --alabaster-98: hsl(0, 0%, 98%);
+    --alabaster-99: hsl(0, 0%, 99%);
+    --buttercup-50: hsl(44, 90%, 50%);
+    --snow-100: hsl(0, 0%, 100%);
+    --cod-gray-10: hsla(0, 0%, 10%, 60%);
+    --gray-52: hsl(0, 0%, 52%);
+    --silver-78: hsla(0, 0%, 78%, 20%);
     /* box shadow */
     --shadow-lg: 0px 4px 20px rgba(0, 0, 0, 0.1);
     /* radius */
@@ -42,8 +41,8 @@ export const globalStyles = css`
   body {
     font-family: 'Merriweather', serif;
     font-size: var(--size-16);
-    color: var(--color-text-dark);
-    background-color: var(--color-bg-light);
+    color: var(--charcoal-13);
+    background-color: var(--snow-100);
   }
 
   h1,
@@ -54,7 +53,7 @@ export const globalStyles = css`
 
   h2,
   h3 {
-    color: var(--color-text-dark-muted);
+    color: var(--charcoal-28);
   }
 
   h1 {
@@ -95,7 +94,7 @@ export const globalStyles = css`
     display: block;
     height: 1px;
     width: 0;
-    background-color: var(--color-text-dark);
+    background-color: var(--charcoal-13);
     transition: width 0.3s;
   }
 
@@ -112,7 +111,7 @@ export const globalStyles = css`
   *:focus {
     outline: none;
     border-radius: 4px;
-    box-shadow: 0 0 0 2px var(--color-highlight);
+    box-shadow: 0 0 0 2px var(--buttercup-50);
   }
 
   .line {
