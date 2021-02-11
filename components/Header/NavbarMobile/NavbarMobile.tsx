@@ -3,6 +3,7 @@ import styled from '@emotion/styled'
 import { AnimatePresence, motion } from 'framer-motion'
 import Link from 'next/link'
 
+import { ThemeToggle } from '@/root/components/shared/ThemeToggle'
 import { screenSize } from '@/root/styles/mediaQueries'
 
 type HeaderMobile = {
@@ -28,7 +29,7 @@ const menuItem = {
 const Container = styled(motion.header)<HeaderMobile>`
   margin-bottom: var(--spacing-32);
   padding: var(--spacing-24) var(--spacing-24) 0 var(--spacing-24);
-  background-color: ${({ isMenuOpen }) => isMenuOpen && 'var(--buttercup-50)'};
+  background-color: ${({ isMenuOpen }) => isMenuOpen && 'var(--highlight)'};
   transition: background-color 0.3s;
   z-index: 2;
 
@@ -126,6 +127,9 @@ export function NavbarMobile() {
                 <Link href="/about">
                   <a>Što je Kužina?</a>
                 </Link>
+              </motion.li>
+              <motion.li variants={menuItem}>
+                <ThemeToggle />
               </motion.li>
             </ul>
           </Menu>

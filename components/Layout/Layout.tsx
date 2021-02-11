@@ -14,8 +14,6 @@ const Container = styled.div`
   overflow: hidden;
 
   ${screenSize.sm} {
-    height: 100vh;
-    display: grid;
     grid-template-rows: repeat(2, 1fr);
   }
 

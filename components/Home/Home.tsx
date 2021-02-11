@@ -47,7 +47,8 @@ const Newsletter = styled(motion.section)`
   align-content: center;
   padding: var(--spacing-24);
   text-align: center;
-  background-color: var(--alabaster-98);
+  background-color: var(--secondary-bg);
+  transition: color 1s, background-color 1s;
 
   img {
     height: 84px;
@@ -64,8 +65,8 @@ const Newsletter = styled(motion.section)`
   form {
     display: inline-block;
     margin-top: var(--spacing-8);
-    background-color: var(--alabaster-99);
-    border: 1px solid var(--silver-78);
+    background-color: var(--input-bg);
+    border: 1px solid var(--input-border);
     border-radius: var(--radius-base);
   }
 
@@ -77,8 +78,8 @@ const Newsletter = styled(motion.section)`
     width: 200px;
     padding: var(--spacing-8);
     font-size: inherit;
-    color: var(--gray-52);
-    background-color: var(--alabaster-99);
+    color: var(--input-text);
+    background-color: var(--input-bg);
     border: none;
   }
 
@@ -88,16 +89,15 @@ const Newsletter = styled(motion.section)`
     font-family: inherit;
     font-weight: 700;
     font-size: inherit;
-    background-color: var(--buttercup-50);
+    background-color: var(--highlight);
     border: none;
-    border-left: 1px solid var(--silver-78);
+    border-left: 1px solid var(--input-border);
     cursor: pointer;
   }
 
   ${screenSize.sm} {
     max-width: 400px;
     margin: 0 auto;
-    background-color: var(--snow-100);
     box-shadow: var(--shadow-lg);
     border-radius: var(--radius-base);
   }
@@ -105,17 +105,17 @@ const Newsletter = styled(motion.section)`
 
 const Recipe = styled(motion.div)`
   display: none;
-  color: var(--snow-100);
+  color: var(--primary-bg);
   text-align: center;
 
   h2 {
-    color: var(--buttercup-50);
+    color: var(--highlight);
   }
 
   h3 {
     display: inline-block;
     margin-top: var(--spacing-8);
-    color: var(--snow-100);
+    color: var(--text-on-dark-bg);
   }
 
   a::after {
@@ -123,7 +123,7 @@ const Recipe = styled(motion.div)`
     display: block;
     height: 1px;
     width: 100%;
-    background-color: var(--snow-100);
+    background-color: var(--text-on-dark-bg);
     transition: width 0.3s;
   }
 
@@ -143,7 +143,7 @@ const RecipeHidden = styled.div`
   place-content: center;
   place-items: center;
   padding: 0 var(--spacing-24);
-  color: var(--snow-100);
+  color: var(--primary-bg);
   text-align: center;
 
   &::before {
@@ -154,7 +154,7 @@ const RecipeHidden = styled.div`
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: var(--cod-gray-10);
+    background-color: var(--overlay-bg);
     z-index: -1;
   }
 
@@ -167,11 +167,11 @@ const RecipeHidden = styled.div`
   }
 
   h2 {
-    color: var(--buttercup-50);
+    color: var(--highlight);
   }
 
   h3 {
-    color: var(--snow-100);
+    color: var(--text-on-dark-bg);
   }
 
   a::after {
@@ -179,7 +179,7 @@ const RecipeHidden = styled.div`
     display: block;
     height: 1px;
     width: 100%;
-    background-color: var(--snow-100);
+    background-color: var(--text-on-dark-bg);
     transition: width 0.3s;
   }
 
@@ -202,7 +202,7 @@ const Cover = styled(motion.section)`
   place-content: center;
   place-items: center;
   padding: 0 var(--spacing-24);
-  color: var(--snow-100);
+  color: var(--primary-bg);
   text-align: center;
 
   &::before {
@@ -213,7 +213,7 @@ const Cover = styled(motion.section)`
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: var(--cod-gray-10);
+    background-color: var(--overlay-bg);
     z-index: -1;
   }
 
@@ -241,8 +241,10 @@ export function Home() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6 }}
         >
-          <h1>Zdravo!</h1>
-          <h3>Zovem se Šargarepa i volim dijeliti izvrsnu hranu sa drugima.</h3>
+          <h1>Recepti, savjeti i više</h1>
+          <h3>
+            Tekstura je namijenjena za dijeljenje izvrsne hrane sa drugima
+          </h3>
         </Byline>
 
         <Newsletter

@@ -23,26 +23,38 @@ export const globalStyles = css`
     --size-32: 2rem;
     --size-40: 2.5rem;
     /* colors */
-    --charcoal-13: hsl(0, 0%, 13%);
-    --charcoal-28: hsl(0, 0%, 28%);
-    --alabaster-98: hsl(0, 0%, 98%);
-    --alabaster-99: hsl(0, 0%, 99%);
-    --buttercup-50: hsl(44, 90%, 50%);
-    --snow-100: hsl(0, 0%, 100%);
-    --cod-gray-10: hsla(0, 0%, 10%, 60%);
-    --gray-52: hsl(0, 0%, 52%);
-    --silver-78: hsla(0, 0%, 78%, 20%);
+    --highlight: hsl(44, 90%, 50%);
+    --text: hsl(0, 0%, 13%);
+    --text-muted: hsl(0, 0%, 28%);
+    --text-on-dark-bg: hsl(0, 0%, 100%);
+    --primary-bg: hsl(0, 0%, 100%);
+    --secondary-bg: hsl(0, 0%, 98%);
+    --overlay-bg: hsla(0, 0%, 10%, 60%);
+    --input-text: hsl(0, 0%, 52%);
+    --input-bg: hsl(0, 0%, 99%);
+    --input-border: hsla(0, 0%, 78%, 20%);
     /* box shadow */
     --shadow-lg: 0px 4px 20px rgba(0, 0, 0, 0.1);
     /* radius */
     --radius-base: 4px;
   }
 
+  [data-theme='dark'] {
+    :root {
+      --highlight: hsl(44, 90%, 50%);
+      --text: hsl(0, 0%, 100%);
+      --text-muted: hsl(0, 0%, 100%);
+      --primary-bg: hsl(0, 0%, 13%);
+      --secondary-bg: hsl(0, 0%, 16%);
+    }
+  }
+
   body {
     font-family: 'Merriweather', serif;
     font-size: var(--size-16);
-    color: var(--charcoal-13);
-    background-color: var(--snow-100);
+    color: var(--text);
+    background-color: var(--primary-bg);
+    transition: color 1s, background-color 1s;
   }
 
   h1,
@@ -53,7 +65,7 @@ export const globalStyles = css`
 
   h2,
   h3 {
-    color: var(--charcoal-28);
+    color: var(--text-muted);
   }
 
   h1 {
@@ -94,7 +106,7 @@ export const globalStyles = css`
     display: block;
     height: 1px;
     width: 0;
-    background-color: var(--charcoal-13);
+    background-color: var(--text);
     transition: width 0.3s;
   }
 
@@ -111,7 +123,7 @@ export const globalStyles = css`
   *:focus {
     outline: none;
     border-radius: 4px;
-    box-shadow: 0 0 0 2px var(--buttercup-50);
+    box-shadow: 0 0 0 2px var(--highlight);
   }
 
   .line {

@@ -2,6 +2,7 @@ import styled from '@emotion/styled'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 
+import { ThemeToggle } from '@/root/components/shared/ThemeToggle'
 import { screenSize } from '@/root/styles/mediaQueries'
 
 const Container = styled(motion.header)`
@@ -17,6 +18,7 @@ const Container = styled(motion.header)`
 
     ul {
       display: flex;
+      align-items: center;
       gap: var(--spacing-32);
       font-weight: 700;
     }
@@ -26,7 +28,7 @@ const Container = styled(motion.header)`
 export function Navbar() {
   return (
     <Container initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-      <h1>Kužina</h1>
+      <h1>Tekstura</h1>
       <nav>
         <ul>
           <li>
@@ -41,8 +43,11 @@ export function Navbar() {
           </li>
           <li>
             <Link href="/about">
-              <a>Što je Kužina?</a>
+              <a>O nama</a>
             </Link>
+          </li>
+          <li>
+            <ThemeToggle />
           </li>
         </ul>
       </nav>
