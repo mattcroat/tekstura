@@ -105,19 +105,6 @@ export const globalStyles = css`
     text-decoration: none;
   }
 
-  a::after {
-    content: '';
-    display: block;
-    height: 1px;
-    width: 0;
-    background-color: var(--text);
-    transition: width 0.3s;
-  }
-
-  a:hover::after {
-    width: 100%;
-  }
-
   a,
   input,
   button {

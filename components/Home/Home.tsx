@@ -118,7 +118,7 @@ const Recipe = styled(motion.div)`
     color: var(--text-on-dark-bg);
   }
 
-  a::after {
+  h3::after {
     content: '';
     display: block;
     height: 1px;
@@ -127,7 +127,7 @@ const Recipe = styled(motion.div)`
     transition: width 0.3s;
   }
 
-  a:hover::after {
+  h3:hover::after {
     width: 0;
   }
 
@@ -174,7 +174,7 @@ const RecipeHidden = styled.div`
     color: var(--text-on-dark-bg);
   }
 
-  a::after {
+  h3::after {
     content: '';
     display: block;
     height: 1px;
@@ -183,7 +183,7 @@ const RecipeHidden = styled.div`
     transition: width 0.3s;
   }
 
-  a:hover::after {
+  h3:hover::after {
     width: 0;
   }
 

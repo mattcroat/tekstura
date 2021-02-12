@@ -22,6 +22,19 @@ const Container = styled(motion.header)`
       gap: var(--spacing-32);
       font-weight: 700;
     }
+
+    li::after {
+      content: '';
+      display: block;
+      height: 1px;
+      width: 0;
+      background-color: var(--text);
+      transition: width 0.3s;
+    }
+
+    li:hover::after {
+      width: 100%;
+    }
   }
 `
 
