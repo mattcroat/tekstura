@@ -22,6 +22,10 @@ export const globalStyles = css`
     --size-24: 1.5rem;
     --size-32: 2rem;
     --size-40: 2.5rem;
+    /* line height */
+    --text-height: 1.6;
+    /* letter spacing */
+    --letter-spacing: 2px;
     /* colors */
     --highlight: hsl(44, 90%, 50%);
     --text: hsl(0, 0%, 13%);
@@ -82,7 +86,7 @@ export const globalStyles = css`
 
   p {
     font-weight: 300;
-    line-height: 1.6;
+    line-height: var(--text-height);
   }
 
   img {
@@ -124,46 +128,5 @@ export const globalStyles = css`
     outline: none;
     border-radius: 4px;
     box-shadow: 0 0 0 2px var(--highlight);
-  }
-
-  .line {
-    fill: none;
-    stroke: black;
-    stroke-width: 6;
-    transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
-      stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .line1 {
-    stroke-dasharray: 60 207;
-    stroke-width: 6;
-  }
-
-  .line2 {
-    stroke-dasharray: 60 60;
-    stroke-width: 6;
-  }
-
-  .line3 {
-    stroke-dasharray: 60 207;
-    stroke-width: 6;
-  }
-
-  .opened .line1 {
-    stroke-dasharray: 90 207;
-    stroke-dashoffset: -134;
-    stroke-width: 6;
-  }
-
-  .opened .line2 {
-    stroke-dasharray: 1 60;
-    stroke-dashoffset: -30;
-    stroke-width: 6;
-  }
-
-  .opened .line3 {
-    stroke-dasharray: 90 207;
-    stroke-dashoffset: -134;
-    stroke-width: 6;
   }
 `
