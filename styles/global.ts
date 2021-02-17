@@ -16,6 +16,7 @@ export const globalStyles = css`
     --spacing-24: 1.5rem;
     --spacing-32: 2rem;
     --spacing-64: 4rem;
+    --spacing-128: 8rem;
     /* font size */
     --size-16: 1rem;
     --size-20: 1.25rem;
@@ -37,6 +38,7 @@ export const globalStyles = css`
     --input-text: hsl(0, 0%, 52%);
     --input-bg: hsl(0, 0%, 99%);
     --input-border: hsla(0, 0%, 78%, 20%);
+    --primary-border: 1px solid hsla(0, 0%, 0%, 10%);
     /* box shadow */
     --shadow-lg: 0px 4px 20px rgba(0, 0, 0, 0.1);
     /* radius */
@@ -50,6 +52,7 @@ export const globalStyles = css`
       --text-muted: hsl(0, 0%, 100%);
       --primary-bg: hsl(0, 0%, 13%);
       --secondary-bg: hsl(0, 0%, 16%);
+      --primary-border: 1px solid hsla(0, 0%, 100%, 10%);
     }
   }
 
