@@ -50,10 +50,15 @@ export const globalStyles = css`
       --highlight: hsl(44, 90%, 50%);
       --text: hsl(0, 0%, 100%);
       --text-muted: hsl(0, 0%, 100%);
-      --primary-bg: hsl(0, 0%, 13%);
+      --primary-bg: hsl(44, 10%, 10%);
       --secondary-bg: hsl(0, 0%, 16%);
       --primary-border: 1px solid hsla(0, 0%, 100%, 10%);
     }
+  }
+
+  html {
+    scrollbar-color: var(--highlight) transparent;
+    scrollbar-width: thin;
   }
 
   body {
@@ -88,6 +93,7 @@ export const globalStyles = css`
   }
 
   p {
+    margin: var(--spacing-32) 0;
     font-weight: 300;
     line-height: var(--text-height);
   }
@@ -118,5 +124,17 @@ export const globalStyles = css`
     outline: none;
     border-radius: 4px;
     box-shadow: 0 0 0 2px var(--highlight);
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: none;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--highlight);
   }
 `
