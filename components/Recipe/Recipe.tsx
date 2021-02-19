@@ -125,7 +125,7 @@ const RecipeImage = styled.img`
 const Main = styled.main`
   h1,
   h2 {
-    color: var(--highlight);
+    color: var(--color-primary-gold);
   }
 
   h1::after {
@@ -134,7 +134,7 @@ const Main = styled.main`
     height: 4px;
     max-width: 68px;
     margin: var(--spacing-16) 0;
-    background-color: var(--highlight);
+    background-color: var(--color-primary-gold);
   }
 
   ${screenSize.md} {
@@ -146,7 +146,7 @@ const Main = styled.main`
 
 const ContentSeparator = styled.div`
   ${screenSize.md} {
-    border-left: var(--primary-border);
+    border-left: var(--color-primary-border);
   }
 `
 
@@ -159,7 +159,7 @@ const RecipePreparation = styled.aside`
 
 const RecipeDetails = styled.div`
   display: flex;
-  color: var(--text);
+  color: var(--color-text);
 `
 
 const RecipeDetailsItem = styled.div`
@@ -167,7 +167,7 @@ const RecipeDetailsItem = styled.div`
 
   &:not(:last-child) {
     padding-left: 0;
-    border-right: var(--primary-border);
+    border-right: var(--color-primary-border);
   }
 `
 
@@ -181,7 +181,7 @@ const RecipePrepTime = styled.div`
 
 const RecipePortionAmount = styled(RecipePrepTime)`
   margin-top: 0;
-  font-size: var(--size-24);
+  font-size: var(--font-size-24);
 
   button {
     font-size: inherit;
@@ -212,7 +212,7 @@ const RecipeIngredient = styled.li`
   &:not(:last-of-type) {
     margin: var(--spacing-16) 0;
     padding-bottom: var(--spacing-8);
-    border-bottom: var(--primary-border);
+    border-bottom: var(--color-primary-border);
   }
 `
 
@@ -239,9 +239,10 @@ const RecipeStepNumber = styled.h3`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: var(--size-24);
-  color: black;
-  background: var(--highlight);
+  padding-bottom: var(--spacing-8);
+  font-size: var(--font-size-24);
+  color: var(--color-text-on-dark-bg);
+  background: var(--color-primary-gold);
   border-radius: 50%;
 `
 

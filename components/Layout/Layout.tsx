@@ -19,15 +19,15 @@ const Container = styled.div`
 
   ${screenSize.lg} {
     h1 {
-      font-size: var(--size-40);
+      font-size: var(--font-size-40);
     }
 
     h2 {
-      font-size: var(--size-32);
+      font-size: var(--font-size-32);
     }
 
     h3 {
-      font-size: var(--size-24);
+      font-size: var(--font-size-24);
     }
   }
 `

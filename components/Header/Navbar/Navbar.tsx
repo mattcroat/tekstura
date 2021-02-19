@@ -29,7 +29,7 @@ const Container = styled(motion.header)`
       display: block;
       height: 1px;
       width: 0;
-      background-color: var(--text);
+      background-color: var(--color-text);
       transition: width 0.3s;
     }
 

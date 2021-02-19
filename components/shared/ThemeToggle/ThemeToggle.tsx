@@ -11,7 +11,7 @@ const Button = styled.button`
   cursor: pointer;
 
   svg {
-    fill: var(--text);
+    fill: var(--color-text);
     transition: fill 1s;
   }
 `

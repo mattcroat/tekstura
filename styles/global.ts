@@ -18,27 +18,28 @@ export const globalStyles = css`
     --spacing-64: 4rem;
     --spacing-128: 8rem;
     /* font size */
-    --size-16: 1rem;
-    --size-20: 1.25rem;
-    --size-24: 1.5rem;
-    --size-32: 2rem;
-    --size-40: 2.5rem;
+    --font-size-16: 1rem;
+    --font-size-20: 1.25rem;
+    --font-size-24: 1.5rem;
+    --font-size-32: 2rem;
+    --font-size-40: 2.5rem;
     /* line height */
-    --text-height: 1.6;
+    --line-height-text: 1.6;
     /* letter spacing */
     --letter-spacing: 2px;
     /* colors */
-    --highlight: hsl(44, 90%, 50%);
-    --text: hsl(0, 0%, 13%);
-    --text-muted: hsl(0, 0%, 28%);
-    --text-on-dark-bg: hsl(0, 0%, 100%);
-    --primary-bg: hsl(0, 0%, 100%);
-    --secondary-bg: hsl(0, 0%, 98%);
-    --overlay-bg: hsla(0, 0%, 10%, 60%);
-    --input-text: hsl(0, 0%, 52%);
-    --input-bg: hsl(0, 0%, 99%);
-    --input-border: hsla(0, 0%, 78%, 20%);
-    --primary-border: 1px solid hsla(0, 0%, 0%, 10%);
+    --color-primary-gold: hsl(42, 54%, 46%);
+    --color-primary-gold-light: hsl(44, 90%, 50%);
+    --color-text: hsl(0, 0%, 13%);
+    --color-text-muted: hsl(0, 0%, 28%);
+    --color-text-on-dark-bg: hsl(0, 0%, 100%);
+    --color-primary-bg: hsl(0, 0%, 100%);
+    --color-secondary-bg: hsl(0, 0%, 98%);
+    --color-overlay-bg: linear-gradient(transparent, hsla(0, 0%, 0%, 90%));
+    --color-input-text: hsl(0, 0%, 52%);
+    --color-input-bg: hsl(0, 0%, 99%);
+    --color-input-border: hsla(0, 0%, 78%, 20%);
+    --color-primary-border: 1px solid hsla(0, 0%, 0%, 10%);
     /* box shadow */
     --shadow-lg: 0px 4px 20px rgba(0, 0, 0, 0.1);
     /* radius */
@@ -47,25 +48,25 @@ export const globalStyles = css`
 
   [data-theme='dark'] {
     :root {
-      --highlight: hsl(44, 90%, 50%);
-      --text: hsl(0, 0%, 100%);
-      --text-muted: hsl(0, 0%, 100%);
-      --primary-bg: hsl(44, 10%, 10%);
-      --secondary-bg: hsl(0, 0%, 16%);
-      --primary-border: 1px solid hsla(0, 0%, 100%, 10%);
+      --color-primary-gold: hsl(44, 90%, 50%);
+      --color-text: hsl(0, 0%, 100%);
+      --color-text-muted: hsl(0, 0%, 100%);
+      --color-primary-bg: hsl(44, 10%, 10%);
+      --color-secondary-bg: hsl(0, 0%, 16%);
+      --color-primary-border: 1px solid hsla(0, 0%, 100%, 10%);
     }
   }
 
   html {
-    scrollbar-color: var(--highlight) transparent;
+    scrollbar-color: var(--color-primary-gold) transparent;
     scrollbar-width: thin;
   }
 
   body {
     font-family: 'Merriweather', serif;
-    font-size: var(--size-16);
-    color: var(--text);
-    background-color: var(--primary-bg);
+    font-size: var(--font-size-16);
+    color: var(--color-text);
+    background-color: var(--color-primary-bg);
     transition: color 1s, background-color 1s;
   }
 
@@ -77,25 +78,25 @@ export const globalStyles = css`
 
   h2,
   h3 {
-    color: var(--text-muted);
+    color: var(--color-text-muted);
   }
 
   h1 {
-    font-size: var(--size-32);
+    font-size: var(--font-size-32);
   }
 
   h2 {
-    font-size: var(--size-24);
+    font-size: var(--font-size-24);
   }
 
   h3 {
-    font-size: var(--size-20);
+    font-size: var(--font-size-20);
   }
 
   p {
     margin: var(--spacing-32) 0;
     font-weight: 300;
-    line-height: var(--text-height);
+    line-height: var(--line-height-text);
   }
 
   img {
@@ -123,7 +124,7 @@ export const globalStyles = css`
   *:focus {
     outline: none;
     border-radius: 4px;
-    box-shadow: 0 0 0 2px var(--highlight);
+    box-shadow: 0 0 0 2px var(--color-primary-gold);
   }
 
   ::-webkit-scrollbar {
@@ -135,6 +136,6 @@ export const globalStyles = css`
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: var(--highlight);
+    background-color: var(--color-primary-gold);
   }
 `

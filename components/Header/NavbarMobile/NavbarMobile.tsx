@@ -15,7 +15,8 @@ const Container = styled(motion.header)<HeaderMobile>`
   margin: var(--spacing-32) 0;
   /* margin-bottom: var(--spacing-32); */
   /* padding: var(--spacing-24) var(--spacing-24) 0 var(--spacing-24); */
-  background-color: ${({ isMenuOpen }) => isMenuOpen && 'var(--highlight)'};
+  background-color: ${({ isMenuOpen }) =>
+    isMenuOpen && 'var(--color-primary-gold)'};
   transition: background-color 0.3s;
   z-index: 2;
 
