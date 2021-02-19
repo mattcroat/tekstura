@@ -22,7 +22,7 @@ const Button = styled.button`
     transition: stroke 1s;
   }
 
-  ${screenSize.sm} {
+  ${screenSize.md} {
     display: none;
   }
 `

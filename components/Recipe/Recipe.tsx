@@ -105,7 +105,11 @@ const StyledRecipe = styled.div`
     grid-template-rows: auto 400px 1fr;
     gap: var(--spacing-64);
     max-width: 1600px;
-    margin: 0 auto;
+    padding: 0 var(--spacing-64);
+    padding-top: var(--spacing-64);
+  }
+
+  ${screenSize.lg} {
     padding: 0 var(--spacing-128);
     padding-top: var(--spacing-64);
   }
@@ -123,6 +127,8 @@ const RecipeImage = styled.img`
 `
 
 const Main = styled.main`
+  margin-bottom: var(--spacing-64);
+
   h1,
   h2 {
     color: var(--color-primary-gold);
@@ -151,10 +157,14 @@ const ContentSeparator = styled.div`
 `
 
 const RecipePreparation = styled.aside`
-  .sticky {
-    position: sticky;
-    top: var(--spacing-32);
+  ${screenSize.md} {
+    margin-top: var(--spacing-8);
   }
+`
+
+const Sticky = styled.div`
+  position: sticky;
+  top: var(--spacing-32);
 `
 
 const RecipeDetails = styled.div`
@@ -192,11 +202,7 @@ const RecipePortionAmount = styled(RecipePrepTime)`
 `
 
 const RecipeIngredients = styled.section`
-  max-height: 400px;
   margin: var(--spacing-64) 0;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  scrollbar-width: thin;
 
   ${screenSize.md} {
     margin-top: var(--spacing-64);
@@ -204,7 +210,11 @@ const RecipeIngredients = styled.section`
 `
 
 const RecipeIngredientsList = styled.ul`
-  width: 300px;
+  max-height: 400px;
+  max-width: 300px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-width: thin;
   list-style: none;
 `
 
@@ -218,7 +228,6 @@ const RecipeIngredient = styled.li`
 
 const RecipeSteps = styled.section`
   max-width: 90ch;
-  margin-bottom: var(--spacing-32);
 
   img {
     max-height: 600px;
@@ -228,9 +237,19 @@ const RecipeSteps = styled.section`
 
 const RecipeStep = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: var(--spacing-32);
   margin: var(--spacing-32) 0;
+  padding: var(--spacing-32);
+  border: var(--color-primary-border);
+  border-radius: var(--radius-base);
+
+  ${screenSize.md} {
+    flex-direction: row;
+    gap: var(--spacing-32);
+    padding: 0;
+    border: none;
+  }
 `
 
 const RecipeStepNumber = styled.h3`
@@ -255,7 +274,7 @@ export function Recipe() {
 
       <Main>
         <RecipePreparation>
-          <div className="sticky">
+          <Sticky>
             <RecipeDetails>
               <RecipeDetailsItem>
                 <h3>Priprema</h3>
@@ -301,7 +320,7 @@ export function Recipe() {
                 ))}
               </RecipeIngredientsList>
             </RecipeIngredients>
-          </div>
+          </Sticky>
         </RecipePreparation>
 
         <ContentSeparator></ContentSeparator>
@@ -326,10 +345,12 @@ export function Recipe() {
               <RecipeStepNumber>1</RecipeStepNumber>
             </div>
             <div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Cupiditate illum minus dolorem iusto voluptatum asperiores
-              laudantium suscipit magnam debitis fuga autem ad quasi quaerat sit
-              beatae, sequi architecto. Quos, ullam.
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Cupiditate illum minus dolorem iusto voluptatum asperiores
+                laudantium suscipit magnam debitis fuga autem ad quasi quaerat
+                sit beatae, sequi architecto. Quos, ullam.
+              </p>
             </div>
           </RecipeStep>
 
@@ -338,10 +359,12 @@ export function Recipe() {
               <RecipeStepNumber>2</RecipeStepNumber>
             </div>
             <div>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Repudiandae impedit consequuntur aliquid sed non laborum quibusdam
-              inventore fugit nihil, expedita officia, aliquam, hic corporis at
-              dolorem maxime molestias dolor repellat!
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Repudiandae impedit consequuntur aliquid sed non laborum
+                quibusdam inventore fugit nihil, expedita officia, aliquam, hic
+                corporis at dolorem maxime molestias dolor repellat!
+              </p>
             </div>
           </RecipeStep>
 
@@ -374,10 +397,12 @@ export function Recipe() {
               <RecipeStepNumber>3</RecipeStepNumber>
             </div>
             <div>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Repudiandae impedit consequuntur aliquid sed non laborum quibusdam
-              inventore fugit nihil, expedita officia, aliquam, hic corporis at
-              dolorem maxime molestias dolor repellat!
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Repudiandae impedit consequuntur aliquid sed non laborum
+                quibusdam inventore fugit nihil, expedita officia, aliquam, hic
+                corporis at dolorem maxime molestias dolor repellat!
+              </p>
             </div>
           </RecipeStep>
 
@@ -386,10 +411,12 @@ export function Recipe() {
               <RecipeStepNumber>4</RecipeStepNumber>
             </div>
             <div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Cupiditate illum minus dolorem iusto voluptatum asperiores
-              laudantium suscipit magnam debitis fuga autem ad quasi quaerat sit
-              beatae, sequi architecto. Quos, ullam.
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Cupiditate illum minus dolorem iusto voluptatum asperiores
+                laudantium suscipit magnam debitis fuga autem ad quasi quaerat
+                sit beatae, sequi architecto. Quos, ullam.
+              </p>
             </div>
           </RecipeStep>
 

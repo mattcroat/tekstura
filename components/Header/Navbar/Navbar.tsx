@@ -9,7 +9,7 @@ const Container = styled(motion.header)`
   display: none;
   z-index: 2;
 
-  ${screenSize.sm} {
+  ${screenSize.md} {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
@@ -22,6 +22,7 @@ const Container = styled(motion.header)`
       align-items: center;
       gap: var(--spacing-32);
       font-weight: 700;
+      list-style: none;
     }
 
     li::after {

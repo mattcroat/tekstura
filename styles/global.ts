@@ -106,7 +106,8 @@ export const globalStyles = css`
   }
 
   ul {
-    list-style: none;
+    list-style: circle;
+    list-style-position: inside;
   }
 
   a {

@@ -20,7 +20,7 @@ const Container = styled(motion.header)<HeaderMobile>`
   transition: background-color 0.3s;
   z-index: 2;
 
-  ${screenSize.sm} {
+  ${screenSize.md} {
     display: none;
   }
 `
@@ -33,6 +33,7 @@ const Menu = styled(motion.nav)`
     display: flex;
     flex-direction: column;
     gap: var(--spacing-8);
+    list-style: none;
   }
 
   a {
