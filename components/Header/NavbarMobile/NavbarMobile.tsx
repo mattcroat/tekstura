@@ -74,7 +74,7 @@ export function NavbarMobile() {
       animate={{ opacity: 1 }}
     >
       <Flex>
-        <h1>Kužina</h1>
+        <h1>Tekstura</h1>
         <MenuButton
           isOpen={isOpen}
           onClick={() => setIsOpen(!isOpen)}
@@ -102,7 +102,7 @@ export function NavbarMobile() {
               </motion.li>
               <motion.li variants={menu.item}>
                 <Link href="/about">
-                  <a>Što je Kužina?</a>
+                  <a>O nama</a>
                 </Link>
               </motion.li>
               <motion.li variants={menu.item}>
