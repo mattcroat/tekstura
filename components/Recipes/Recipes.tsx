@@ -39,34 +39,56 @@ const StyledRecipes = styled.div`
   padding: 0 var(--spacing-128);
 `
 
-const RecipesSearch = styled.section`
-  padding: 32px;
-  border: 1px solid #292929;
-  border-radius: 4px;
+const SearchBar = styled.div`
+  position: relative;
+  margin-top: var(--spacing-32);
+`
 
-  input {
-    font-size: 18px;
-    margin-top: 8px;
-    background: #292929;
-    color: snow;
-    border: 1px solid #181818;
-    box-shadow: 0 4px 4px hsla(0, 0%, 0%, 10%);
-    padding: 16px;
-    border-radius: 4px;
+const SearchLabel = styled.label`
+  display: none;
+`
+
+const SearchIcon = styled.svg`
+  position: absolute;
+  top: var(--spacing-24);
+  left: var(--spacing-24);
+  color: var(--color-input-text);
+`
+
+const SearchInput = styled.input`
+  width: 300px;
+  margin-top: var(--spacing-8);
+  padding: var(--spacing-16);
+  padding-left: var(--spacing-64);
+  font-family: inherit;
+  font-size: 18px;
+  color: var(--color-input-text);
+  background-color: var(--color-input-bg);
+  border: 1px solid var(--color-input-border);
+  border-radius: var(--radius-base);
+  transition: width 0.3s;
+
+  &:hover {
     width: 100%;
   }
 `
 
 const RecipesCards = styled.main`
   display: grid;
-  grid-template-columns: repeat(3, minmax(200px, 1fr));
-  gap: 8px;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: var(--spacing-16);
   margin-bottom: var(--spacing-64);
 `
 
 const RecipeCard = styled.article`
   height: 280px;
   position: relative;
+  transition: scale 0.3s;
+
+  &:hover {
+    scale: 1.1;
+    z-index: 1;
+  }
 
   &::before {
     content: '';
@@ -76,15 +98,23 @@ const RecipeCard = styled.article`
     right: 0;
     bottom: 0;
     left: 0;
+    opacity: 1;
     background: var(--color-overlay-bg);
+    transition: opacity 0.3s;
+  }
+
+  &:hover::before {
+    opacity: 0;
   }
 `
 
 const RecipeCardTitle = styled.h3`
   max-width: 340px;
   position: absolute;
-  bottom: 16px;
-  left: 16px;
+  bottom: var(--spacing-16);
+  left: var(--spacing-16);
+  color: var(--color-text-on-dark-bg);
+  text-transform: capitalize;
 `
 
 const RecipeCardImage = styled.img`
@@ -96,27 +126,45 @@ export function Recipes() {
     <StyledRecipes>
       <Header />
 
-      <RecipesSearch>
-        <h2>Pretraga</h2>
-        {/* <label htmlFor="recipe-search">Search</label> */}
-        <input
-          type="text"
-          id="recipe-search"
-          name="recipe-search"
-          placeholder="🔎 Pretražite recepte"
-        />
-      </RecipesSearch>
+      <div>
+        <h2>Recepti</h2>
+
+        <SearchBar>
+          <SearchLabel aria-hidden="false" htmlFor="recipe-search">
+            Search
+          </SearchLabel>
+          <SearchIcon
+            height="24"
+            width="24"
+            aria-hidden="true"
+            focusable="false"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512"
+          >
+            <path
+              fill="currentColor"
+              d="M508.875 493.792L353.089 338.005c32.358-35.927 52.245-83.296 52.245-135.339C405.333 90.917 314.417 0 202.667 0S0 90.917 0 202.667s90.917 202.667 202.667 202.667c52.043 0 99.411-19.887 135.339-52.245l155.786 155.786a10.634 10.634 0 007.542 3.125c2.729 0 5.458-1.042 7.542-3.125 4.166-4.167 4.166-10.917-.001-15.083zM202.667 384c-99.979 0-181.333-81.344-181.333-181.333S102.688 21.333 202.667 21.333 384 102.677 384 202.667 302.646 384 202.667 384z"
+            />
+          </SearchIcon>
+          <SearchInput
+            type="text"
+            id="recipe-search"
+            name="recipe-search"
+            placeholder="Pretražite recepte"
+          />
+        </SearchBar>
+      </div>
 
       <RecipesCards>
         {recipes.map(({ title, src }) => (
-          <RecipeCard key={title}>
-            <RecipeCardTitle>
-              <Link href="#">
-                <a>{title}</a>
-              </Link>
-            </RecipeCardTitle>
-            <RecipeCardImage src={src} alt={title} />
-          </RecipeCard>
+          <Link key={title} href="#">
+            <a>
+              <RecipeCard>
+                <RecipeCardTitle>{title}</RecipeCardTitle>
+                <RecipeCardImage src={src} alt={title} />
+              </RecipeCard>
+            </a>
+          </Link>
         ))}
       </RecipesCards>
     </StyledRecipes>
