@@ -69,7 +69,6 @@ const StyledRecipes = styled.div`
   display: grid;
   grid-template-rows: auto 1fr;
   gap: var(--spacing-32);
-  padding-top: var(--spacing-32);
   padding: 0 var(--spacing-32);
 
   ${screenSize.md} {
@@ -85,6 +84,14 @@ const StyledRecipes = styled.div`
 
 const Title = styled.h2`
   transition: color 1s;
+`
+
+const Container = styled(motion.div)`
+  padding: var(--spacing-32);
+  background-color: var(--color-secondary-bg);
+  border-radius: var(--radius-base);
+  box-shadow: var(--shadow-sm);
+  transition: background-color 1s;
 `
 
 const SearchBar = styled.div`
@@ -116,7 +123,7 @@ const SearchInput = styled.input`
   border-radius: var(--radius-base);
   transition: width 0.3s, color 1s, background-color 1s;
 
-  &:hover {
+  &:focus {
     width: 100%;
   }
 
@@ -142,6 +149,7 @@ const RecipeCard = styled(motion.article)`
 
   &:hover {
     scale: 1.04;
+    box-shadow: var(--shadow-lg);
     z-index: 1;
   }
 
@@ -201,7 +209,7 @@ export function Recipes() {
     <StyledRecipes>
       <Header />
 
-      <motion.div variants={fadeIn} initial="hidden" animate="show">
+      <Container variants={fadeIn} initial="hidden" animate="show">
         <Title>Recepti</Title>
 
         <SearchBar>
@@ -229,13 +237,13 @@ export function Recipes() {
             placeholder="Pretražite recepte"
           />
         </SearchBar>
-      </motion.div>
+      </Container>
 
-      <RecipesCards variants={cardsFadeIn} initial="hidden" animate="show">
-        {!searchResults || searchResults.length < 1 ? (
-          <h2>No recipes to show.</h2>
-        ) : (
-          searchResults?.map(({ id, title, src }) => (
+      {!searchResults || searchResults.length < 1 ? (
+        <h2>No recipes to show.</h2>
+      ) : (
+        <RecipesCards variants={cardsFadeIn} initial="hidden" animate="show">
+          {searchResults?.map(({ id, title, src }) => (
             <Link key={id} href="#">
               <a>
                 <RecipeCard variants={cardFadeIn}>
@@ -244,9 +252,9 @@ export function Recipes() {
                 </RecipeCard>
               </a>
             </Link>
-          ))
-        )}
-      </RecipesCards>
+          ))}
+        </RecipesCards>
+      )}
     </StyledRecipes>
   )
 }

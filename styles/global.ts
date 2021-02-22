@@ -41,7 +41,8 @@ export const globalStyles = css`
     --color-input-border: hsla(0, 0%, 78%, 20%);
     --color-primary-border: 1px solid hsla(0, 0%, 0%, 10%);
     /* box shadow */
-    --shadow-lg: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    --shadow-sm: 0 0 4px hsl(0, 0%, 0%, 10%);
+    --shadow-lg: 0 4px 20px hsla(0, 0%, 0%, 10%);
     /* radius */
     --radius-base: 4px;
   }
