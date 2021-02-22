@@ -1,3 +1,4 @@
+import React from 'react'
 import styled from '@emotion/styled'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
@@ -7,26 +8,32 @@ import { screenSize } from '@/root/styles/mediaQueries'
 
 const recipes = [
   {
+    id: 1,
     title: 'Svako Jutro Jedno Jaje Organizmu Snagu Daje',
     src: '/images/dish.webp',
   },
   {
+    id: 2,
     title: 'Osveta je Najbolje Servirana Hladna',
     src: '/images/dish.webp',
   },
   {
+    id: 3,
     title: 'Jelo Utopljeno u Umaku, ti si Idući',
     src: '/images/dish.webp',
   },
   {
+    id: 4,
     title: 'Svako Jutro Jedno Jaje Organizmu Snagu Daje',
     src: '/images/dish.webp',
   },
   {
+    id: 5,
     title: 'Osveta je Najbolje Servirana Hladna',
     src: '/images/dish.webp',
   },
   {
+    id: 6,
     title: 'Jelo Utopljeno u Umaku, ti si Idući',
     src: '/images/dish.webp',
   },
@@ -170,6 +177,26 @@ const RecipeCardImage = styled.img`
 `
 
 export function Recipes() {
+  const [searchTerm, setSearchTerm] = React.useState<string>('')
+  const [searchResults, setSearchResults] = React.useState<
+    {
+      id: number
+      title: string
+      src: string
+    }[]
+  >()
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setTimeout(() => setSearchTerm(e.target.value), 1000)
+  }
+
+  React.useEffect(() => {
+    const results = recipes.filter((recipe) =>
+      recipe.title.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+    setSearchResults(results)
+  }, [searchTerm])
+
   return (
     <StyledRecipes>
       <Header />
@@ -195,6 +222,7 @@ export function Recipes() {
             />
           </SearchIcon>
           <SearchInput
+            onChange={handleChange}
             type="text"
             id="recipe-search"
             name="recipe-search"
@@ -204,16 +232,20 @@ export function Recipes() {
       </motion.div>
 
       <RecipesCards variants={cardsFadeIn} initial="hidden" animate="show">
-        {recipes.map(({ title, src }) => (
-          <Link key={title} href="#">
-            <a>
-              <RecipeCard variants={cardFadeIn}>
-                <RecipeCardTitle>{title}</RecipeCardTitle>
-                <RecipeCardImage src={src} alt={title} />
-              </RecipeCard>
-            </a>
-          </Link>
-        ))}
+        {!searchResults || searchResults.length < 1 ? (
+          <h2>No recipes to show.</h2>
+        ) : (
+          searchResults?.map(({ id, title, src }) => (
+            <Link key={id} href="#">
+              <a>
+                <RecipeCard variants={cardFadeIn}>
+                  <RecipeCardTitle>{title}</RecipeCardTitle>
+                  <RecipeCardImage src={src} alt={title} />
+                </RecipeCard>
+              </a>
+            </Link>
+          ))
+        )}
       </RecipesCards>
     </StyledRecipes>
   )
