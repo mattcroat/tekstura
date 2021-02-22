@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { motion } from 'framer-motion'
 import Link from 'next/link'
 
 import { Header } from '@/root/components/Header'
@@ -31,6 +32,32 @@ const recipes = [
   },
 ]
 
+const fadeIn = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      delay: 0.3,
+    },
+  },
+}
+
+const cardsFadeIn = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      delay: 0.4,
+      staggerChildren: 0.3,
+    },
+  },
+}
+
+const cardFadeIn = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1 },
+}
+
 const StyledRecipes = styled.div`
   display: grid;
   grid-template-rows: auto 1fr;
@@ -41,6 +68,10 @@ const StyledRecipes = styled.div`
   ${screenSize.md} {
     gap: var(--spacing-64);
     margin-top: var(--spacing-64);
+    padding: 0 var(--spacing-64);
+  }
+
+  ${screenSize.lg} {
     padding: 0 var(--spacing-128);
   }
 `
@@ -83,7 +114,7 @@ const SearchInput = styled.input`
   }
 `
 
-const RecipesCards = styled.main`
+const RecipesCards = styled(motion.main)`
   display: grid;
   gap: var(--spacing-16);
   margin-bottom: var(--spacing-64);
@@ -93,7 +124,7 @@ const RecipesCards = styled.main`
   }
 `
 
-const RecipeCard = styled.article`
+const RecipeCard = styled(motion.article)`
   height: 280px;
   position: relative;
   transition: scale 0.3s;
@@ -139,7 +170,7 @@ export function Recipes() {
     <StyledRecipes>
       <Header />
 
-      <div>
+      <motion.div variants={fadeIn} initial="hidden" animate="show">
         <h2>Recepti</h2>
 
         <SearchBar>
@@ -166,13 +197,13 @@ export function Recipes() {
             placeholder="Pretražite recepte"
           />
         </SearchBar>
-      </div>
+      </motion.div>
 
-      <RecipesCards>
+      <RecipesCards variants={cardsFadeIn} initial="hidden" animate="show">
         {recipes.map(({ title, src }) => (
           <Link key={title} href="#">
             <a>
-              <RecipeCard>
+              <RecipeCard variants={cardFadeIn}>
                 <RecipeCardTitle>{title}</RecipeCardTitle>
                 <RecipeCardImage src={src} alt={title} />
               </RecipeCard>
