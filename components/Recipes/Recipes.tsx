@@ -34,9 +34,15 @@ const recipes = [
 const StyledRecipes = styled.div`
   display: grid;
   grid-template-rows: auto 1fr;
-  gap: 64px;
-  margin-top: var(--spacing-64);
-  padding: 0 var(--spacing-128);
+  gap: var(--spacing-32);
+  padding-top: var(--spacing-32);
+  padding: 0 var(--spacing-32);
+
+  ${screenSize.md} {
+    gap: var(--spacing-64);
+    margin-top: var(--spacing-64);
+    padding: 0 var(--spacing-128);
+  }
 `
 
 const SearchBar = styled.div`
@@ -56,7 +62,7 @@ const SearchIcon = styled.svg`
 `
 
 const SearchInput = styled.input`
-  width: 300px;
+  width: 100%;
   margin-top: var(--spacing-8);
   padding: var(--spacing-16);
   padding-left: var(--spacing-64);
@@ -71,13 +77,20 @@ const SearchInput = styled.input`
   &:hover {
     width: 100%;
   }
+
+  ${screenSize.md} {
+    width: 300px;
+  }
 `
 
 const RecipesCards = styled.main`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: var(--spacing-16);
   margin-bottom: var(--spacing-64);
+
+  ${screenSize.md} {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  }
 `
 
 const RecipeCard = styled.article`
@@ -86,7 +99,7 @@ const RecipeCard = styled.article`
   transition: scale 0.3s;
 
   &:hover {
-    scale: 1.1;
+    scale: 1.04;
     z-index: 1;
   }
 
