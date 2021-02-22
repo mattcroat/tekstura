@@ -76,6 +76,10 @@ const StyledRecipes = styled.div`
   }
 `
 
+const Title = styled.h2`
+  transition: color 1s;
+`
+
 const SearchBar = styled.div`
   position: relative;
   margin-top: var(--spacing-32);
@@ -99,11 +103,11 @@ const SearchInput = styled.input`
   padding-left: var(--spacing-64);
   font-family: inherit;
   font-size: 18px;
-  color: var(--color-input-text);
+  color: var(--color-text);
   background-color: var(--color-input-bg);
   border: 1px solid var(--color-input-border);
   border-radius: var(--radius-base);
-  transition: width 0.3s;
+  transition: width 0.3s, color 1s, background-color 1s;
 
   &:hover {
     width: 100%;
@@ -171,7 +175,7 @@ export function Recipes() {
       <Header />
 
       <motion.div variants={fadeIn} initial="hidden" animate="show">
-        <h2>Recepti</h2>
+        <Title>Recepti</Title>
 
         <SearchBar>
           <SearchLabel aria-hidden="false" htmlFor="recipe-search">

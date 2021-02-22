@@ -53,6 +53,7 @@ export const globalStyles = css`
       --color-text-muted: hsl(0, 0%, 100%);
       --color-primary-bg: hsl(44, 10%, 10%);
       --color-secondary-bg: hsl(0, 0%, 16%);
+      --color-input-bg: hsl(0, 0%, 20%);
       --color-primary-border: 1px solid hsla(0, 0%, 100%, 10%);
     }
   }
