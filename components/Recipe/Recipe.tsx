@@ -1,7 +1,18 @@
 import styled from '@emotion/styled'
+import { motion } from 'framer-motion'
 
 import { Header } from '@/root/components/Header'
 import { screenSize } from '@/root/styles/mediaQueries'
+
+const fadeIn = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      delay: 0.3,
+    },
+  },
+}
 
 const ingredients = [
   {
@@ -49,7 +60,6 @@ const ingredients = [
     ingredient: 'crni papar',
     unit: '',
   },
-  // fu
   {
     amount: '278',
     ingredient: 'bijela riža',
@@ -126,7 +136,7 @@ const RecipeImage = styled.img`
   }
 `
 
-const Main = styled.main`
+const Main = styled(motion.main)`
   margin-bottom: var(--spacing-64);
 
   h1,
@@ -272,7 +282,7 @@ export function Recipe() {
 
       <RecipeImage src="/images/dish.webp" alt="Dish" />
 
-      <Main>
+      <Main variants={fadeIn} initial="hidden" animate="show">
         <RecipePreparation>
           <Sticky>
             <RecipeDetails>
