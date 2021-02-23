@@ -6,16 +6,14 @@ import { ThemeToggle } from '@/root/components/shared/ThemeToggle'
 import { screenSize } from '@/root/styles/mediaQueries'
 
 const Container = styled(motion.header)`
+  grid-area: header;
   display: none;
-  z-index: 2;
 
   ${screenSize.md} {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    /* padding: var(--spacing-32) var(--spacing-64) var(--spacing-32)
-      var(--spacing-64); */
-    /* margin-top: var(--spacing-64); */
+    margin: var(--spacing-64) 0;
 
     ul {
       display: flex;
