@@ -55,7 +55,7 @@ export function Navbar() {
           </li>
           <li>
             <Link href="/about">
-              <a>O nama</a>
+              <a>Saznaj više</a>
             </Link>
           </li>
           <li>

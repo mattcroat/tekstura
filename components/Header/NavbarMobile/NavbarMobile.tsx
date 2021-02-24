@@ -99,7 +99,7 @@ export function NavbarMobile() {
               </motion.li>
               <motion.li variants={menu.item}>
                 <Link href="/about">
-                  <a>O nama</a>
+                  <a>Saznaj više</a>
                 </Link>
               </motion.li>
               <motion.li variants={menu.item}>
