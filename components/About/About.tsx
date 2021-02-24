@@ -17,39 +17,56 @@ const fadeIn = {
 
 const StyledAbout = styled.div`
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-columns: auto 1fr auto;
   gap: var(--spacing-32);
-  padding: 0 var(--spacing-32);
+  grid-template-areas:
+    '... ... ...'
+    '... header ...'
+    '... main ...';
 
   ${screenSize.md} {
     gap: var(--spacing-64);
-    margin-top: var(--spacing-64);
-    padding: 0 var(--spacing-64);
   }
 
   ${screenSize.lg} {
-    padding: 0 var(--spacing-128);
+    grid-column-gap: var(--spacing-128);
   }
 `
 
 const Main = styled(motion.main)`
+  max-width: 60ch;
+  grid-area: main;
   display: grid;
-  align-items: center;
-  grid-template-columns: 1fr 60ch;
-  gap: var(--spacing-64);
-  margin: 0 auto;
-  margin-top: var(--spacing-64);
+  gap: var(--spacing-32);
+  justify-self: center;
+
+  ${screenSize.lg} {
+    max-width: 100%;
+    max-width: auto;
+    grid-template-columns: 1fr 60ch;
+  }
 `
 
 const Image = styled.img`
-  height: 240px;
-  width: 240px;
+  height: 140px;
+  width: 140px;
   object-fit: cover;
   border-radius: 50%;
+  place-self: center;
+
+  ${screenSize.lg} {
+    height: 240px;
+    width: 240px;
+  }
 `
 
 const Title = styled.h1`
   color: var(--color-primary-gold);
+  text-align: center;
+
+  ${screenSize.lg} {
+    text-align: left;
+  }
 `
 
 export function About() {
@@ -58,17 +75,15 @@ export function About() {
       <Header />
 
       <Main variants={fadeIn} initial="hidden" animate="show">
-        <aside>
-          <Image
-            src="
+        <Image
+          src="
           https://images.unsplash.com/photo-1565853530962-ebe35dc9ba70
           "
-            alt="Girl with sunglasses smiling"
-          />
-        </aside>
+          alt="Placeholder"
+        />
 
         <section>
-          <Title>About</Title>
+          <Title>Što je Tekstura?</Title>
           <p>
             Distinctio amet, rerum, accusantium saepe quam, ducimus possimus
             sint libero odio dolore assumenda. Dolores quibusdam nobis, quidem
