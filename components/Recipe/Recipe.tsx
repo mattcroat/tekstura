@@ -108,26 +108,28 @@ const ingredients = [
 ]
 
 const StyledRecipe = styled.div`
-  padding: 0 var(--spacing-32);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-column-gap: var(--spacing-32);
+  grid-row-gap: var(--spacing-64);
+  grid-template-areas:
+    '... header ...'
+    '... hero ...'
+    '... main ...';
+  margin-top: var(--spacing-32);
 
   ${screenSize.md} {
-    display: grid;
     grid-template-rows: auto 400px 1fr;
-    gap: var(--spacing-64);
-    max-width: 1600px;
-    padding: 0 var(--spacing-64);
-    padding-top: var(--spacing-64);
   }
 
   ${screenSize.lg} {
-    padding: 0 var(--spacing-128);
-    padding-top: var(--spacing-64);
+    grid-column-gap: var(--spacing-128);
   }
 `
 
 const RecipeImage = styled.img`
+  grid-area: hero;
   height: 200px;
-  margin: 64px 0;
   object-fit: cover;
 
   ${screenSize.md} {
@@ -137,6 +139,7 @@ const RecipeImage = styled.img`
 `
 
 const Main = styled(motion.main)`
+  grid-area: main;
   margin-bottom: var(--spacing-64);
 
   h1,
