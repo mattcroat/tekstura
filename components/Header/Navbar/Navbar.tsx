@@ -13,7 +13,6 @@ const Container = styled(motion.header)`
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin: var(--spacing-64) 0;
 
     ul {
       display: flex;

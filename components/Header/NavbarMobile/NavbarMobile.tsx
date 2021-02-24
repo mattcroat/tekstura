@@ -13,7 +13,6 @@ type HeaderMobile = {
 
 const Container = styled(motion.header)<HeaderMobile>`
   grid-area: header;
-  margin: var(--spacing-32) 0;
   background-color: ${({ isMenuOpen }) =>
     isMenuOpen && 'var(--color-primary-gold)'};
   transition: background-color 0.3s;
