@@ -33,7 +33,7 @@ export const globalStyles = css`
     --color-text: hsl(0, 0%, 13%);
     --color-text-muted: hsl(0, 0%, 28%);
     --color-text-on-dark-bg: hsl(0, 0%, 100%);
-    --color-primary-bg: hsl(0, 0%, 100%);
+    --color-primary-bg: hsl(0, 0%, 98%);
     --color-secondary-bg: hsl(0, 0%, 98%);
     --color-overlay-bg: linear-gradient(transparent, hsla(0, 0%, 0%, 90%));
     --color-input-text: hsl(0, 0%, 52%);
