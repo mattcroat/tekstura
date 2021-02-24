@@ -66,19 +66,22 @@ const cardFadeIn = {
 }
 
 const StyledRecipes = styled.div`
+  padding-top: var(--spacing-32);
   display: grid;
-  grid-template-rows: auto 1fr;
-  gap: var(--spacing-32);
-  padding: 0 var(--spacing-32);
+  grid-template-columns: auto 1fr auto;
+  grid-column-gap: var(--spacing-32);
+  grid-row-gap: var(--spacing-64);
+  grid-template-areas:
+    '... header ...'
+    '... search ...'
+    '... recipes ...';
 
   ${screenSize.md} {
-    gap: var(--spacing-64);
-    margin-top: var(--spacing-64);
-    padding: 0 var(--spacing-64);
+    padding-top: var(--spacing-64);
   }
 
   ${screenSize.lg} {
-    padding: 0 var(--spacing-128);
+    grid-column-gap: var(--spacing-128);
   }
 `
 
@@ -86,7 +89,8 @@ const Title = styled.h2`
   transition: color 1s;
 `
 
-const Container = styled(motion.div)`
+const Search = styled(motion.div)`
+  grid-area: search;
   padding: var(--spacing-32);
   background-color: var(--color-secondary-bg);
   border-radius: var(--radius-base);
@@ -133,6 +137,7 @@ const SearchInput = styled.input`
 `
 
 const RecipesCards = styled(motion.main)`
+  grid-area: recipes;
   display: grid;
   gap: var(--spacing-16);
   margin-bottom: var(--spacing-64);
@@ -209,7 +214,7 @@ export function Recipes() {
     <StyledRecipes>
       <Header />
 
-      <Container variants={fadeIn} initial="hidden" animate="show">
+      <Search variants={fadeIn} initial="hidden" animate="show">
         <Title>Recepti</Title>
 
         <SearchBar>
@@ -237,7 +242,7 @@ export function Recipes() {
             placeholder="Pretražite recepte"
           />
         </SearchBar>
-      </Container>
+      </Search>
 
       {!searchResults || searchResults.length < 1 ? (
         <h2>No recipes to show.</h2>
