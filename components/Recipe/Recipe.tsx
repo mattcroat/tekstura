@@ -110,16 +110,17 @@ const ingredients = [
 const StyledRecipe = styled.div`
   display: grid;
   grid-template-columns: auto 1fr auto;
-  grid-column-gap: var(--spacing-32);
-  grid-row-gap: var(--spacing-64);
+  gap: var(--spacing-32);
   grid-template-areas:
+    '... ... ...'
     '... header ...'
     '... hero ...'
-    '... main ...';
-  margin-top: var(--spacing-32);
+    '... main ...'
+    '... ... ...';
 
   ${screenSize.md} {
-    grid-template-rows: auto 400px 1fr;
+    grid-template-rows: auto auto 400px 1fr auto;
+    gap: var(--spacing-64);
   }
 
   ${screenSize.lg} {
@@ -140,7 +141,6 @@ const RecipeImage = styled.img`
 
 const Main = styled(motion.main)`
   grid-area: main;
-  margin-bottom: var(--spacing-64);
 
   h1,
   h2 {
@@ -215,7 +215,7 @@ const RecipePortionAmount = styled(RecipePrepTime)`
 `
 
 const RecipeIngredients = styled.section`
-  margin: var(--spacing-64) 0;
+  margin: var(--spacing-32) 0;
 
   ${screenSize.md} {
     margin-top: var(--spacing-64);

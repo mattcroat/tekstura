@@ -66,18 +66,18 @@ const cardFadeIn = {
 }
 
 const StyledRecipes = styled.div`
-  padding-top: var(--spacing-32);
   display: grid;
   grid-template-columns: auto 1fr auto;
-  grid-column-gap: var(--spacing-32);
-  grid-row-gap: var(--spacing-64);
+  gap: var(--spacing-32);
   grid-template-areas:
+    '... ... ...'
     '... header ...'
     '... search ...'
-    '... recipes ...';
+    '... recipes ...'
+    '... ... ...';
 
   ${screenSize.md} {
-    padding-top: var(--spacing-64);
+    gap: var(--spacing-64);
   }
 
   ${screenSize.lg} {
@@ -120,7 +120,7 @@ const SearchInput = styled.input`
   padding: var(--spacing-16);
   padding-left: var(--spacing-64);
   font-family: inherit;
-  font-size: 18px;
+  font-size: 16px;
   color: var(--color-text);
   background-color: var(--color-input-bg);
   border: 1px solid var(--color-input-border);
@@ -133,6 +133,7 @@ const SearchInput = styled.input`
 
   ${screenSize.md} {
     width: 300px;
+    font-size: 18px;
   }
 `
 
@@ -140,7 +141,6 @@ const RecipesCards = styled(motion.main)`
   grid-area: recipes;
   display: grid;
   gap: var(--spacing-16);
-  margin-bottom: var(--spacing-64);
 
   ${screenSize.md} {
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
