@@ -10,14 +10,12 @@ type Props = {
 
 const Home = styled.div`
   height: 100vh;
-  padding-top: var(--spacing-32);
   display: grid;
   grid-template-columns: auto 1fr auto;
-  grid-template-rows: auto auto 1fr 1fr 50vh;
+  grid-template-rows: auto 1fr 1fr 50vh;
   grid-column-gap: var(--spacing-32);
   grid-template-areas:
-    '... ... ...'
-    '... header ...'
+    'header header header'
     '... byline ...'
     'newsletter newsletter newsletter'
     'recipe recipe recipe';
@@ -43,8 +41,7 @@ const Recipe = styled.div`
   grid-template-columns: auto 1fr auto;
   gap: var(--spacing-32);
   grid-template-areas:
-    '... ... ...'
-    '... header ...'
+    'header header header'
     '... hero ...'
     '... main ...'
     '... ... ...';
@@ -52,6 +49,12 @@ const Recipe = styled.div`
   ${screen.md} {
     grid-template-rows: auto auto 400px 1fr auto;
     gap: var(--spacing-64);
+    grid-template-areas:
+      '... ... ...'
+      '... header ...'
+      '... hero ...'
+      '... main ...'
+      '... ... ...';
   }
 
   ${screen.lg} {
@@ -64,14 +67,19 @@ const Recipes = styled.div`
   grid-template-columns: auto 1fr auto;
   gap: var(--spacing-32);
   grid-template-areas:
-    '... ... ...'
-    '... header ...'
+    'header header header'
     '... search ...'
     '... recipes ...'
     '... ... ...';
 
   ${screen.md} {
     gap: var(--spacing-64);
+    grid-template-areas:
+      '... ... ...'
+      '... header ...'
+      '... search ...'
+      '... recipes ...'
+      '... ... ...';
   }
 
   ${screen.lg} {
@@ -84,12 +92,15 @@ const About = styled.div`
   grid-template-columns: auto 1fr auto;
   gap: var(--spacing-32);
   grid-template-areas:
-    '... ... ...'
-    '... header ...'
+    'header header header'
     '... main ...';
 
   ${screen.md} {
     gap: var(--spacing-64);
+    grid-template-areas:
+      '... ... ...'
+      '... header ...'
+      '... main ...';
   }
 
   ${screen.lg} {
