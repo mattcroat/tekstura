@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import styled from '@emotion/styled'
 
-import { screenSize } from '@/root/styles/mediaQueries'
+import { screen } from '@/root/styles/media'
 
 interface Props {
   height?: number
@@ -22,7 +22,7 @@ const Button = styled.button`
     transition: stroke 1s;
   }
 
-  ${screenSize.md} {
+  ${screen.md} {
     display: none;
   }
 `

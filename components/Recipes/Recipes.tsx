@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 
 import { Header } from '@/root/components/Header'
-import { screenSize } from '@/root/styles/mediaQueries'
+import { screen } from '@/root/styles/media'
 
 const recipes = [
   {
@@ -76,11 +76,11 @@ const StyledRecipes = styled.div`
     '... recipes ...'
     '... ... ...';
 
-  ${screenSize.md} {
+  ${screen.md} {
     gap: var(--spacing-64);
   }
 
-  ${screenSize.lg} {
+  ${screen.lg} {
     grid-column-gap: var(--spacing-128);
   }
 `
@@ -131,7 +131,7 @@ const SearchInput = styled.input`
     width: 100%;
   }
 
-  ${screenSize.md} {
+  ${screen.md} {
     width: 300px;
     font-size: 18px;
   }
@@ -142,7 +142,7 @@ const RecipesCards = styled(motion.main)`
   display: grid;
   gap: var(--spacing-16);
 
-  ${screenSize.md} {
+  ${screen.md} {
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   }
 `

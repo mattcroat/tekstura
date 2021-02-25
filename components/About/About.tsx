@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import { motion } from 'framer-motion'
 
 import { Header } from '@/root/components/Header'
-import { screenSize } from '@/root/styles/mediaQueries'
+import { screen } from '@/root/styles/media'
 
 const fadeIn = {
   hidden: { opacity: 0 },
@@ -24,11 +24,11 @@ const StyledAbout = styled.div`
     '... header ...'
     '... main ...';
 
-  ${screenSize.md} {
+  ${screen.md} {
     gap: var(--spacing-64);
   }
 
-  ${screenSize.lg} {
+  ${screen.lg} {
     grid-column-gap: var(--spacing-128);
   }
 `
@@ -40,7 +40,7 @@ const Main = styled(motion.main)`
   gap: var(--spacing-32);
   justify-self: center;
 
-  ${screenSize.lg} {
+  ${screen.lg} {
     max-width: 100%;
     max-width: auto;
     grid-template-columns: 1fr 60ch;
@@ -54,7 +54,7 @@ const Image = styled.img`
   border-radius: 50%;
   place-self: center;
 
-  ${screenSize.lg} {
+  ${screen.lg} {
     height: 240px;
     width: 240px;
   }
@@ -64,7 +64,7 @@ const Title = styled.h1`
   color: var(--color-primary-gold);
   text-align: center;
 
-  ${screenSize.lg} {
+  ${screen.lg} {
     text-align: left;
   }
 `

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 
 import { Header } from '@/root/components/Header'
-import { screenSize } from '@/root/styles/mediaQueries'
+import { screen } from '@/root/styles/media'
 
 const byline = {
   hidden: { opacity: 0 },
@@ -51,7 +51,7 @@ const StyledHome = styled.div`
     'newsletter newsletter newsletter'
     'recipe recipe recipe';
 
-  ${screenSize.md} {
+  ${screen.md} {
     padding-top: var(--spacing-64);
     grid-template-rows: auto 1fr 0 50vh;
     grid-column-gap: var(--spacing-64);
@@ -62,7 +62,7 @@ const StyledHome = styled.div`
       'recipe recipe recipe';
   }
 
-  ${screenSize.lg} {
+  ${screen.lg} {
     grid-column-gap: var(--spacing-128);
   }
 `
@@ -75,11 +75,11 @@ const Byline = styled(motion.div)`
     margin-top: var(--spacing-8);
   }
 
-  ${screenSize.sm} {
+  ${screen.sm} {
     text-align: center;
   }
 
-  ${screenSize.md} {
+  ${screen.md} {
     padding-top: var(--spacing-64);
   }
 `
@@ -101,12 +101,12 @@ const Newsletter = styled(motion.section)`
     margin: var(--spacing-8) 0;
   }
 
-  ${screenSize.sm} {
+  ${screen.sm} {
     box-shadow: var(--shadow-lg);
     border-radius: var(--radius-base);
   }
 
-  ${screenSize.md} {
+  ${screen.md} {
     margin: -120px auto;
   }
 `

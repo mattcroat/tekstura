@@ -3,13 +3,13 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 
 import { ThemeToggle } from '@/root/components/shared/ThemeToggle'
-import { screenSize } from '@/root/styles/mediaQueries'
+import { screen } from '@/root/styles/media'
 
 const Container = styled(motion.header)`
   grid-area: header;
   display: none;
 
-  ${screenSize.md} {
+  ${screen.md} {
     display: flex;
     justify-content: space-between;
     align-items: baseline;

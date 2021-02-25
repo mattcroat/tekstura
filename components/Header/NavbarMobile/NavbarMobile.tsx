@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 import { MenuButton } from './MenuButton'
 import { ThemeToggle } from '@/root/components/shared/ThemeToggle'
-import { screenSize } from '@/root/styles/mediaQueries'
+import { screen } from '@/root/styles/media'
 
 type HeaderMobile = {
   isMenuOpen: boolean
@@ -17,7 +17,7 @@ const Container = styled(motion.header)<HeaderMobile>`
     isMenuOpen && 'var(--color-primary-gold)'};
   transition: background-color 0.3s;
 
-  ${screenSize.md} {
+  ${screen.md} {
     display: none;
   }
 `

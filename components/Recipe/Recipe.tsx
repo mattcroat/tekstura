@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import { motion } from 'framer-motion'
 
 import { Header } from '@/root/components/Header'
-import { screenSize } from '@/root/styles/mediaQueries'
+import { screen } from '@/root/styles/media'
 
 const fadeIn = {
   hidden: { opacity: 0 },
@@ -118,12 +118,12 @@ const StyledRecipe = styled.div`
     '... main ...'
     '... ... ...';
 
-  ${screenSize.md} {
+  ${screen.md} {
     grid-template-rows: auto auto 400px 1fr auto;
     gap: var(--spacing-64);
   }
 
-  ${screenSize.lg} {
+  ${screen.lg} {
     grid-column-gap: var(--spacing-128);
   }
 `
@@ -133,7 +133,7 @@ const RecipeImage = styled.img`
   height: 200px;
   object-fit: cover;
 
-  ${screenSize.md} {
+  ${screen.md} {
     height: 100%;
     margin: 0;
   }
@@ -156,7 +156,7 @@ const Main = styled(motion.main)`
     background-color: var(--color-primary-gold);
   }
 
-  ${screenSize.md} {
+  ${screen.md} {
     display: grid;
     grid-template-columns: 30% 1px 1fr;
     gap: var(--spacing-64);
@@ -164,13 +164,13 @@ const Main = styled(motion.main)`
 `
 
 const ContentSeparator = styled.div`
-  ${screenSize.md} {
+  ${screen.md} {
     border-left: var(--color-primary-border);
   }
 `
 
 const RecipePreparation = styled.aside`
-  ${screenSize.md} {
+  ${screen.md} {
     margin-top: var(--spacing-8);
   }
 `
@@ -217,7 +217,7 @@ const RecipePortionAmount = styled(RecipePrepTime)`
 const RecipeIngredients = styled.section`
   margin: var(--spacing-32) 0;
 
-  ${screenSize.md} {
+  ${screen.md} {
     margin-top: var(--spacing-64);
   }
 `
@@ -257,7 +257,7 @@ const RecipeStep = styled.div`
   border: var(--color-primary-border);
   border-radius: var(--radius-base);
 
-  ${screenSize.md} {
+  ${screen.md} {
     flex-direction: row;
     gap: var(--spacing-32);
     padding: 0;
