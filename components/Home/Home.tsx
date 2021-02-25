@@ -6,33 +6,33 @@ import Link from 'next/link'
 import { Layout } from '@/root/components/Layout'
 import { screen } from '@/root/styles/media'
 
-const byline = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      delay: 0.3,
+const variants = {
+  byline: {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        delay: 0.3,
+      },
     },
   },
-}
-
-const newsletter = {
-  hidden: { opacity: 0, scale: 0 },
-  show: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      delay: 0.6,
+  newsletter: {
+    hidden: { opacity: 0, scale: 0 },
+    show: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        delay: 0.6,
+      },
     },
   },
-}
-
-const recipe = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      delay: 0.6,
+  recipe: {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        delay: 0.6,
+      },
     },
   },
 }
@@ -95,6 +95,7 @@ const Form = styled.form`
   background-color: var(--color-input-bg);
   border: 1px solid var(--color-input-border);
   border-radius: var(--radius-base);
+  transition: background-color 1s;
 `
 
 const Label = styled.label`
@@ -108,6 +109,7 @@ const Input = styled.input`
   color: var(--color-input-text);
   background-color: var(--color-input-bg);
   border: none;
+  transition: background-color 1s;
 `
 
 const Button = styled.button`
@@ -118,7 +120,6 @@ const Button = styled.button`
   font-size: inherit;
   background-color: var(--color-primary-gold-light);
   border: none;
-  border-left: 1px solid var(--color-input-border);
   cursor: pointer;
 `
 
@@ -182,12 +183,16 @@ const Center = styled.div`
 export function Home() {
   return (
     <Layout page="home">
-      <Byline variants={byline} initial="hidden" animate="show">
+      <Byline variants={variants.byline} initial="hidden" animate="show">
         <h1>Recepti, savjeti i više</h1>
         <h3>Tekstura je namijenjena za dijeljenje izvrsne hrane sa drugima</h3>
       </Byline>
 
-      <Newsletter variants={newsletter} initial="hidden" animate="show">
+      <Newsletter
+        variants={variants.newsletter}
+        initial="hidden"
+        animate="show"
+      >
         <Avatar src="/images/avatar.webp" alt="Placeholder" />
         <h3>Besplatno primajte obavijesti u sandučić:</h3>
         <Form>
@@ -199,7 +204,7 @@ export function Home() {
         </Form>
       </Newsletter>
 
-      <Recipe variants={recipe} initial="hidden" animate="show">
+      <Recipe variants={variants.recipe} initial="hidden" animate="show">
         <RecipeImage src="/images/dish.webp" alt="Dish" />
         <Center>
           <h2>Svako Jutro Jedno Jaje Organizmu Snagu Daje</h2>

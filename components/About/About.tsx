@@ -5,12 +5,14 @@ import { motion } from 'framer-motion'
 import { Layout } from '@/root/components/Layout'
 import { screen } from '@/root/styles/media'
 
-const fadeIn = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      delay: 0.3,
+const variants = {
+  about: {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        delay: 0.3,
+      },
     },
   },
 }
@@ -54,7 +56,7 @@ const Title = styled.h1`
 export function About() {
   return (
     <Layout page="about">
-      <Main variants={fadeIn} initial="hidden" animate="show">
+      <Main variants={variants.about} initial="hidden" animate="show">
         <Image src="/images/avatar.webp" alt="Placeholder" />
 
         <section>

@@ -10,6 +10,39 @@ interface Props {
   onClick: () => void
 }
 
+const variants = {
+  top: {
+    closed: {
+      rotate: 0,
+      translateY: 0,
+    },
+    opened: {
+      rotate: 45,
+      translateY: 2,
+    },
+  },
+  center: {
+    closed: {
+      rotate: 0,
+      opacity: 1,
+    },
+    opened: {
+      rotate: 45,
+      opacity: 0,
+    },
+  },
+  bottom: {
+    closed: {
+      rotate: 0,
+      translateY: 0,
+    },
+    opened: {
+      rotate: -45,
+      translateY: -2,
+    },
+  },
+}
+
 const Button = styled.button`
   height: 28px;
   width: 28px;
@@ -34,47 +67,12 @@ export function MenuButton({
   ...props
 }: Props) {
   const variant = isOpen ? 'opened' : 'closed'
-
-  const lines = {
-    top: {
-      closed: {
-        rotate: 0,
-        translateY: 0,
-      },
-      opened: {
-        rotate: 45,
-        translateY: 2,
-      },
-    },
-    center: {
-      closed: {
-        rotate: 0,
-        opacity: 1,
-      },
-      opened: {
-        rotate: 45,
-        opacity: 0,
-      },
-    },
-    bottom: {
-      closed: {
-        rotate: 0,
-        translateY: 0,
-      },
-      opened: {
-        rotate: -45,
-        translateY: -2,
-      },
-    },
-  }
-
   const lineProps = {
     strokeWidth: 2,
     vectorEffect: 'non-scaling-stroke',
     initial: 'closed',
     animate: variant,
   }
-
   const unitHeight = 4
   const unitWidth = 5
 
@@ -92,7 +90,7 @@ export function MenuButton({
           x2={unitWidth}
           y1="0"
           y2="0"
-          variants={lines.top}
+          variants={variants.top}
           {...lineProps}
         />
         <motion.line
@@ -100,7 +98,7 @@ export function MenuButton({
           x2={unitWidth}
           y1="2"
           y2="2"
-          variants={lines.center}
+          variants={variants.center}
           {...lineProps}
         />
         <motion.line
@@ -108,7 +106,7 @@ export function MenuButton({
           x2={unitWidth}
           y1="4"
           y2="4"
-          variants={lines.bottom}
+          variants={variants.bottom}
           {...lineProps}
         />
       </motion.svg>

@@ -97,12 +97,14 @@ const ingredients = [
   },
 ]
 
-const recipe = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      delay: 0.3,
+const variants = {
+  recipe: {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        delay: 0.3,
+      },
     },
   },
 }
@@ -262,7 +264,7 @@ export function Recipe() {
     <Layout page="recipe">
       <RecipeImage src="/images/dish.webp" alt="Dish" />
 
-      <Main variants={recipe} initial="hidden" animate="show">
+      <Main variants={variants.recipe} initial="hidden" animate="show">
         <RecipePreparation>
           <Sticky>
             <RecipeDetails>

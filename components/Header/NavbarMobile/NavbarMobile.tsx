@@ -6,13 +6,40 @@ import Link from 'next/link'
 import { MenuButton } from './MenuButton'
 import { ThemeToggle } from '@/root/components/shared/ThemeToggle'
 import { screen } from '@/root/styles/media'
-
-type HeaderMobile = {
+interface HeaderProps {
   isMenuOpen: boolean
 }
 
-const Container = styled(motion.header)<HeaderMobile>`
+const variants = {
+  navbar: {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        delay: 0.3,
+      },
+    },
+  },
+  menu: {
+    hidden: { opacity: 0, height: 0 },
+    show: {
+      opacity: 1,
+      height: 'auto',
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  },
+  item: {
+    hidden: { opacity: 0 },
+    show: { opacity: 1 },
+  },
+}
+
+const StyledNavbarMobile = styled(motion.header)<HeaderProps>`
   grid-area: header;
+  padding: var(--spacing-32);
+  padding-bottom: 0;
   background-color: ${({ isMenuOpen }) =>
     isMenuOpen && 'var(--color-primary-gold)'};
   transition: background-color 0.3s;
@@ -22,93 +49,79 @@ const Container = styled(motion.header)<HeaderMobile>`
   }
 `
 
-const Menu = styled(motion.nav)`
-  padding: 24px 0;
-  font-weight: 700;
+const AlignItems = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+`
 
-  ul {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-8);
-    list-style: none;
-  }
+const Menu = styled(motion.nav)`
+  margin: var(--spacing-32) 0;
+  font-weight: 700;
 
   a {
     display: inline-block;
   }
 `
 
-const Flex = styled.div`
+const List = styled(motion.ul)`
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
+  flex-direction: column;
+  gap: var(--spacing-16);
+  list-style: none;
 `
+
+const Item = styled(motion.li)``
 
 export function NavbarMobile() {
   const [isOpen, setIsOpen] = useState(false)
 
-  const menu = {
-    container: {
-      hidden: { opacity: 0, height: 0 },
-      show: {
-        opacity: 1,
-        height: 'auto',
-        transition: {
-          staggerChildren: 0.1,
-        },
-      },
-    },
-    item: {
-      hidden: { opacity: 0 },
-      show: { opacity: 1 },
-    },
-  }
-
   return (
-    <Container
+    <StyledNavbarMobile
       isMenuOpen={isOpen}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      variants={variants.navbar}
+      initial="hidden"
+      animate="show"
     >
-      <Flex>
+      <AlignItems>
         <h1>Tekstura</h1>
         <MenuButton
           isOpen={isOpen}
           onClick={() => setIsOpen(!isOpen)}
         ></MenuButton>
-      </Flex>
+      </AlignItems>
 
       <AnimatePresence>
         {isOpen && (
-          <Menu
-            initial="hidden"
-            animate="show"
-            variants={menu.container}
-            exit={{ opacity: 0 }}
-          >
-            <ul>
-              <motion.li variants={menu.item}>
+          <Menu>
+            <List
+              initial="hidden"
+              animate="show"
+              variants={variants.menu}
+              exit={{ opacity: 0 }}
+            >
+              <Item variants={variants.item}>
                 <Link href="/">
                   <a>Početna</a>
                 </Link>
-              </motion.li>
-              <motion.li variants={menu.item}>
-                <Link href="/recipes">
+              </Item>
+              <Item variants={variants.item}>
+                <Link href="/recepti">
                   <a>Recepti</a>
                 </Link>
-              </motion.li>
-              <motion.li variants={menu.item}>
-                <Link href="/about">
+              </Item>
+              <Item variants={variants.item}>
+                <Link href="/vise">
                   <a>Saznaj više</a>
                 </Link>
-              </motion.li>
-              <motion.li variants={menu.item}>
+              </Item>
+              <Item variants={variants.item}>
                 <ThemeToggle />
-              </motion.li>
-            </ul>
+              </Item>
+            </List>
           </Menu>
         )}
       </AnimatePresence>
-    </Container>
+    </StyledNavbarMobile>
   )
 }

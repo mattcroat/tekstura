@@ -39,30 +39,30 @@ const recipes = [
   },
 ]
 
-const search = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      delay: 0.3,
+const variants = {
+  search: {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        delay: 0.3,
+      },
     },
   },
-}
-
-const cards = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      delay: 0.4,
-      staggerChildren: 0.3,
+  cards: {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        delay: 0.4,
+        staggerChildren: 0.3,
+      },
     },
   },
-}
-
-const card = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1 },
+  card: {
+    hidden: { opacity: 0 },
+    show: { opacity: 1 },
+  },
 }
 
 const Title = styled.h2`
@@ -192,7 +192,7 @@ export function Recipes() {
 
   return (
     <Layout page="recipes">
-      <Search variants={search} initial="hidden" animate="show">
+      <Search variants={variants.search} initial="hidden" animate="show">
         <Title>Recepti</Title>
 
         <SearchBar>
@@ -225,11 +225,11 @@ export function Recipes() {
       {!searchResults || searchResults.length < 1 ? (
         <h2>No recipes to show.</h2>
       ) : (
-        <RecipesCards variants={cards} initial="hidden" animate="show">
+        <RecipesCards variants={variants.cards} initial="hidden" animate="show">
           {searchResults?.map(({ id, title, src }) => (
             <Link key={id} href="#">
               <a>
-                <RecipeCard variants={card}>
+                <RecipeCard variants={variants.card}>
                   <RecipeCardTitle>{title}</RecipeCardTitle>
                   <RecipeCardImage src={src} alt={title} />
                 </RecipeCard>

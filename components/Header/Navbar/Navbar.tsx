@@ -5,7 +5,19 @@ import Link from 'next/link'
 import { ThemeToggle } from '@/root/components/shared/ThemeToggle'
 import { screen } from '@/root/styles/media'
 
-const Container = styled(motion.header)`
+const variants = {
+  navbar: {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        delay: 0.3,
+      },
+    },
+  },
+}
+
+const StyledNavbar = styled(motion.header)`
   grid-area: header;
   display: none;
 
@@ -13,56 +25,58 @@ const Container = styled(motion.header)`
     display: flex;
     justify-content: space-between;
     align-items: baseline;
+  }
+`
 
-    ul {
-      display: flex;
-      align-items: center;
-      gap: var(--spacing-32);
-      font-weight: 700;
-      list-style: none;
-    }
+const List = styled.ul`
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-32);
+  font-weight: 700;
+  list-style: none;
+`
 
-    li::after {
-      content: '';
-      display: block;
-      height: 1px;
-      width: 0;
-      background-color: var(--color-text);
-      transition: width 0.3s;
-    }
+const Item = styled.li`
+  &:not(:last-child)::after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 0;
+    background-color: var(--color-text);
+    transition: width 0.3s;
+  }
 
-    li:hover::after {
-      width: 100%;
-    }
+  &:hover::after {
+    width: 100%;
   }
 `
 
 export function Navbar() {
   return (
-    <Container initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+    <StyledNavbar variants={variants.navbar} initial="hidden" animate="show">
       <h1>Tekstura</h1>
       <nav>
-        <ul>
-          <li>
+        <List>
+          <Item>
             <Link href="/">
               <a>Početna</a>
             </Link>
-          </li>
-          <li>
-            <Link href="/recipes">
+          </Item>
+          <Item>
+            <Link href="/recepti">
               <a>Recepti</a>
             </Link>
-          </li>
-          <li>
-            <Link href="/about">
+          </Item>
+          <Item>
+            <Link href="/vise">
               <a>Saznaj više</a>
             </Link>
-          </li>
-          <li>
+          </Item>
+          <Item>
             <ThemeToggle />
-          </li>
-        </ul>
+          </Item>
+        </List>
       </nav>
-    </Container>
+    </StyledNavbar>
   )
 }
