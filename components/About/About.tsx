@@ -75,12 +75,7 @@ export function About() {
       <Header />
 
       <Main variants={fadeIn} initial="hidden" animate="show">
-        <Image
-          src="
-          https://images.unsplash.com/photo-1565853530962-ebe35dc9ba70
-          "
-          alt="Placeholder"
-        />
+        <Image src="/images/avatar.webp" alt="Placeholder" />
 
         <section>
           <Title>Što je Tekstura?</Title>
