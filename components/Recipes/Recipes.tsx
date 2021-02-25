@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 
-import { Header } from '@/root/components/Header'
+import { Layout } from '@/root/components/Layout'
 import { screen } from '@/root/styles/media'
 
 const recipes = [
@@ -39,7 +39,7 @@ const recipes = [
   },
 ]
 
-const fadeIn = {
+const search = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
@@ -49,7 +49,7 @@ const fadeIn = {
   },
 }
 
-const cardsFadeIn = {
+const cards = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
@@ -60,30 +60,10 @@ const cardsFadeIn = {
   },
 }
 
-const cardFadeIn = {
+const card = {
   hidden: { opacity: 0 },
   show: { opacity: 1 },
 }
-
-const StyledRecipes = styled.div`
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: var(--spacing-32);
-  grid-template-areas:
-    '... ... ...'
-    '... header ...'
-    '... search ...'
-    '... recipes ...'
-    '... ... ...';
-
-  ${screen.md} {
-    gap: var(--spacing-64);
-  }
-
-  ${screen.lg} {
-    grid-column-gap: var(--spacing-128);
-  }
-`
 
 const Title = styled.h2`
   transition: color 1s;
@@ -211,10 +191,8 @@ export function Recipes() {
   }, [searchTerm])
 
   return (
-    <StyledRecipes>
-      <Header />
-
-      <Search variants={fadeIn} initial="hidden" animate="show">
+    <Layout page="recipes">
+      <Search variants={search} initial="hidden" animate="show">
         <Title>Recepti</Title>
 
         <SearchBar>
@@ -247,11 +225,11 @@ export function Recipes() {
       {!searchResults || searchResults.length < 1 ? (
         <h2>No recipes to show.</h2>
       ) : (
-        <RecipesCards variants={cardsFadeIn} initial="hidden" animate="show">
+        <RecipesCards variants={cards} initial="hidden" animate="show">
           {searchResults?.map(({ id, title, src }) => (
             <Link key={id} href="#">
               <a>
-                <RecipeCard variants={cardFadeIn}>
+                <RecipeCard variants={card}>
                   <RecipeCardTitle>{title}</RecipeCardTitle>
                   <RecipeCardImage src={src} alt={title} />
                 </RecipeCard>
@@ -260,6 +238,6 @@ export function Recipes() {
           ))}
         </RecipesCards>
       )}
-    </StyledRecipes>
+    </Layout>
   )
 }

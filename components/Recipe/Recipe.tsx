@@ -1,18 +1,8 @@
 import styled from '@emotion/styled'
 import { motion } from 'framer-motion'
 
-import { Header } from '@/root/components/Header'
+import { Layout } from '@/root/components/Layout'
 import { screen } from '@/root/styles/media'
-
-const fadeIn = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      delay: 0.3,
-    },
-  },
-}
 
 const ingredients = [
   {
@@ -107,26 +97,15 @@ const ingredients = [
   },
 ]
 
-const StyledRecipe = styled.div`
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: var(--spacing-32);
-  grid-template-areas:
-    '... ... ...'
-    '... header ...'
-    '... hero ...'
-    '... main ...'
-    '... ... ...';
-
-  ${screen.md} {
-    grid-template-rows: auto auto 400px 1fr auto;
-    gap: var(--spacing-64);
-  }
-
-  ${screen.lg} {
-    grid-column-gap: var(--spacing-128);
-  }
-`
+const recipe = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      delay: 0.3,
+    },
+  },
+}
 
 const RecipeImage = styled.img`
   grid-area: hero;
@@ -280,12 +259,10 @@ const RecipeStepNumber = styled.h3`
 
 export function Recipe() {
   return (
-    <StyledRecipe>
-      <Header />
-
+    <Layout page="recipe">
       <RecipeImage src="/images/dish.webp" alt="Dish" />
 
-      <Main variants={fadeIn} initial="hidden" animate="show">
+      <Main variants={recipe} initial="hidden" animate="show">
         <RecipePreparation>
           <Sticky>
             <RecipeDetails>
@@ -447,6 +424,6 @@ export function Recipe() {
           </p>
         </RecipeSteps>
       </Main>
-    </StyledRecipe>
+    </Layout>
   )
 }

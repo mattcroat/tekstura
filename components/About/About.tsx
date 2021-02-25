@@ -2,7 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import { motion } from 'framer-motion'
 
-import { Header } from '@/root/components/Header'
+import { Layout } from '@/root/components/Layout'
 import { screen } from '@/root/styles/media'
 
 const fadeIn = {
@@ -14,24 +14,6 @@ const fadeIn = {
     },
   },
 }
-
-const StyledAbout = styled.div`
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: var(--spacing-32);
-  grid-template-areas:
-    '... ... ...'
-    '... header ...'
-    '... main ...';
-
-  ${screen.md} {
-    gap: var(--spacing-64);
-  }
-
-  ${screen.lg} {
-    grid-column-gap: var(--spacing-128);
-  }
-`
 
 const Main = styled(motion.main)`
   max-width: 60ch;
@@ -71,9 +53,7 @@ const Title = styled.h1`
 
 export function About() {
   return (
-    <StyledAbout>
-      <Header />
-
+    <Layout page="about">
       <Main variants={fadeIn} initial="hidden" animate="show">
         <Image src="/images/avatar.webp" alt="Placeholder" />
 
@@ -93,6 +73,6 @@ export function About() {
           </p>
         </section>
       </Main>
-    </StyledAbout>
+    </Layout>
   )
 }

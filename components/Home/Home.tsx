@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 
-import { Header } from '@/root/components/Header'
+import { Layout } from '@/root/components/Layout'
 import { screen } from '@/root/styles/media'
 
 const byline = {
@@ -36,36 +36,6 @@ const recipe = {
     },
   },
 }
-
-const StyledHome = styled.div`
-  height: 100vh;
-  padding-top: var(--spacing-32);
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  grid-template-rows: auto auto 1fr 1fr 50vh;
-  grid-column-gap: var(--spacing-32);
-  grid-template-areas:
-    '... ... ...'
-    '... header ...'
-    '... byline ...'
-    'newsletter newsletter newsletter'
-    'recipe recipe recipe';
-
-  ${screen.md} {
-    padding-top: var(--spacing-64);
-    grid-template-rows: auto 1fr 0 50vh;
-    grid-column-gap: var(--spacing-64);
-    grid-template-areas:
-      '... header ...'
-      '... byline ...'
-      '... newsletter ...'
-      'recipe recipe recipe';
-  }
-
-  ${screen.lg} {
-    grid-column-gap: var(--spacing-128);
-  }
-`
 
 const Byline = styled(motion.div)`
   grid-area: byline;
@@ -211,9 +181,7 @@ const Center = styled.div`
 
 export function Home() {
   return (
-    <StyledHome>
-      <Header />
-
+    <Layout page="home">
       <Byline variants={byline} initial="hidden" animate="show">
         <h1>Recepti, savjeti i više</h1>
         <h3>Tekstura je namijenjena za dijeljenje izvrsne hrane sa drugima</h3>
@@ -242,6 +210,6 @@ export function Home() {
           </h3>
         </Center>
       </Recipe>
-    </StyledHome>
+    </Layout>
   )
 }
