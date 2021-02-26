@@ -84,7 +84,11 @@ export function NavbarMobile() {
       animate="show"
     >
       <AlignItems>
-        <h1>Tekstura</h1>
+        <h1>
+          <Link href="/">
+            <a>Tekstura</a>
+          </Link>
+        </h1>
         <MenuButton
           isOpen={isOpen}
           onClick={() => setIsOpen(!isOpen)}

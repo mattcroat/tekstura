@@ -54,7 +54,11 @@ const Item = styled.li`
 export function Navbar() {
   return (
     <StyledNavbar variants={variants.navbar} initial="hidden" animate="show">
-      <h1>Tekstura</h1>
+      <h1>
+        <Link href="/">
+          <a>Tekstura</a>
+        </Link>
+      </h1>
       <nav>
         <List>
           <Item>
