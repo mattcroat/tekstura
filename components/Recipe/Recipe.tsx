@@ -1,96 +1,61 @@
+import React from 'react'
 import styled from '@emotion/styled'
 import { motion } from 'framer-motion'
 
 import { Layout } from '@/root/components/Layout'
 import { screen } from '@/root/styles/media'
 
-const ingredients = [
+const data = [
   {
+    id: 1,
     amount: '278',
-    ingredient: 'bijela riža',
+    ingredient: 'bijele riže',
     unit: 'g',
   },
   {
+    id: 2,
     amount: '1',
-    ingredient: 'rižin vinski ocat',
+    ingredient: 'rižinog vinskog octa',
     unit: 'žlica',
   },
   {
+    id: 3,
     amount: '2',
-    ingredient: 'ulje sezama',
+    ingredient: 'ulja sezama',
     unit: 'žlica',
   },
   {
+    id: 4,
     amount: '1',
-    ingredient: 'brašno',
+    ingredient: 'brašna',
     unit: 'kg',
   },
   {
+    id: 5,
     amount: '1',
-    ingredient: 'čili umak',
-    unit: 'žlićica',
+    ingredient: 'čili umaka',
+    unit: 'žličica',
   },
   {
+    id: 6,
     amount: '4',
-    ingredient: 'Japanska majoneza',
-    unit: 'žlićica',
+    ingredient: 'majoneze',
+    unit: 'žličica',
   },
   {
+    id: 7,
     amount: '1/2',
-    ingredient: 'krastavac',
+    ingredient: 'krastavaca',
     unit: '',
   },
   {
+    id: 8,
     amount: '',
     ingredient: 'morska sol',
     unit: '',
   },
   {
-    amount: '',
-    ingredient: 'crni papar',
-    unit: '',
-  },
-  {
-    amount: '278',
-    ingredient: 'bijela riža',
-    unit: 'g',
-  },
-  {
-    amount: '1',
-    ingredient: 'rižin vinski ocat',
-    unit: 'žlica',
-  },
-  {
-    amount: '2',
-    ingredient: 'ulje sezama',
-    unit: 'žlica',
-  },
-  {
-    amount: '1',
-    ingredient: 'brašno',
-    unit: 'kg',
-  },
-  {
-    amount: '1',
-    ingredient: 'čili umak',
-    unit: 'žlićica',
-  },
-  {
-    amount: '4',
-    ingredient: 'Japanska majoneza',
-    unit: 'žlićica',
-  },
-  {
-    amount: '1/2',
-    ingredient: 'krastavac',
-    unit: '',
-  },
-  {
-    amount: '',
-    ingredient: 'morska sol',
-    unit: '',
-  },
-  {
+    id: 9,
     amount: '',
     ingredient: 'crni papar',
     unit: '',
@@ -259,7 +224,101 @@ const RecipeStepNumber = styled.h3`
   border-radius: 50%;
 `
 
+function formatIngredients(ingredients: any, portion: any) {
+  const newIngredients = ingredients.map(
+    ({ id, amount, ingredient, unit }: any) => {
+      const totalAmount = getTotalAmount(amount, portion)
+
+      return {
+        id,
+        ingredient,
+        amount: formattedAmount(totalAmount),
+        unit: formattedUnit(totalAmount, unit),
+      }
+    }
+  )
+
+  return newIngredients
+}
+
+function getTotalAmount(amount: any, portion: any) {
+  const defaultPortion = 2
+  let totalAmount = 0
+
+  if (portion === defaultPortion) {
+    totalAmount = amount
+  }
+
+  if (portion > defaultPortion) {
+    totalAmount = (+amount / defaultPortion) * portion
+  }
+
+  if (portion <= 1) {
+    totalAmount = +amount / defaultPortion
+  }
+
+  return totalAmount
+}
+
+function formattedUnit(amount: any, unit: any) {
+  const units = {
+    g: { singular: 'g', plural: 'g' },
+    kg: { singular: 'kg', plural: 'kg' },
+    žličica: { singular: 'žličica', plural: 'žličice' },
+    žlica: { singular: 'žlica', plural: 'žlice' },
+  }
+
+  if (units[unit]) {
+    if (amount > 1) {
+      if (amount > 1000 && unit === 'g') {
+        return units['kg'].plural
+      } else {
+        return units[unit].plural
+      }
+    } else {
+      return units[unit].singular
+    }
+  }
+
+  return unit
+}
+
+function formattedAmount(amount: any) {
+  if (!amount || amount.length < 1 || isNaN(amount)) return
+
+  const threshold = 1000
+  const totalAmount = (amount / threshold).toFixed(1)
+
+  if (amount < threshold) {
+    return amount
+  }
+
+  return totalAmount
+}
+
 export function Recipe() {
+  const [portion, setPortion] = React.useState<number>(2)
+  const [ingredients, setIngredients] = React.useState<any>(data)
+
+  React.useEffect(() => {
+    if (portion >= 1) {
+      const newIngredients = formatIngredients(data, portion)
+      setIngredients(newIngredients)
+    } else {
+      setIngredients(data)
+    }
+  }, [portion])
+
+  function increasePortion() {
+    if (portion >= 6) return
+    setPortion((portion) => portion + 1)
+  }
+
+  function decreasePortion() {
+    if (portion <= 1) return
+    setPortion((portion) => portion - 1)
+  }
+
   return (
     <Layout page="recipe">
       <RecipeImage src="/images/dish.webp" alt="Dish" />
@@ -291,9 +350,9 @@ export function Recipe() {
               <RecipeDetailsItem>
                 <h3>Porcija</h3>
                 <RecipePortionAmount>
-                  <button>-</button>
-                  <span>1</span>
-                  <button>+</button>
+                  <button onClick={decreasePortion}>-</button>
+                  <span>{portion}</span>
+                  <button onClick={increasePortion}>+</button>
                 </RecipePortionAmount>
               </RecipeDetailsItem>
             </RecipeDetails>
@@ -302,8 +361,8 @@ export function Recipe() {
               <h2>Sastojci</h2>
 
               <RecipeIngredientsList>
-                {ingredients.map(({ amount, ingredient, unit }) => (
-                  <RecipeIngredient key={ingredient}>
+                {ingredients.map(({ id, amount, ingredient, unit }) => (
+                  <RecipeIngredient key={id}>
                     <strong>
                       {amount} {unit}
                     </strong>
