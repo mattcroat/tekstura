@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 
 import { Layout } from '@/root/components/Layout'
 import { screen } from '@/root/styles/media'
+import { formatIngredients, Ingredient } from '@/root/utils/recipe'
 
 const data = [
   {
@@ -224,81 +225,9 @@ const RecipeStepNumber = styled.h3`
   border-radius: 50%;
 `
 
-function formatIngredients(ingredients: any, portion: any) {
-  const newIngredients = ingredients.map(
-    ({ id, amount, ingredient, unit }: any) => {
-      const totalAmount = getTotalAmount(amount, portion)
-
-      return {
-        id,
-        ingredient,
-        amount: formattedAmount(totalAmount),
-        unit: formattedUnit(totalAmount, unit),
-      }
-    }
-  )
-
-  return newIngredients
-}
-
-function getTotalAmount(amount: any, portion: any) {
-  const defaultPortion = 2
-  let totalAmount = 0
-
-  if (portion === defaultPortion) {
-    totalAmount = amount
-  }
-
-  if (portion > defaultPortion) {
-    totalAmount = (+amount / defaultPortion) * portion
-  }
-
-  if (portion <= 1) {
-    totalAmount = +amount / defaultPortion
-  }
-
-  return totalAmount
-}
-
-function formattedUnit(amount: any, unit: any) {
-  const units = {
-    g: { singular: 'g', plural: 'g' },
-    kg: { singular: 'kg', plural: 'kg' },
-    žličica: { singular: 'žličica', plural: 'žličice' },
-    žlica: { singular: 'žlica', plural: 'žlice' },
-  }
-
-  if (units[unit]) {
-    if (amount > 1) {
-      if (amount > 1000 && unit === 'g') {
-        return units['kg'].plural
-      } else {
-        return units[unit].plural
-      }
-    } else {
-      return units[unit].singular
-    }
-  }
-
-  return unit
-}
-
-function formattedAmount(amount: any) {
-  if (!amount || amount.length < 1 || isNaN(amount)) return
-
-  const threshold = 1000
-  const totalAmount = (amount / threshold).toFixed(1)
-
-  if (amount < threshold) {
-    return amount
-  }
-
-  return totalAmount
-}
-
 export function Recipe() {
   const [portion, setPortion] = React.useState<number>(2)
-  const [ingredients, setIngredients] = React.useState<any>(data)
+  const [ingredients, setIngredients] = React.useState<Array<Ingredient>>(data)
 
   React.useEffect(() => {
     if (portion >= 1) {
