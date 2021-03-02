@@ -1,13 +1,41 @@
 export type Ingredient = {
   id: number
-  amount: string
+  amount: Amount
   ingredient: string
   unit: string
 }
 
-export function formatIngredients(ingredients: Ingredient[], portion: number) {
-  const newIngredients = ingredients.map(
-    ({ id, amount, ingredient, unit }: any) => {
+type Amount = string | number
+
+type Units = {
+  [index: string]: {
+    singular: string
+    plural: string
+  }
+  g: {
+    singular: string
+    plural: string
+  }
+  kg: {
+    singular: string
+    plural: string
+  }
+  žličica: {
+    singular: string
+    plural: string
+  }
+  žlica: {
+    singular: string
+    plural: string
+  }
+}
+
+export function formatIngredients(
+  ingredients: Ingredient[],
+  portion: number
+): Ingredient[] {
+  const formatIngredients = ingredients.map(
+    ({ id, amount, ingredient, unit }) => {
       const totalAmount = getTotalAmount(amount, portion)
 
       return {
@@ -19,16 +47,16 @@ export function formatIngredients(ingredients: Ingredient[], portion: number) {
     }
   )
 
-  return newIngredients
+  return formatIngredients
 }
 
-function isFraction(amount: string | number) {
+function isFraction(amount: Amount) {
   if (typeof amount === 'string') {
     return amount.includes('/')
   }
 }
 
-function getTotalAmount(amount: string, portion: number): string | number {
+function getTotalAmount(amount: Amount, portion: number): Amount {
   const defaultPortion = 2
   let totalAmount = 0
 
@@ -51,9 +79,7 @@ function getTotalAmount(amount: string, portion: number): string | number {
   return totalAmount
 }
 
-function formattedAmount(amount: string | number) {
-  if (!amount) return
-
+function formattedAmount(amount: Amount): Amount {
   if (isFraction(amount)) {
     return amount
   }
@@ -68,8 +94,8 @@ function formattedAmount(amount: string | number) {
   return totalAmount
 }
 
-function formattedUnit(amount: string | number, unit: string) {
-  const units = {
+function formattedUnit(amount: Amount, unit: string): string {
+  const units: Units = {
     g: { singular: 'g', plural: 'g' },
     kg: { singular: 'kg', plural: 'kg' },
     žličica: { singular: 'žličica', plural: 'žličice' },
