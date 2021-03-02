@@ -41,8 +41,8 @@ export function formatIngredients(
       return {
         id,
         ingredient,
-        amount: formattedAmount(totalAmount),
-        unit: formattedUnit(totalAmount, unit),
+        amount: formatAmount(totalAmount),
+        unit: formatUnit(totalAmount, unit),
       }
     }
   )
@@ -61,7 +61,7 @@ function getTotalAmount(amount: Amount, portion: number): Amount {
   let totalAmount = 0
 
   if (isFraction(amount)) {
-    return amount
+    return formatFraction(amount)
   }
 
   if (portion === defaultPortion) {
@@ -79,7 +79,7 @@ function getTotalAmount(amount: Amount, portion: number): Amount {
   return totalAmount
 }
 
-function formattedAmount(amount: Amount): Amount {
+function formatAmount(amount: Amount): Amount {
   if (isFraction(amount)) {
     return amount
   }
@@ -94,7 +94,7 @@ function formattedAmount(amount: Amount): Amount {
   return totalAmount
 }
 
-function formattedUnit(amount: Amount, unit: string): string {
+function formatUnit(amount: Amount, unit: string): string {
   const units: Units = {
     g: { singular: 'g', plural: 'g' },
     kg: { singular: 'kg', plural: 'kg' },
@@ -115,4 +115,36 @@ function formattedUnit(amount: Amount, unit: string): string {
   }
 
   return unit
+}
+
+function formatFraction(amount) {
+  let totalAmount = 0
+
+  const numberAndFractionRegex = /[1-9] [1-9][0-9]*\/[1-9][0-9]*/g
+  const fractionRegex = /[1-9]*\/[1-9]*/g
+
+  const isNumberAndFraction = numberAndFractionRegex.test(amount)
+  const isFraction = fractionRegex.test(amount)
+
+  if (isNumberAndFraction) {
+    const [number, fraction] = amount.split(' ')
+    totalAmount = number + fractionToDecimal(fraction)
+  }
+
+  if (isFraction) {
+    const decimalAmount = fractionToDecimal(amount)
+    totalAmount = decimalAmount + decimalAmount / 2
+  }
+
+  const [ingredientAmount, remainder] = totalAmount.toString().split('.')
+  // const fraction = math.fraction(parseFloat(`0.${remainder}`).toFixed(1))
+  const fraction = parseFloat(`0.${remainder}`).toFixed(1)
+
+  return totalAmount
+}
+
+function fractionToDecimal(fraction) {
+  return fraction
+    .split('/')
+    .reduce((numerator, denominator) => numerator / denominator)
 }

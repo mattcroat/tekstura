@@ -222,22 +222,18 @@ export function Recipes() {
         </SearchBar>
       </Search>
 
-      {!searchResults || searchResults.length < 1 ? (
-        <h2>No recipes to show.</h2>
-      ) : (
-        <RecipesCards variants={variants.cards} initial="hidden" animate="show">
-          {searchResults?.map(({ id, title, src }) => (
-            <Link key={id} href="#">
-              <a>
-                <RecipeCard variants={variants.card}>
-                  <RecipeCardTitle>{title}</RecipeCardTitle>
-                  <RecipeCardImage src={src} alt={title} />
-                </RecipeCard>
-              </a>
-            </Link>
-          ))}
-        </RecipesCards>
-      )}
+      <RecipesCards variants={variants.cards} initial="hidden" animate="show">
+        {searchResults?.map(({ id, title, src }) => (
+          <Link key={id} href="#">
+            <a>
+              <RecipeCard variants={variants.card}>
+                <RecipeCardTitle>{title}</RecipeCardTitle>
+                <RecipeCardImage src={src} alt={title} />
+              </RecipeCard>
+            </a>
+          </Link>
+        ))}
+      </RecipesCards>
     </Layout>
   )
 }
