@@ -1,3 +1,9 @@
+import {
+  fractionToDecimal,
+  isFraction,
+  numberToFraction,
+} from '@/root/utils/fraction'
+
 export type Ingredient = {
   id: number
   amount: Amount
@@ -50,22 +56,16 @@ export function formatIngredients(
   return formatIngredients
 }
 
-function isFraction(amount: Amount) {
-  if (typeof amount === 'string') {
-    return amount.includes('/')
-  }
-}
-
 function getTotalAmount(amount: Amount, portion: number): Amount {
   const defaultPortion = 2
   let totalAmount = 0
 
-  if (isFraction(amount)) {
-    return formatFraction(amount)
+  if (!amount || portion === defaultPortion) {
+    return amount
   }
 
-  if (portion === defaultPortion) {
-    totalAmount = +amount
+  if (isFraction(amount)) {
+    return formatFraction(amount, portion)
   }
 
   if (portion > defaultPortion) {
@@ -96,8 +96,8 @@ function formatAmount(amount: Amount): Amount {
 
 function formatUnit(amount: Amount, unit: string): string {
   const units: Units = {
-    g: { singular: 'g', plural: 'g' },
-    kg: { singular: 'kg', plural: 'kg' },
+    g: { singular: 'gram', plural: 'grama' },
+    kg: { singular: 'kilogram', plural: 'kilograma' },
     žličica: { singular: 'žličica', plural: 'žličice' },
     žlica: { singular: 'žlica', plural: 'žlice' },
   }
@@ -117,34 +117,36 @@ function formatUnit(amount: Amount, unit: string): string {
   return unit
 }
 
-function formatFraction(amount) {
+function formatFraction(amount, portion) {
   let totalAmount = 0
 
-  const numberAndFractionRegex = /[1-9] [1-9][0-9]*\/[1-9][0-9]*/g
-  const fractionRegex = /[1-9]*\/[1-9]*/g
-
-  const isNumberAndFraction = numberAndFractionRegex.test(amount)
-  const isFraction = fractionRegex.test(amount)
+  const isNumberAndFraction = /[1-9] [1-9]\/[1-9]/.test(amount)
+  const isFraction = /^[1-9]\/[1-9]/.test(amount)
 
   if (isNumberAndFraction) {
-    const [number, fraction] = amount.split(' ')
-    totalAmount = number + fractionToDecimal(fraction)
+    const [ingredientAmount, fraction] = amount.split(' ')
+    const total = +ingredientAmount + fractionToDecimal(fraction)
+    const portionAmount = total / 2
+    totalAmount = portionAmount * portion
   }
 
   if (isFraction) {
-    const decimalAmount = fractionToDecimal(amount)
-    totalAmount = decimalAmount + decimalAmount / 2
+    const ingredientAmount = fractionToDecimal(amount)
+    const portionAmount = ingredientAmount / 2
+    totalAmount = portionAmount * portion
   }
 
   const [ingredientAmount, remainder] = totalAmount.toString().split('.')
-  // const fraction = math.fraction(parseFloat(`0.${remainder}`).toFixed(1))
-  const fraction = parseFloat(`0.${remainder}`).toFixed(1)
+  const decimal = parseFloat(`0.${remainder}`).toFixed(2)
+  const fraction = decimal > 0 && numberToFraction(decimal)
 
-  return totalAmount
-}
+  if (!+ingredientAmount) {
+    return fraction
+  }
 
-function fractionToDecimal(fraction) {
-  return fraction
-    .split('/')
-    .reduce((numerator, denominator) => numerator / denominator)
+  if (!fraction) {
+    return ingredientAmount
+  }
+
+  return `${ingredientAmount} ${fraction}`
 }

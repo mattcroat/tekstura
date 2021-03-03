@@ -9,7 +9,7 @@ import { formatIngredients, Ingredient } from '@/root/utils/recipe'
 const data = [
   {
     id: 1,
-    amount: '278',
+    amount: '400',
     ingredient: 'bijele riže',
     unit: 'g',
   },
@@ -51,12 +51,18 @@ const data = [
   },
   {
     id: 8,
+    amount: '1 1/2',
+    ingredient: 'kupusa',
+    unit: '',
+  },
+  {
+    id: 9,
     amount: '',
     ingredient: 'morska sol',
     unit: '',
   },
   {
-    id: 9,
+    id: 10,
     amount: '',
     ingredient: 'crni papar',
     unit: '',
