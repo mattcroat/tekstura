@@ -1,21 +1,22 @@
-export function isFraction(amount) {
+import type { Amount } from '@/root/utils/recipe'
+
+export function isFraction(amount: Amount) {
   if (typeof amount === 'string') {
     return amount.includes('/')
   }
 }
 
-export function fancyFraction(fraction) {
+export function fancyFraction(fraction: string): string {
   const [numerator, denominator] = fraction.split('/')
   return `<sup>${numerator}</sup>&frasl;<sub>${denominator}</sub>`
 }
 
-export function fractionToDecimal(fraction) {
-  return fraction
-    .split('/')
-    .reduce((numerator, denominator) => numerator / denominator)
+export function fractionToDecimal(fraction: string): number {
+  const [numerator, denominator] = fraction.split('/')
+  return +numerator / +denominator
 }
 
-export function numberToFraction(number) {
+export function numberToFraction(number: number) {
   const afterDecimal = number.toString().length - 2
   const denominator = Math.pow(10, afterDecimal)
   const numerator = number * denominator
@@ -24,7 +25,7 @@ export function numberToFraction(number) {
   return `${numerator / divisor}/${denominator / divisor}`
 }
 
-function greatestCommonDivisor(numerator, denominator) {
+function greatestCommonDivisor(numerator: number, denominator: number): number {
   if (!denominator) {
     return numerator
   }

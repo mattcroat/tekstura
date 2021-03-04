@@ -11,7 +11,7 @@ export type Ingredient = {
   unit: string
 }
 
-type Amount = string | number
+export type Amount = string | number
 
 type Units = {
   [key: string]: {
@@ -120,7 +120,9 @@ function formatUnit(amount: Amount, unit: string): string {
   return unit
 }
 
-function formatFraction(amount, portion) {
+function formatFraction(amount: Amount, portion: number): Amount {
+  if (typeof amount !== 'string') return amount
+
   let totalAmount = 0
 
   const isNumberAndFraction = /[1-9] [1-9]\/[1-9]/.test(amount)
@@ -140,8 +142,8 @@ function formatFraction(amount, portion) {
   }
 
   const [ingredientAmount, remainder] = totalAmount.toString().split('.')
-  const decimal = parseFloat(`0.${remainder}`).toFixed(2)
-  const fraction = decimal > 0 && numberToFraction(decimal)
+  const decimal = +parseFloat(`0.${remainder}`).toFixed(2)
+  const fraction = decimal > 0 ? numberToFraction(decimal) : decimal
 
   if (!+ingredientAmount) {
     return fraction

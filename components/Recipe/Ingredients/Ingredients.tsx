@@ -1,4 +1,9 @@
 import styled from '@emotion/styled'
+import { Ingredient } from '@/root/utils/recipe'
+
+type IngredientsProps = {
+  ingredients: Ingredient[]
+}
 
 const IngredientsList = styled.ul`
   max-height: 400px;
@@ -9,7 +14,7 @@ const IngredientsList = styled.ul`
   list-style: none;
 `
 
-const Ingredient = styled.li`
+const IngredientItem = styled.li`
   &:not(:last-of-type) {
     margin: var(--spacing-16) 0;
     padding-bottom: var(--spacing-8);
@@ -17,16 +22,16 @@ const Ingredient = styled.li`
   }
 `
 
-export function Ingredients({ ingredients }) {
+export function Ingredients({ ingredients }: IngredientsProps) {
   return (
     <IngredientsList>
       {ingredients.map(({ id, amount, ingredient, unit }) => (
-        <Ingredient key={id}>
+        <IngredientItem key={id}>
           <strong>
             {amount} {unit}
           </strong>
           <span> {ingredient}</span>
-        </Ingredient>
+        </IngredientItem>
       ))}
     </IngredientsList>
   )

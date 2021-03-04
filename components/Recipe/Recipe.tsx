@@ -217,7 +217,7 @@ const RecipeStepNumber = styled.h3`
 
 export function Recipe() {
   const [portion, setPortion] = React.useState<number>(2)
-  const [ingredients, setIngredients] = React.useState<Array<Ingredient>>(data)
+  const [ingredients, setIngredients] = React.useState<Ingredient[]>(data)
 
   React.useEffect(() => {
     if (portion >= 1) {
