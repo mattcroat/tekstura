@@ -165,6 +165,11 @@ const RecipePortionAmount = styled(RecipePrepTime)`
     color: inherit;
     background: none;
     border: none;
+    padding: 0 var(--spacing-8);
+  }
+
+  button:first-child {
+    padding-left: 0;
   }
 `
 
