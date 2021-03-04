@@ -3,6 +3,7 @@ import styled from '@emotion/styled'
 import { motion } from 'framer-motion'
 
 import { Layout } from '@/root/components/Layout'
+import { Ingredients } from '@/root/components/Recipe/Ingredients'
 import { screen } from '@/root/styles/media'
 import { formatIngredients, Ingredient } from '@/root/utils/recipe'
 
@@ -175,23 +176,6 @@ const RecipeIngredients = styled.section`
   }
 `
 
-const RecipeIngredientsList = styled.ul`
-  max-height: 400px;
-  max-width: 300px;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  scrollbar-width: thin;
-  list-style: none;
-`
-
-const RecipeIngredient = styled.li`
-  &:not(:last-of-type) {
-    margin: var(--spacing-16) 0;
-    padding-bottom: var(--spacing-8);
-    border-bottom: var(--color-primary-border);
-  }
-`
-
 const RecipeSteps = styled.section`
   max-width: 90ch;
 
@@ -294,17 +278,7 @@ export function Recipe() {
 
             <RecipeIngredients>
               <h2>Sastojci</h2>
-
-              <RecipeIngredientsList>
-                {ingredients.map(({ id, amount, ingredient, unit }) => (
-                  <RecipeIngredient key={id}>
-                    <strong>
-                      {amount} {unit}
-                    </strong>
-                    <span> {ingredient}</span>
-                  </RecipeIngredient>
-                ))}
-              </RecipeIngredientsList>
+              <Ingredients ingredients={ingredients} />
             </RecipeIngredients>
           </Sticky>
         </RecipePreparation>
