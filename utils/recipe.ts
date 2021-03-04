@@ -87,7 +87,7 @@ function formatAmount(amount: Amount): Amount {
   }
 
   const threshold = 1000
-  const totalAmount = (+amount / threshold).toFixed(1)
+  const totalAmount = +amount / threshold
 
   if (+amount < threshold) {
     return amount
