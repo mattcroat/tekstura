@@ -14,13 +14,15 @@ export type Ingredient = {
 type Amount = string | number
 
 type Units = {
-  [index: string]: {
+  [key: string]: {
     singular: string
     plural: string
+    greater?: string
   }
   g: {
     singular: string
     plural: string
+    greater: string
   }
   kg: {
     singular: string
@@ -95,22 +97,23 @@ function formatAmount(amount: Amount): Amount {
 }
 
 function formatUnit(amount: Amount, unit: string): string {
+  const threshold = 1000
   const units: Units = {
-    g: { singular: 'gram', plural: 'grama' },
+    g: { singular: 'gram', plural: 'grama', greater: 'kg' },
     kg: { singular: 'kilogram', plural: 'kilograma' },
     žličica: { singular: 'žličica', plural: 'žličice' },
     žlica: { singular: 'žlica', plural: 'žlice' },
   }
 
   if (units[unit]) {
-    if (amount > 1) {
-      if (amount > 1000 && unit === 'g') {
-        return units['kg'].plural
-      } else {
-        return units[unit].plural
-      }
-    } else {
-      return units[unit].singular
+    if (amount < 1 && amount < threshold) return units[unit].singular
+    if (amount > 1 && amount < threshold) return units[unit].plural
+
+    if (amount >= threshold) {
+      const greater = units[unit].greater ?? unit
+      return amount === threshold
+        ? units[greater].singular
+        : units[greater].plural
     }
   }
 
