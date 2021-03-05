@@ -4,6 +4,7 @@ import type { AppProps } from 'next/app'
 import Head from 'next/head'
 
 import { globalStyles } from '@/root/styles/global'
+import '@/root/styles/global.css'
 
 const variants = {
   pageTransition: {
