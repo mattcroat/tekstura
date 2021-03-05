@@ -115,7 +115,7 @@ export function NavbarMobile() {
                 </Link>
               </Item>
               <Item variants={variants.item}>
-                <Link href="/vise">
+                <Link href="/saznaj-vise">
                   <a>Saznaj više</a>
                 </Link>
               </Item>

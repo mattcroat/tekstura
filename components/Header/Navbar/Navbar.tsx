@@ -72,7 +72,7 @@ export function Navbar() {
             </Link>
           </Item>
           <Item>
-            <Link href="/vise">
+            <Link href="/saznaj-vise">
               <a>Saznaj više</a>
             </Link>
           </Item>
