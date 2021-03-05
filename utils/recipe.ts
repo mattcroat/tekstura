@@ -106,8 +106,8 @@ function formatUnit(amount: Amount, unit: string): string {
   }
 
   if (units[unit]) {
-    if (amount < 1 && amount < threshold) return units[unit].singular
-    if (amount > 1 && amount < threshold) return units[unit].plural
+    if (amount <= 1 && amount < threshold) return units[unit].singular
+    if (amount >= 1 && amount < threshold) return units[unit].plural
 
     if (amount >= threshold) {
       const greater = units[unit].greater ?? unit
