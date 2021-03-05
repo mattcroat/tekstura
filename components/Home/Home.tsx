@@ -209,7 +209,7 @@ export function Home() {
         <Center>
           <h2>Svako Jutro Jedno Jaje Organizmu Snagu Daje</h2>
           <h3>
-            <Link href="/recipes/name-of-recipe">
+            <Link href="/recepti/nevjerojatni-recept">
               <a>recept</a>
             </Link>
           </h3>
