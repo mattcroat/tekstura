@@ -1,9 +1,7 @@
-import { Global } from '@emotion/react'
 import { motion, AnimatePresence } from 'framer-motion'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 
-import { globalStyles } from '@/root/styles/global'
 import '@/root/styles/global.css'
 
 const variants = {
@@ -17,7 +15,6 @@ const variants = {
 export default function App({ Component, pageProps, router }: AppProps) {
   return (
     <>
-      <Global styles={globalStyles} />
       <Head>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
