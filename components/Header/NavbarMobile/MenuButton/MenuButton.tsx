@@ -1,13 +1,7 @@
 import { motion } from 'framer-motion'
-import styled from '@emotion/styled'
-
-import { screen } from '@/root/styles/media'
-
 interface Props {
-  height?: number
-  width?: number
   isOpen: boolean
-  onClick: () => void
+  toggle: () => void
 }
 
 const variants = {
@@ -43,29 +37,7 @@ const variants = {
   },
 }
 
-const Button = styled.button`
-  height: 28px;
-  width: 28px;
-  background: none;
-  border: none;
-  cursor: pointer;
-
-  svg {
-    stroke: var(--color-text);
-    transition: stroke 1s;
-  }
-
-  ${screen.md} {
-    display: none;
-  }
-`
-
-export function MenuButton({
-  isOpen = false,
-  height = 20,
-  width = 20,
-  ...props
-}: Props) {
+export function MenuButton({ isOpen = false, toggle }: Props) {
   const variant = isOpen ? 'opened' : 'closed'
   const lineProps = {
     strokeWidth: 2,
@@ -77,13 +49,13 @@ export function MenuButton({
   const unitWidth = 5
 
   return (
-    <Button>
+    <button onClick={toggle} className="text-gray-800">
       <motion.svg
+        className="h-6 w-6"
         viewBox={`0 0 ${unitWidth} ${unitHeight}`}
         overflow="visible"
-        height={height}
-        width={width}
-        {...props}
+        stroke="currentColor"
+        fill="currentColor"
       >
         <motion.line
           x1="0"
@@ -110,6 +82,6 @@ export function MenuButton({
           {...lineProps}
         />
       </motion.svg>
-    </Button>
+    </button>
   )
 }
