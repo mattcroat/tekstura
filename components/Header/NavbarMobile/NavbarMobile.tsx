@@ -38,7 +38,7 @@ export function NavbarMobile() {
 
   return (
     <motion.header
-      className={`${header} p-6 transition md:hidden`}
+      className={`${header} p-8 transition md:hidden`}
       initial="hidden"
       animate="show"
       variants={variants.navbar}
