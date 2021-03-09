@@ -50,7 +50,7 @@ export function NavbarMobile() {
           </Link>
         </div>
 
-        <MenuButton isOpen={isOpen} toggle={() => setIsOpen(!isOpen)} />
+        <MenuButton toggle={() => setIsOpen(!isOpen)} />
       </div>
 
       <AnimatePresence>
