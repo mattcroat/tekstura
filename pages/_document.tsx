@@ -1,7 +1,7 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 
 class MyDocument extends Document {
-  render(): JSX.Element {
+  render() {
     return (
       <Html lang="en">
         <Head>
@@ -16,7 +16,7 @@ class MyDocument extends Document {
             rel="stylesheet"
           />
         </Head>
-        <body>
+        <body className="bg-gray-50 dark:bg-gray-800 transition duration-1000">
           <Main />
           <NextScript />
         </body>
