@@ -18,12 +18,12 @@ const variants = {
 export function Navbar() {
   return (
     <motion.header
-      className="hidden md:flex justify-between items-center p-8 lg:p-16"
+      className="hidden md:flex justify-between items-center p-16"
       initial="hidden"
       animate="show"
       variants={variants.navbar}
     >
-      <div className="text-2xl lg:text-3xl text-gray-800 font-heading font-bold">
+      <div className="text-2xl md:text-3xl text-gray-800 font-heading font-bold">
         <Link href="/">
           <a>Tekstura</a>
         </Link>

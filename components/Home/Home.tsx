@@ -38,7 +38,7 @@ const variants = {
 export function Home() {
   return (
     <Layout>
-      <main className="md:px-8 lg:px-16 md:pb-8 lg:pb-16 md:grid md:grid-cols-2">
+      <main className="md:px-16 md:pb-8 lg:pb-16 md:grid md:grid-cols-2">
         <motion.section
           className="md:grid md:place-content-center md:bg-yellow-400"
           variants={variants.byline}
