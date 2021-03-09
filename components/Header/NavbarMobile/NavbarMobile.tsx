@@ -34,23 +34,25 @@ const variants = {
 
 export function NavbarMobile() {
   const [isOpen, setIsOpen] = useState(false)
-  const header = isOpen ? 'bg-yellow-400' : ''
+  const headerColor = isOpen ? 'bg-yellow-400' : ''
+  const logoTextColor = isOpen
+    ? 'text-gray-800'
+    : 'text-gray-800 dark:text-gray-50'
 
   return (
     <motion.header
-      className={`${header} p-8 transition md:hidden`}
+      className={`${headerColor} p-8 transition md:hidden`}
       initial="hidden"
       animate="show"
       variants={variants.navbar}
     >
       <div className="flex justify-between">
-        <div className="text-2xl text-gray-800 font-heading font-bold">
+        <div className="text-2xl font-heading font-bold">
           <Link href="/">
-            <a>Tekstura</a>
+            <a className={logoTextColor}>Tekstura</a>
           </Link>
         </div>
-
-        <MenuButton toggle={() => setIsOpen(!isOpen)} />
+        <MenuButton isOpen={isOpen} toggle={() => setIsOpen(!isOpen)} />
       </div>
 
       <AnimatePresence>

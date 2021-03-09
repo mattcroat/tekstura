@@ -46,8 +46,10 @@ export function Home() {
           animate="show"
         >
           <div className="px-8">
-            <h1 className="text-2xl md:text-3xl">Recepti, savjeti i više</h1>
-            <p className="mt-2 ">
+            <h1 className="text-2xl md:text-3xl dark:text-gray-50">
+              Recepti, savjeti i više
+            </h1>
+            <p className="mt-2 dark:text-gray-50">
               Tekstura je namijenjena za dijeljenje izvrsne hrane sa drugima.
             </p>
           </div>
