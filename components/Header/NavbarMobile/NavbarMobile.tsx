@@ -41,7 +41,7 @@ export function NavbarMobile() {
 
   return (
     <motion.header
-      className={`${headerColor} pt-8 px-8 transition md:hidden`}
+      className={`${headerColor} pt-8 px-8 md:hidden transition`}
       initial="hidden"
       animate="show"
       variants={variants.navbar}

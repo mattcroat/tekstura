@@ -38,8 +38,8 @@ const variants = {
 export function Home() {
   return (
     <Layout>
-      <main className="h-screen">
-        <div className="h-5/6 md:flex md:p-16">
+      <main className="md:h-screen">
+        <div className="md:h-5/6 md:flex md:p-16">
           <motion.section
             className="md:flex-1 md:grid md:place-content-center md:bg-yellow-400"
             variants={variants.byline}
@@ -103,7 +103,7 @@ export function Home() {
           </motion.section>
 
           <motion.section
-            className="h-1/2 md:h-full md:flex-1 relative text-center"
+            className="h-96 md:h-auto md:flex-1 relative text-center"
             variants={variants.recipe}
             initial="hidden"
             animate="show"
