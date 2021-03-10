@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 export function Moon() {
   return (
     <motion.svg
+      className="h-6 w-6"
       aria-hidden="true"
       focusable="false"
       role="img"
@@ -20,6 +21,7 @@ export function Moon() {
 export function Sun() {
   return (
     <motion.svg
+      className="h-6 w-6"
       aria-hidden="true"
       focusable="false"
       role="img"
