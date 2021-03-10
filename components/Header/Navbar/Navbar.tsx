@@ -18,7 +18,7 @@ const variants = {
 export function Navbar() {
   return (
     <motion.header
-      className="hidden md:flex justify-between items-center p-16"
+      className="hidden md:flex justify-between items-center mt-16 px-16"
       initial="hidden"
       animate="show"
       variants={variants.navbar}

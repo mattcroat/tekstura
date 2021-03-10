@@ -38,18 +38,16 @@ const variants = {
 export function Home() {
   return (
     <Layout>
-      <main className="md:px-16 md:pb-8 lg:pb-16 md:grid md:grid-cols-2">
+      <main className="md:p-16 md:grid md:grid-cols-2">
         <motion.section
           className="md:grid md:place-content-center md:bg-yellow-400"
           variants={variants.byline}
           initial="hidden"
           animate="show"
         >
-          <div className="px-8">
-            <h1 className="text-2xl md:text-3xl dark:text-gray-50">
-              Recepti, savjeti i više
-            </h1>
-            <p className="mt-2 dark:text-gray-50">
+          <div className="mt-8 md:m-0 px-8">
+            <h1 className="text-2xl md:text-3xl">Recepti, savjeti i više</h1>
+            <p className="mt-2">
               Tekstura je namijenjena za dijeljenje izvrsne hrane sa drugima.
             </p>
           </div>

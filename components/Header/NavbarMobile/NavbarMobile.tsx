@@ -41,7 +41,7 @@ export function NavbarMobile() {
 
   return (
     <motion.header
-      className={`${headerColor} p-8 transition md:hidden`}
+      className={`${headerColor} pt-8 px-8 transition md:hidden`}
       initial="hidden"
       animate="show"
       variants={variants.navbar}
@@ -59,7 +59,7 @@ export function NavbarMobile() {
         {isOpen && (
           <nav>
             <motion.ul
-              className="mt-6 space-y-2"
+              className="py-8 space-y-4"
               initial="hidden"
               animate="show"
               exit="yeet"
