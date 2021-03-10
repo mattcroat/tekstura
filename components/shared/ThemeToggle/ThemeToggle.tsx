@@ -1,20 +1,5 @@
 import React from 'react'
-import styled from '@emotion/styled'
-
-import { Moon, Sun } from './Icons'
-
-const Button = styled.button`
-  height: 24px;
-  width: 24px;
-  background: none;
-  border: none;
-  cursor: pointer;
-
-  svg {
-    fill: var(--color-text);
-    transition: fill 1s;
-  }
-`
+import { Moon, Sun } from '@/root/components/shared/ThemeToggle/Icons'
 
 export function ThemeToggle() {
   const [isMounted, setIsMounted] = React.useState(false)
@@ -39,11 +24,12 @@ export function ThemeToggle() {
   }, [isDarkMode])
 
   return (
-    <Button
+    <button
+      className="text-gray-800 dark:text-gray-50"
       aria-label="Theme toggle"
       onClick={() => setIsDarkMode(!isDarkMode)}
     >
       {isMounted && !isDarkMode ? <Moon /> : <Sun />}
-    </Button>
+    </button>
   )
 }

@@ -23,7 +23,7 @@ export function Navbar() {
       animate="show"
       variants={variants.navbar}
     >
-      <div className="text-2xl md:text-3xl text-gray-800 font-heading font-bold">
+      <div className="text-2xl md:text-3xl text-gray-800 font-heading font-bold dark:text-gray-50">
         <Link href="/">
           <a>Tekstura</a>
         </Link>
@@ -33,21 +33,21 @@ export function Navbar() {
         <ul className="flex gap-x-6">
           <li>
             <Link href="/">
-              <a className="font-bold border-b-2 border-gray-800 border-opacity-0 hover:border-opacity-100 transition">
+              <a className="font-bold border-b-2 border-gray-800 border-opacity-0 hover:border-opacity-100 transition dark:text-gray-50">
                 Početna
               </a>
             </Link>
           </li>
           <li>
             <Link href="/recepti">
-              <a className="font-bold border-b-2 border-gray-800 border-opacity-0 hover:border-opacity-100 transition">
+              <a className="font-bold border-b-2 border-gray-800 border-opacity-0 hover:border-opacity-100 transition dark:text-gray-50">
                 Recepti
               </a>
             </Link>
           </li>
           <li>
             <Link href="/saznaj-vise">
-              <a className="font-bold border-b-2 border-gray-800 border-opacity-0 hover:border-opacity-100 transition">
+              <a className="font-bold border-b-2 border-gray-800 border-opacity-0 hover:border-opacity-100 transition dark:text-gray-50">
                 Saznaj više
               </a>
             </Link>
