@@ -47,9 +47,11 @@ export function NavbarMobile() {
       variants={variants.navbar}
     >
       <div className="flex justify-between">
-        <div className="text-2xl font-heading font-bold">
+        <div>
           <Link href="/">
-            <a className={logoTextColor}>Tekstura</a>
+            <a className={`${logoTextColor} text-2xl font-heading font-bold`}>
+              Tekstura
+            </a>
           </Link>
         </div>
         <MenuButton isOpen={isOpen} toggle={() => setIsOpen(!isOpen)} />

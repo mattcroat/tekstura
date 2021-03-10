@@ -56,7 +56,7 @@ export function Home() {
             </div>
 
             <motion.aside
-              className="flex flex-col items-center mt-6 md:m-6 p-6 space-y-4 bg-gray-100"
+              className="flex flex-col items-center mt-8 md:m-8 p-8 space-y-4 bg-gray-100"
               variants={variants.newsletter}
               initial="hidden"
               animate="show"

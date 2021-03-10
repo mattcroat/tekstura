@@ -23,9 +23,11 @@ export function Navbar() {
       animate="show"
       variants={variants.navbar}
     >
-      <div className="text-2xl md:text-3xl text-gray-800 font-heading font-bold dark:text-gray-50">
+      <div>
         <Link href="/">
-          <a>Tekstura</a>
+          <a className="text-2xl md:text-3xl text-gray-800 font-heading font-bold dark:text-gray-50">
+            Tekstura
+          </a>
         </Link>
       </div>
 
@@ -52,7 +54,7 @@ export function Navbar() {
               </a>
             </Link>
           </li>
-          <li>
+          <li className="dark:text-gray-50">
             <ThemeToggle />
           </li>
         </ul>
