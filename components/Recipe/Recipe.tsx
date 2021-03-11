@@ -1,10 +1,8 @@
 import React from 'react'
-import styled from '@emotion/styled'
 import { motion } from 'framer-motion'
 
 import { Layout } from '@/root/components/Layout'
 import { Ingredients } from '@/root/components/Recipe/Ingredients'
-import { screen } from '@/root/styles/media'
 import { formatIngredients, Ingredient } from '@/root/utils/recipe'
 
 const data = [
@@ -82,144 +80,6 @@ const variants = {
   },
 }
 
-const RecipeImage = styled.img`
-  grid-area: hero;
-  height: 200px;
-  object-fit: cover;
-
-  ${screen.md} {
-    height: 100%;
-    margin: 0;
-  }
-`
-
-const Main = styled(motion.main)`
-  grid-area: main;
-
-  h1,
-  h2 {
-    color: var(--color-primary-gold);
-  }
-
-  h1::after {
-    content: '';
-    display: block;
-    height: 4px;
-    max-width: 68px;
-    margin: var(--spacing-16) 0;
-    background-color: var(--color-primary-gold);
-  }
-
-  ${screen.md} {
-    display: grid;
-    grid-template-columns: 30% 1px 1fr;
-    gap: var(--spacing-64);
-  }
-`
-
-const ContentSeparator = styled.div`
-  ${screen.md} {
-    border-left: var(--color-primary-border);
-  }
-`
-
-const RecipePreparation = styled.aside`
-  ${screen.md} {
-    margin-top: var(--spacing-8);
-  }
-`
-
-const Sticky = styled.div`
-  position: sticky;
-  top: var(--spacing-32);
-`
-
-const RecipeDetails = styled.div`
-  display: flex;
-  color: var(--color-text);
-`
-
-const RecipeDetailsItem = styled.div`
-  padding: 0 var(--spacing-32);
-
-  &:not(:last-child) {
-    padding-left: 0;
-    border-right: var(--color-primary-border);
-  }
-`
-
-const RecipePrepTime = styled.div`
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-8);
-  margin-top: var(--spacing-8);
-  font-weight: 700;
-`
-
-const RecipePortionAmount = styled(RecipePrepTime)`
-  margin-top: 0;
-  font-size: var(--font-size-24);
-
-  button {
-    font-size: inherit;
-    color: inherit;
-    background: none;
-    border: none;
-    padding: 0 var(--spacing-8);
-  }
-
-  button:first-child {
-    padding-left: 0;
-  }
-`
-
-const RecipeIngredients = styled.section`
-  margin: var(--spacing-32) 0;
-
-  ${screen.md} {
-    margin-top: var(--spacing-64);
-  }
-`
-
-const RecipeSteps = styled.section`
-  max-width: 90ch;
-
-  img {
-    max-height: 600px;
-    object-fit: cover;
-  }
-`
-
-const RecipeStep = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: var(--spacing-32) 0;
-  padding: var(--spacing-32);
-  border: var(--color-primary-border);
-  border-radius: var(--radius-base);
-
-  ${screen.md} {
-    flex-direction: row;
-    gap: var(--spacing-32);
-    padding: 0;
-    border: none;
-  }
-`
-
-const RecipeStepNumber = styled.h3`
-  height: 60px;
-  width: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: var(--spacing-8);
-  font-size: var(--font-size-24);
-  color: var(--color-text-on-dark-bg);
-  background: var(--color-primary-gold);
-  border-radius: 50%;
-`
-
 export function Recipe() {
   const [portion, setPortion] = React.useState<number>(2)
   const [ingredients, setIngredients] = React.useState<Ingredient[]>(data)
@@ -244,16 +104,27 @@ export function Recipe() {
   }
 
   return (
-    <Layout page="recipe">
-      <RecipeImage src="/images/dish.webp" alt="Dish" />
+    <Layout>
+      <div className="h-60 mt-8 md:mt-16 px-8 md:px-16">
+        <img
+          className="h-full w-full object-cover"
+          src="/images/dish.webp"
+          alt="Dish"
+        />
+      </div>
 
-      <Main variants={variants.recipe} initial="hidden" animate="show">
-        <RecipePreparation>
-          <Sticky>
-            <RecipeDetails>
-              <RecipeDetailsItem>
-                <h3>Priprema</h3>
-                <RecipePrepTime>
+      <motion.main
+        className="my-8 md:my-16 px-8 md:px-16 dark:text-gray-50 md:flex md:gap-x-16"
+        initial="hidden"
+        animate="show"
+        variants={variants.recipe}
+      >
+        <div className="md:w-2/4 lg:border-r lg:border-gray-50 lg:border-opacity-10 ">
+          <div className="lg:sticky lg:top-8">
+            <div className="flex">
+              <div className="pr-6 border-r border-gray-50 border-opacity-10">
+                <h3 className="text-lg">Priprema</h3>
+                <div className="flex items-center gap-1 mt-1">
                   <svg
                     height="16"
                     width="16"
@@ -267,31 +138,31 @@ export function Recipe() {
                       d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"
                     ></path>
                   </svg>
-                  <span>34 min</span>
-                </RecipePrepTime>
-              </RecipeDetailsItem>
+                  <span className="font-bold">34 min</span>
+                </div>
+              </div>
 
-              <RecipeDetailsItem>
-                <h3>Porcija</h3>
-                <RecipePortionAmount>
+              <div className="pl-6">
+                <h3 className="text-lg">Porcija</h3>
+                <div className="text-2xl font-bold space-x-2">
                   <button onClick={decreasePortion}>-</button>
                   <span>{portion}</span>
                   <button onClick={increasePortion}>+</button>
-                </RecipePortionAmount>
-              </RecipeDetailsItem>
-            </RecipeDetails>
+                </div>
+              </div>
+            </div>
 
-            <RecipeIngredients>
-              <h2>Sastojci</h2>
+            <div className="mt-8">
+              <h2 className="text-xl text-yellow-400">Sastojci</h2>
               <Ingredients ingredients={ingredients} />
-            </RecipeIngredients>
-          </Sticky>
-        </RecipePreparation>
+            </div>
+          </div>
+        </div>
 
-        <ContentSeparator></ContentSeparator>
-
-        <RecipeSteps>
-          <h1>Svako Jutro Jedno Jaje Organizmu Snagu Daje</h1>
+        <section className="space-y-8 md:w-full">
+          <h1 className="mt-8 md:mt-0 text-2xl md:text-3xl text-yellow-400">
+            Svako Jutro Jedno Jaje Organizmu Snagu Daje
+          </h1>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam
             ullam dicta vero deleniti necessitatibus dignissimos, id nulla
@@ -303,13 +174,17 @@ export function Recipe() {
             ullam quas consequuntur excepturi vero!
           </p>
 
-          <img src="/images/dish.webp" alt="Dish" />
+          <img
+            className="h-96 w-full object-cover"
+            src="/images/dish.webp"
+            alt="Dish"
+          />
 
-          <RecipeStep>
-            <div>
-              <RecipeStepNumber>1</RecipeStepNumber>
+          <div className="p-8 md:p-0 border border-gray-50 border-opacity-10 md:border-0 md:flex md:items-center md:gap-x-8">
+            <div className="h-16 w-16 flex flex-shrink-0 justify-center items-center mx-auto text-gray-800 bg-yellow-400 rounded-full">
+              <span className="text-3xl font-bold">1</span>
             </div>
-            <div>
+            <div className="mt-8 md:mt-0 space-y-8">
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Cupiditate illum minus dolorem iusto voluptatum asperiores
@@ -317,65 +192,19 @@ export function Recipe() {
                 sit beatae, sequi architecto. Quos, ullam.
               </p>
             </div>
-          </RecipeStep>
+          </div>
 
-          <RecipeStep>
-            <div>
-              <RecipeStepNumber>2</RecipeStepNumber>
+          <div className="p-8 md:p-0 border border-gray-50 border-opacity-10 md:border-0 md:flex md:items-center md:gap-x-8">
+            <div className="h-16 w-16 flex flex-shrink-0 justify-center items-center mx-auto text-gray-800 bg-yellow-400 rounded-full">
+              <span className="text-3xl font-bold">2</span>
             </div>
-            <div>
+            <div className="mt-8 md:mt-0 space-y-8">
               <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Repudiandae impedit consequuntur aliquid sed non laborum
-                quibusdam inventore fugit nihil, expedita officia, aliquam, hic
-                corporis at dolorem maxime molestias dolor repellat!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Cupiditate illum minus dolorem iusto voluptatum asperiores
+                laudantium suscipit magnam debitis fuga autem ad quasi quaerat
+                sit beatae, sequi architecto. Quos, ullam.
               </p>
-            </div>
-          </RecipeStep>
-
-          <img src="/images/dish.webp" alt="Dish" />
-
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam
-            ullam dicta vero deleniti necessitatibus dignissimos, id nulla
-            repudiandae, impedit explicabo eos soluta possimus inventore
-            temporibus? Fugit soluta at dolorum mollitia! Odio similique, est
-            nam asperiores molestiae praesentium harum perferendis officia quam
-            dignissimos sed a natus ipsa facilis corrupti labore maxime fugiat
-            iure optio autem suscipit. Error iste quisquam maxime quis. Fugiat
-            ullam quas consequuntur excepturi vero!
-          </p>
-
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam
-            ullam dicta vero deleniti necessitatibus dignissimos, id nulla
-            repudiandae, impedit explicabo eos soluta possimus inventore
-            temporibus? Fugit soluta at dolorum mollitia! Odio similique, est
-            nam asperiores molestiae praesentium harum perferendis officia quam
-            dignissimos sed a natus ipsa facilis corrupti labore maxime fugiat
-            iure optio autem suscipit. Error iste quisquam maxime quis. Fugiat
-            ullam quas consequuntur excepturi vero!
-          </p>
-
-          <RecipeStep>
-            <div>
-              <RecipeStepNumber>3</RecipeStepNumber>
-            </div>
-            <div>
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Repudiandae impedit consequuntur aliquid sed non laborum
-                quibusdam inventore fugit nihil, expedita officia, aliquam, hic
-                corporis at dolorem maxime molestias dolor repellat!
-              </p>
-            </div>
-          </RecipeStep>
-
-          <RecipeStep>
-            <div>
-              <RecipeStepNumber>4</RecipeStepNumber>
-            </div>
-            <div>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Cupiditate illum minus dolorem iusto voluptatum asperiores
@@ -383,22 +212,9 @@ export function Recipe() {
                 sit beatae, sequi architecto. Quos, ullam.
               </p>
             </div>
-          </RecipeStep>
-
-          <img src="/images/dish.webp" alt="Dish" />
-
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam
-            ullam dicta vero deleniti necessitatibus dignissimos, id nulla
-            repudiandae, impedit explicabo eos soluta possimus inventore
-            temporibus? Fugit soluta at dolorum mollitia! Odio similique, est
-            nam asperiores molestiae praesentium harum perferendis officia quam
-            dignissimos sed a natus ipsa facilis corrupti labore maxime fugiat
-            iure optio autem suscipit. Error iste quisquam maxime quis. Fugiat
-            ullam quas consequuntur excepturi vero!
-          </p>
-        </RecipeSteps>
-      </Main>
+          </div>
+        </section>
+      </motion.main>
     </Layout>
   )
 }
