@@ -1,14 +1,9 @@
 import { useState } from 'react'
-import styled from '@emotion/styled'
 import { AnimatePresence, motion } from 'framer-motion'
 import Link from 'next/link'
 
-import { MenuButton } from './MenuButton'
+import { MenuButton } from '@/root/components/Header/NavbarMobile/MenuButton'
 import { ThemeToggle } from '@/root/components/shared/ThemeToggle'
-import { screen } from '@/root/styles/media'
-interface HeaderProps {
-  isMenuOpen: boolean
-}
 
 const variants = {
   navbar: {
@@ -29,6 +24,7 @@ const variants = {
         staggerChildren: 0.1,
       },
     },
+    yeet: { opacity: 0 },
   },
   item: {
     hidden: { opacity: 0 },
@@ -36,96 +32,69 @@ const variants = {
   },
 }
 
-const StyledNavbarMobile = styled(motion.header)<HeaderProps>`
-  grid-area: header;
-  padding: var(--spacing-32);
-  padding-bottom: 0;
-  background-color: ${({ isMenuOpen }) =>
-    isMenuOpen && 'var(--color-primary-gold)'};
-  transition: background-color 0.3s;
-
-  ${screen.md} {
-    display: none;
-  }
-`
-
-const AlignItems = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-`
-
-const Menu = styled(motion.nav)`
-  margin: var(--spacing-32) 0;
-  font-weight: 700;
-
-  a {
-    display: inline-block;
-  }
-`
-
-const List = styled(motion.ul)`
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-16);
-  list-style: none;
-`
-
-const Item = styled(motion.li)``
-
 export function NavbarMobile() {
   const [isOpen, setIsOpen] = useState(false)
+  const headerColor = isOpen ? 'bg-yellow-400' : ''
+  const logoTextColor = isOpen
+    ? 'text-gray-800'
+    : 'text-gray-800 dark:text-gray-50'
 
   return (
-    <StyledNavbarMobile
-      isMenuOpen={isOpen}
-      variants={variants.navbar}
+    <motion.header
+      className={`${headerColor} pt-8 px-8 md:hidden transition`}
       initial="hidden"
       animate="show"
+      variants={variants.navbar}
     >
-      <AlignItems>
-        <h1>
+      <div className="flex justify-between">
+        <div>
           <Link href="/">
-            <a>Tekstura</a>
+            <a className={`${logoTextColor} text-2xl font-heading font-bold`}>
+              Tekstura
+            </a>
           </Link>
-        </h1>
-        <MenuButton
-          isOpen={isOpen}
-          onClick={() => setIsOpen(!isOpen)}
-        ></MenuButton>
-      </AlignItems>
+        </div>
+        <MenuButton isOpen={isOpen} toggle={() => setIsOpen(!isOpen)} />
+      </div>
 
       <AnimatePresence>
         {isOpen && (
-          <Menu>
-            <List
+          <nav>
+            <motion.ul
+              className="py-8 space-y-4"
               initial="hidden"
               animate="show"
+              exit="yeet"
               variants={variants.menu}
-              exit={{ opacity: 0 }}
             >
-              <Item variants={variants.item}>
+              <motion.li variants={variants.item}>
                 <Link href="/">
-                  <a>Početna</a>
+                  <a className="font-bold border-b-2 border-gray-800 border-opacity-0 hover:border-opacity-100 transition">
+                    Početna
+                  </a>
                 </Link>
-              </Item>
-              <Item variants={variants.item}>
+              </motion.li>
+              <motion.li variants={variants.item}>
                 <Link href="/recepti">
-                  <a>Recepti</a>
+                  <a className="font-bold border-b-2 border-gray-800 border-opacity-0 hover:border-opacity-100 transition">
+                    Recepti
+                  </a>
                 </Link>
-              </Item>
-              <Item variants={variants.item}>
+              </motion.li>
+              <motion.li variants={variants.item}>
                 <Link href="/saznaj-vise">
-                  <a>Saznaj više</a>
+                  <a className="font-bold border-b-2 border-gray-800 border-opacity-0 hover:border-opacity-100 transition">
+                    Saznaj više
+                  </a>
                 </Link>
-              </Item>
-              <Item variants={variants.item}>
+              </motion.li>
+              <motion.li variants={variants.item}>
                 <ThemeToggle />
-              </Item>
-            </List>
-          </Menu>
+              </motion.li>
+            </motion.ul>
+          </nav>
         )}
       </AnimatePresence>
-    </StyledNavbarMobile>
+    </motion.header>
   )
 }

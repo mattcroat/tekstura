@@ -1,20 +1,5 @@
 import React from 'react'
-import styled from '@emotion/styled'
-
-import { Moon, Sun } from './Icons'
-
-const Button = styled.button`
-  height: 24px;
-  width: 24px;
-  background: none;
-  border: none;
-  cursor: pointer;
-
-  svg {
-    fill: var(--color-text);
-    transition: fill 1s;
-  }
-`
+import { Moon, Sun } from '@/root/components/shared/ThemeToggle/Icons'
 
 export function ThemeToggle() {
   const [isMounted, setIsMounted] = React.useState(false)
@@ -30,20 +15,20 @@ export function ThemeToggle() {
 
   React.useEffect(() => {
     if (isDarkMode) {
-      document.documentElement.setAttribute('data-theme', 'dark')
+      document.documentElement.classList.add('dark')
       window.localStorage.setItem('theme', 'dark')
     } else {
-      document.documentElement.removeAttribute('data-theme')
+      document.documentElement.classList.remove('dark')
       window.localStorage.removeItem('theme')
     }
   }, [isDarkMode])
 
   return (
-    <Button
+    <button
       aria-label="Theme toggle"
       onClick={() => setIsDarkMode(!isDarkMode)}
     >
       {isMounted && !isDarkMode ? <Moon /> : <Sun />}
-    </Button>
+    </button>
   )
 }

@@ -1,9 +1,7 @@
-import styled from '@emotion/styled'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 
 import { ThemeToggle } from '@/root/components/shared/ThemeToggle'
-import { screen } from '@/root/styles/media'
 
 const variants = {
   navbar: {
@@ -17,70 +15,50 @@ const variants = {
   },
 }
 
-const StyledNavbar = styled(motion.header)`
-  grid-area: header;
-  display: none;
-
-  ${screen.md} {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-  }
-`
-
-const List = styled.ul`
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-32);
-  font-weight: 700;
-  list-style: none;
-`
-
-const Item = styled.li`
-  &:not(:last-child)::after {
-    content: '';
-    display: block;
-    height: 1px;
-    width: 0;
-    background-color: var(--color-text);
-    transition: width 0.3s;
-  }
-
-  &:hover::after {
-    width: 100%;
-  }
-`
-
 export function Navbar() {
   return (
-    <StyledNavbar variants={variants.navbar} initial="hidden" animate="show">
-      <h1>
+    <motion.header
+      className="hidden md:flex justify-between items-center mt-16 px-16"
+      initial="hidden"
+      animate="show"
+      variants={variants.navbar}
+    >
+      <div>
         <Link href="/">
-          <a>Tekstura</a>
+          <a className="text-2xl md:text-3xl text-gray-800 font-heading font-bold dark:text-gray-50">
+            Tekstura
+          </a>
         </Link>
-      </h1>
+      </div>
+
       <nav>
-        <List>
-          <Item>
+        <ul className="flex gap-x-6">
+          <li>
             <Link href="/">
-              <a>Početna</a>
+              <a className="font-bold border-b-2 border-gray-800 border-opacity-0 hover:border-opacity-100 transition dark:text-gray-50">
+                Početna
+              </a>
             </Link>
-          </Item>
-          <Item>
+          </li>
+          <li>
             <Link href="/recepti">
-              <a>Recepti</a>
+              <a className="font-bold border-b-2 border-gray-800 border-opacity-0 hover:border-opacity-100 transition dark:text-gray-50">
+                Recepti
+              </a>
             </Link>
-          </Item>
-          <Item>
+          </li>
+          <li>
             <Link href="/saznaj-vise">
-              <a>Saznaj više</a>
+              <a className="font-bold border-b-2 border-gray-800 border-opacity-0 hover:border-opacity-100 transition dark:text-gray-50">
+                Saznaj više
+              </a>
             </Link>
-          </Item>
-          <Item>
+          </li>
+          <li className="dark:text-gray-50">
             <ThemeToggle />
-          </Item>
-        </List>
+          </li>
+        </ul>
       </nav>
-    </StyledNavbar>
+    </motion.header>
   )
 }

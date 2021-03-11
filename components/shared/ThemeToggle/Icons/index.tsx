@@ -3,11 +3,13 @@ import { motion } from 'framer-motion'
 export function Moon() {
   return (
     <motion.svg
+      className="h-6 w-6"
       aria-hidden="true"
       focusable="false"
       role="img"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 512 512"
+      fill="currentColor"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
     >
@@ -19,11 +21,13 @@ export function Moon() {
 export function Sun() {
   return (
     <motion.svg
+      className="h-6 w-6"
       aria-hidden="true"
       focusable="false"
       role="img"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 512 512"
+      fill="currentColor"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
     >

@@ -1,10 +1,8 @@
 import React from 'react'
-import styled from '@emotion/styled'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 
 import { Layout } from '@/root/components/Layout'
-import { screen } from '@/root/styles/media'
 
 const variants = {
   byline: {
@@ -37,184 +35,98 @@ const variants = {
   },
 }
 
-const Byline = styled(motion.div)`
-  grid-area: byline;
-  padding-top: var(--spacing-32);
-
-  h3 {
-    margin-top: var(--spacing-8);
-  }
-
-  ${screen.sm} {
-    text-align: center;
-  }
-
-  ${screen.md} {
-    padding-top: var(--spacing-64);
-  }
-`
-
-const Newsletter = styled(motion.section)`
-  grid-area: newsletter;
-  min-width: 340px;
-  display: grid;
-  justify-items: center;
-  align-content: center;
-  margin-top: var(--spacing-32);
-  padding: var(--spacing-24);
-  text-align: center;
-  background-color: var(--color-secondary-bg);
-  transition: color 1s, background-color 1s;
-  z-index: 1;
-
-  h3 {
-    margin: var(--spacing-8) 0;
-  }
-
-  ${screen.sm} {
-    box-shadow: var(--shadow-lg);
-    border-radius: var(--radius-base);
-  }
-
-  ${screen.md} {
-    margin: -120px auto;
-  }
-`
-
-const Avatar = styled.img`
-  height: 84px;
-  width: 84px;
-  object-fit: cover;
-  border-radius: 50%;
-  margin: 0 auto;
-`
-
-const Form = styled.form`
-  display: inline-block;
-  margin-top: var(--spacing-8);
-  background-color: var(--color-input-bg);
-  border: 1px solid var(--color-input-border);
-  border-radius: var(--radius-base);
-  transition: background-color 1s;
-`
-
-const Label = styled.label`
-  display: none;
-`
-
-const Input = styled.input`
-  width: 200px;
-  padding: var(--spacing-8);
-  font-size: inherit;
-  color: var(--color-input-text);
-  background-color: var(--color-input-bg);
-  border: none;
-  transition: background-color 1s;
-`
-
-const Button = styled.button`
-  height: 40px;
-  padding: var(--spacing-8);
-  font-family: inherit;
-  font-weight: 700;
-  font-size: inherit;
-  background-color: var(--color-primary-gold-light);
-  border: none;
-  cursor: pointer;
-`
-
-const Recipe = styled(motion.div)`
-  grid-area: recipe;
-  position: relative;
-  color: var(--color-primary-bg);
-  text-align: center;
-
-  &::before {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: var(--color-overlay-bg);
-    z-index: -1;
-  }
-
-  h2 {
-    color: var(--color-primary-gold-light);
-  }
-
-  h3 {
-    display: inline-block;
-    margin-top: var(--spacing-8);
-    color: var(--color-text-on-dark-bg);
-  }
-
-  h3::after {
-    content: '';
-    display: block;
-    height: 1px;
-    width: 100%;
-    background-color: var(--color-text-on-dark-bg);
-    transition: width 0.3s;
-  }
-
-  h3:hover::after {
-    width: 0;
-  }
-`
-
-const RecipeImage = styled.img`
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-  z-index: -2;
-`
-
-const Center = styled.div`
-  height: 100%;
-  display: grid;
-  align-content: center;
-  justify-items: center;
-`
-
 export function Home() {
   return (
-    <Layout page="home">
-      <Byline variants={variants.byline} initial="hidden" animate="show">
-        <h1>Recepti, savjeti i više</h1>
-        <h3>Tekstura je namijenjena za dijeljenje izvrsne hrane sa drugima</h3>
-      </Byline>
+    <Layout>
+      <main className="md:h-screen">
+        <div className="md:h-5/6 md:flex md:p-16">
+          <motion.section
+            className="md:flex-1 md:grid md:place-content-center md:bg-yellow-400"
+            variants={variants.byline}
+            initial="hidden"
+            animate="show"
+          >
+            <div className="mt-8 md:m-0 px-8 dark:text-gray-50">
+              <h1 className="text-2xl md:text-3xl md:text-gray-800">
+                Recepti, savjeti i više
+              </h1>
+              <p className="mt-2 md:text-gray-800">
+                Tekstura je namijenjena za dijeljenje izvrsne hrane sa drugima.
+              </p>
+            </div>
 
-      <Newsletter
-        variants={variants.newsletter}
-        initial="hidden"
-        animate="show"
-      >
-        <Avatar src="/images/avatar.webp" alt="Placeholder" />
-        <h3>Besplatno primajte obavijesti u sandučić:</h3>
-        <Form>
-          <Label aria-hidden="false" htmlFor="email">
-            Email
-          </Label>
-          <Input type="text" id="email" placeholder="mail@mail.com" />
-          <Button type="button">Prijava</Button>
-        </Form>
-      </Newsletter>
+            <motion.aside
+              className="flex flex-col items-center mt-8 md:m-8 p-8 space-y-4 bg-gray-100"
+              variants={variants.newsletter}
+              initial="hidden"
+              animate="show"
+            >
+              <img
+                className="h-16 w-16 object-cover rounded-full"
+                src="/images/avatar.webp"
+                alt="Placeholder"
+              />
+              <h2 className="text-center">
+                Besplatno primajte obavijesti u sandučić
+              </h2>
+              <form className="w-full flex flex-col gap-y-4 lg:w-auto lg:flex lg:flex-row">
+                <label className="sr-only" htmlFor="email">
+                  Email
+                </label>
+                <input
+                  className="p-2"
+                  type="email"
+                  id="email"
+                  placeholder="budi@zakon.com"
+                />
+                <button className="p-2 bg-yellow-400" type="submit">
+                  <div className="flex items-center justify-center">
+                    <svg
+                      className="inline h-6 w-6 mx-1"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={1.2}
+                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                      />
+                    </svg>
+                    <span>Prijava</span>
+                  </div>
+                </button>
+              </form>
+            </motion.aside>
+          </motion.section>
 
-      <Recipe variants={variants.recipe} initial="hidden" animate="show">
-        <RecipeImage src="/images/dish.webp" alt="Dish" />
-        <Center>
-          <h2>Svako Jutro Jedno Jaje Organizmu Snagu Daje</h2>
-          <h3>
-            <Link href="/recepti/nevjerojatni-recept">
-              <a>recept</a>
-            </Link>
-          </h3>
-        </Center>
-      </Recipe>
+          <motion.section
+            className="h-96 md:h-auto md:flex-1 relative text-center"
+            variants={variants.recipe}
+            initial="hidden"
+            animate="show"
+          >
+            <img
+              className="h-full w-full object-cover"
+              src="/images/dish.webp"
+              alt="Dish"
+            />
+            <div className="h-full w-full absolute top-0 flex flex-col justify-center items-center px-2 text-gray-50 z-10">
+              <h3 className="text-xl md:text-3xl md:px-16">
+                Svako Jutro Jedno Jaje Organizmu Snagu Daje
+              </h3>
+              <Link href="/recepti/nevjerojatni-recept">
+                <a className="mt-2 font-heading text-xl text-yellow-400 border-b-2 border-yellow-400 border-opacity-0 hover:border-opacity-100 transition">
+                  recept
+                </a>
+              </Link>
+            </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-gray-900"></div>
+          </motion.section>
+        </div>
+      </main>
     </Layout>
   )
 }
