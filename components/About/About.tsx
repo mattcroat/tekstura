@@ -19,19 +19,18 @@ export function About() {
   return (
     <Layout>
       <motion.main
-        className="mt-8 p-8 md:m-16 bg-yellow-400"
+        className="mt-8 md:m-16"
         initial="hidden"
         animate="show"
         variants={variants.about}
       >
-        <img
-          className="h-16 w-16 mx-auto object-cover rounded-full"
-          src="/images/avatar.webp"
-          alt="Placeholder"
-        />
-
-        <section className="mt-8 space-y-8 md:w-1/2 md:mx-auto">
-          <h1 className="text-center text-2xl md:text-3xl md:text-gray-800">
+        <section className="mt-8 p-8 space-y-8 lg:w-1/2 lg:mx-auto dark:text-gray-50 md:border border-gray-200 dark:border-gray-700 shadow-sm transition">
+          <img
+            className="h-16 w-16 mx-auto object-cover rounded-full"
+            src="/images/avatar.webp"
+            alt="Placeholder"
+          />
+          <h1 className="text-2xl md:text-3xl text-yellow-400 text-center ">
             Što je Tekstura?
           </h1>
           <p>
