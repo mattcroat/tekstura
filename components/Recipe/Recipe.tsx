@@ -105,7 +105,7 @@ export function Recipe() {
 
   return (
     <Layout>
-      <div className="h-60 mt-8 md:mt-16 px-8 md:px-16">
+      <div className="h-96 mt-8 md:mt-16 px-8 md:px-16">
         <img
           className="h-full w-full object-cover"
           src="/images/dish.webp"
@@ -152,17 +152,57 @@ export function Recipe() {
               </div>
             </div>
 
-            <div className="mt-8">
+            <div className="mt-8 md:mr-8">
               <h2 className="text-xl text-yellow-400">Sastojci</h2>
               <Ingredients ingredients={ingredients} />
+            </div>
+
+            <div className="max-w-lg mx-auto mt-8 p-6 md:mr-8 border border-gray-50 border-opacity-10">
+              <h2 className="text-xl">Budite obaviješteni</h2>
+              <form className="flex flex-col gap-y-2 mt-4">
+                <label className="sr-only" htmlFor="email">
+                  Email
+                </label>
+                <input
+                  className="p-2"
+                  type="email"
+                  id="email"
+                  placeholder="budi@zakon.com"
+                />
+                <button
+                  className="p-2 text-gray-800 bg-yellow-400"
+                  type="submit"
+                >
+                  <div className="flex items-center justify-center">
+                    <svg
+                      className="inline h-6 w-6 mx-1"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={1.2}
+                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                      />
+                    </svg>
+                    <span>Prijava</span>
+                  </div>
+                </button>
+              </form>
             </div>
           </div>
         </div>
 
-        <section className="space-y-8 md:w-full">
-          <h1 className="mt-8 md:mt-0 text-2xl md:text-3xl text-yellow-400">
-            Svako Jutro Jedno Jaje Organizmu Snagu Daje
-          </h1>
+        <section className="space-y-8 md:w-full leading-relaxed">
+          <div>
+            <h1 className="mt-8 md:mt-0 text-2xl md:text-3xl text-yellow-400 capitalize">
+              Svako Jutro Jedno Jaje Organizmu Snagu Daje
+            </h1>
+            <div className="h-1 w-16 mt-4 bg-yellow-400"></div>
+          </div>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam
             ullam dicta vero deleniti necessitatibus dignissimos, id nulla
