@@ -56,7 +56,7 @@ export function Home() {
             </div>
 
             <motion.aside
-              className="flex flex-col items-center mt-8 md:m-8 p-8 space-y-4 bg-gray-100"
+              className="flex flex-col items-center mt-8 md:m-8 p-8 space-y-4 bg-gray-100 shadow-sm"
               variants={variants.newsletter}
               initial="hidden"
               animate="show"
@@ -74,12 +74,12 @@ export function Home() {
                   Email
                 </label>
                 <input
-                  className="p-2"
+                  className="p-2 shadow-sm"
                   type="email"
                   id="email"
                   placeholder="budi@zakon.com"
                 />
-                <button className="p-2 bg-yellow-400" type="submit">
+                <button className="p-2 bg-yellow-400 shadow-sm" type="submit">
                   <div className="flex items-center justify-center">
                     <svg
                       className="inline h-6 w-6 mx-1"

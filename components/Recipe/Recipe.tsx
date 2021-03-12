@@ -119,7 +119,7 @@ export function Recipe() {
         animate="show"
         variants={variants.recipe}
       >
-        <div className="md:w-2/4 lg:border-r lg:border-gray-50 lg:border-opacity-10 ">
+        <div className="md:w-2/4 lg:border-r lg:border-gray-800 lg:dark:border-gray-50 lg:border-opacity-10 lg:dark:border-opacity-10">
           <div className="lg:sticky lg:top-8">
             <div className="flex">
               <div className="pr-6 border-r border-gray-50 border-opacity-10">
@@ -144,9 +144,9 @@ export function Recipe() {
 
               <div className="pl-6">
                 <h3 className="text-lg">Porcija</h3>
-                <div className="text-2xl font-bold space-x-2">
+                <div className="text-xl font-bold space-x-2">
                   <button onClick={decreasePortion}>-</button>
-                  <span>{portion}</span>
+                  <span className="select-none">{portion}</span>
                   <button onClick={increasePortion}>+</button>
                 </div>
               </div>
@@ -157,14 +157,14 @@ export function Recipe() {
               <Ingredients ingredients={ingredients} />
             </div>
 
-            <div className="max-w-lg mx-auto mt-8 p-6 md:mr-8 border border-gray-50 border-opacity-10">
+            <div className="max-w-lg mx-auto mt-8 p-6 md:mr-8 border border-gray-800 dark:border-gray-50 border-opacity-10 dark:border-opacity-10 shadow-sm">
               <h2 className="text-xl">Budite obaviješteni</h2>
               <form className="flex flex-col gap-y-2 mt-4">
                 <label className="sr-only" htmlFor="email">
                   Email
                 </label>
                 <input
-                  className="p-2"
+                  className="p-2 text-gray-800 shadow-sm"
                   type="email"
                   id="email"
                   placeholder="budi@zakon.com"
