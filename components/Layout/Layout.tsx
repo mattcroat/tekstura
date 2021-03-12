@@ -6,9 +6,9 @@ type Props = {
 
 export function Layout({ children }: Props) {
   return (
-    <>
+    <div className="xl:max-w-7xl xl:mx-auto">
       <Header />
       {children}
-    </>
+    </div>
   )
 }
