@@ -7,10 +7,16 @@ module.exports = {
     colors: {
       gray: colors.coolGray,
       yellow: colors.amber,
+      white: colors.white,
     },
     fontFamily: {
       heading: ['Playfair Display', 'system-ui'],
       serif: ['Merriweather', 'system-ui'],
+    },
+    extend: {
+      spacing: {
+        search: '22.6rem',
+      },
     },
   },
   variants: {

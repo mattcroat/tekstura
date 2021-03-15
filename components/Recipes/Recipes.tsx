@@ -87,12 +87,12 @@ export function Recipes() {
   return (
     <Layout>
       <motion.main
-        className="px-16 dark:text-gray-50"
+        className="px-8 md:px-16 dark:text-gray-50"
         initial="hidden"
         animate="show"
         variants={variants.search}
       >
-        <h1 className="mt-16 text-xl">Recepti</h1>
+        <h1 className="mt-8 md:mt-16 text-2xl">Pretraga</h1>
         <div className="relative mt-4 text-gray-800">
           <label
             className="sr-only"
@@ -102,7 +102,7 @@ export function Recipes() {
             Search
           </label>
           <svg
-            className="absolute top-2 left-1 h-6 w-6 mx-2 text-gray-400"
+            className="absolute top-2 left-1 h-6 w-6 mx-2 text-gray-300"
             aria-hidden="true"
             focusable="false"
             xmlns="http://www.w3.org/2000/svg"
@@ -114,7 +114,7 @@ export function Recipes() {
             />
           </svg>
           <input
-            className="p-2 pl-12"
+            className="w-full lg:w-search py-2 pl-12 bg-white border border-gray-200 shadow-sm"
             onChange={handleChange}
             type="text"
             id="recipe-search"
@@ -124,7 +124,7 @@ export function Recipes() {
         </div>
 
         <motion.section
-          className="md:grid md:grid-cols-3 md:gap-8 my-8"
+          className="md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 my-8"
           initial="hidden"
           animate="show"
           variants={variants.cards}
@@ -132,7 +132,7 @@ export function Recipes() {
           {searchResults?.map(({ id, title, src }) => (
             <article
               key={id}
-              className="mt-8 md:mt-0 border-2 bg-gray-50 shadow-sm"
+              className="mt-8 md:mt-0 bg-white border border-gray-200 dark:border-gray-800 shadow-sm"
             >
               <Link href="#">
                 <a>
@@ -143,10 +143,10 @@ export function Recipes() {
                         src={src}
                         alt={title}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-gray-900"></div>
+                      <div className="absolute inset-0 bg-gray-900 bg-opacity-20 hover:bg-opacity-0 transition"></div>
                     </div>
                     <div>
-                      <h3 className="p-2 text-xl text-gray-800 capitalize relative z-10">
+                      <h3 className="p-4 text-lg text-gray-800 capitalize relative z-10">
                         {title}
                       </h3>
                     </div>
