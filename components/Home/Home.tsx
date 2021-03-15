@@ -56,7 +56,7 @@ export function Home() {
             </div>
 
             <motion.aside
-              className="flex flex-col items-center mt-8 md:m-8 p-8 space-y-4 bg-gray-100 shadow-sm"
+              className="flex flex-col items-center mt-8 md:m-8 p-8 space-y-4 bg-gray-50 shadow-sm"
               variants={variants.newsletter}
               initial="hidden"
               animate="show"
@@ -69,35 +69,37 @@ export function Home() {
               <h2 className="text-center">
                 Besplatno primajte obavijesti u sandučić
               </h2>
-              <form className="w-full flex flex-col gap-y-4 lg:w-auto lg:flex lg:flex-row">
-                <label className="sr-only" htmlFor="email">
-                  Email
-                </label>
-                <input
-                  className="p-2 shadow-sm"
-                  type="email"
-                  id="email"
-                  placeholder="budi@zakon.com"
-                />
-                <button className="p-2 bg-yellow-400 shadow-sm" type="submit">
-                  <div className="flex items-center justify-center">
-                    <svg
-                      className="inline h-6 w-6 mx-1"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={1.2}
-                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                      />
-                    </svg>
-                    <span>Prijava</span>
-                  </div>
-                </button>
+              <form className="w-full md:w-auto">
+                <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:border md:border-opacity-10 shadow-sm">
+                  <label className="sr-only" htmlFor="email">
+                    Email
+                  </label>
+                  <input
+                    className="p-2 bg-white border border-opacity-10 md:border-none"
+                    type="email"
+                    id="email"
+                    placeholder="budi@zakon.com"
+                  />
+                  <button className="p-2 bg-yellow-400 shadow-sm" type="submit">
+                    <div className="flex items-center justify-center">
+                      <svg
+                        className="inline h-6 w-6 mx-1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={1.2}
+                          d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                        />
+                      </svg>
+                      <span>Prijava</span>
+                    </div>
+                  </button>
+                </div>
               </form>
             </motion.aside>
           </motion.section>
