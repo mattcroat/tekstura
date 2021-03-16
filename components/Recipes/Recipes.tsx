@@ -38,15 +38,6 @@ const recipes = [
 ]
 
 const variants = {
-  search: {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        delay: 0.3,
-      },
-    },
-  },
   cards: {
     hidden: { opacity: 0 },
     show: {
@@ -86,12 +77,7 @@ export function Recipes() {
 
   return (
     <Layout>
-      <motion.main
-        className="px-8 md:px-16 dark:text-gray-50"
-        initial="hidden"
-        animate="show"
-        variants={variants.search}
-      >
+      <main className="px-8 md:px-16 dark:text-gray-50">
         <h1 className="mt-8 md:mt-16 text-2xl">Pretraga</h1>
         <div className="relative mt-4 text-gray-800">
           <label
@@ -124,39 +110,36 @@ export function Recipes() {
         </div>
 
         <motion.section
-          className="md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 my-8"
+          className="md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-4 my-8"
           initial="hidden"
           animate="show"
           variants={variants.cards}
         >
           {searchResults?.map(({ id, title, src }) => (
-            <article
+            <motion.article
               key={id}
-              className="mt-8 md:mt-0 bg-white border border-gray-200 dark:border-gray-800 shadow-sm"
+              className="shadow-sm"
+              variants={variants.card}
             >
               <Link href="#">
                 <a>
-                  <motion.div variants={variants.card}>
-                    <div className="relative">
-                      <img
-                        className="h-80 w-full object-cover"
-                        src={src}
-                        alt={title}
-                      />
-                      <div className="absolute inset-0 bg-gray-900 bg-opacity-20 hover:bg-opacity-0 transition"></div>
+                  <div className="relative">
+                    <img
+                      className="h-80 w-full object-cover"
+                      src={src}
+                      alt={title}
+                    />
+                    <div className="absolute bottom-0 z-10">
+                      <h3 className="p-4 text-lg capitalize">{title}</h3>
                     </div>
-                    <div>
-                      <h3 className="p-4 text-lg text-gray-800 capitalize relative z-10">
-                        {title}
-                      </h3>
-                    </div>
-                  </motion.div>
+                    <div className="absolute inset-0 bg-black bg-opacity-60 hover:bg-opacity-0 transition"></div>
+                  </div>
                 </a>
               </Link>
-            </article>
+            </motion.article>
           ))}
         </motion.section>
-      </motion.main>
+      </main>
     </Layout>
   )
 }
