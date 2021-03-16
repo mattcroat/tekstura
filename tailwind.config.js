@@ -8,6 +8,7 @@ module.exports = {
       gray: colors.coolGray,
       yellow: colors.amber,
       white: colors.white,
+      black: colors.black,
     },
     fontFamily: {
       heading: ['Playfair Display', 'system-ui'],
@@ -15,12 +16,14 @@ module.exports = {
     },
     extend: {
       spacing: {
-        search: '22.6rem',
+        search: '23.2rem',
       },
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      scale: ['group-hover'],
+    },
   },
   plugins: [],
 }

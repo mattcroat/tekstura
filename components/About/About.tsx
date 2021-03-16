@@ -3,27 +3,10 @@ import { motion } from 'framer-motion'
 
 import { Layout } from '@/root/components/Layout'
 
-const variants = {
-  about: {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        delay: 0.3,
-      },
-    },
-  },
-}
-
 export function About() {
   return (
     <Layout>
-      <motion.main
-        className="mt-8 md:m-16"
-        initial="hidden"
-        animate="show"
-        variants={variants.about}
-      >
+      <main className="mt-8 md:m-16">
         <section className="mt-8 p-8 space-y-8 lg:w-1/2 lg:mx-auto dark:text-gray-50 md:border border-gray-200 dark:border-gray-700 shadow-sm transition">
           <img
             className="h-16 w-16 mx-auto object-cover rounded-full"
@@ -46,7 +29,7 @@ export function About() {
             dolore odio.
           </p>
         </section>
-      </motion.main>
+      </main>
     </Layout>
   )
 }

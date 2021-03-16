@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 
+import { Header } from '@/root/components/Header'
 import '@/root/styles/global.css'
 
 const variants = {
@@ -18,6 +19,7 @@ export default function App({ Component, pageProps, router }: AppProps) {
       <Head>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
+      <Header />
       <AnimatePresence>
         <motion.div
           key={router.route}

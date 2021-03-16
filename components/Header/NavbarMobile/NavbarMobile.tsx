@@ -6,15 +6,6 @@ import { MenuButton } from '@/root/components/Header/NavbarMobile/MenuButton'
 import { ThemeToggle } from '@/root/components/shared/ThemeToggle'
 
 const variants = {
-  navbar: {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        delay: 0.3,
-      },
-    },
-  },
   menu: {
     hidden: { opacity: 0, height: 0 },
     show: {
@@ -40,12 +31,7 @@ export function NavbarMobile() {
     : 'text-gray-800 dark:text-gray-50'
 
   return (
-    <motion.header
-      className={`${headerColor} pt-8 px-8 md:hidden transition`}
-      initial="hidden"
-      animate="show"
-      variants={variants.navbar}
-    >
+    <header className={`${headerColor} pt-8 px-8 md:hidden transition`}>
       <div className="flex justify-between">
         <div>
           <Link href="/">
@@ -95,6 +81,6 @@ export function NavbarMobile() {
           </nav>
         )}
       </AnimatePresence>
-    </motion.header>
+    </header>
   )
 }

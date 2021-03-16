@@ -1,28 +1,10 @@
-import { motion } from 'framer-motion'
 import Link from 'next/link'
 
 import { ThemeToggle } from '@/root/components/shared/ThemeToggle'
 
-const variants = {
-  navbar: {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        delay: 0.3,
-      },
-    },
-  },
-}
-
 export function Navbar() {
   return (
-    <motion.header
-      className="hidden md:flex justify-between items-center mt-16 px-16"
-      initial="hidden"
-      animate="show"
-      variants={variants.navbar}
-    >
+    <header className="hidden md:flex justify-between items-center mt-16 px-16">
       <div>
         <Link href="/">
           <a className="text-2xl md:text-3xl text-gray-800 font-heading font-bold dark:text-gray-50">
@@ -59,6 +41,6 @@ export function Navbar() {
           </li>
         </ul>
       </nav>
-    </motion.header>
+    </header>
   )
 }

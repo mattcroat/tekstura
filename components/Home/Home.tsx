@@ -1,45 +1,16 @@
 import React from 'react'
-import { motion } from 'framer-motion'
 import Link from 'next/link'
 
 import { Layout } from '@/root/components/Layout'
-
-const variants = {
-  byline: {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        delay: 0.3,
-      },
-    },
-  },
-  recipe: {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        delay: 0.6,
-      },
-    },
-  },
-}
 
 export function Home() {
   return (
     <Layout>
       <main className="h-screen flex flex-col mt-8 md:mt-16 md:px-16">
-        <motion.section
-          className="h-full relative text-center lg:h-1/4"
-          variants={variants.byline}
-          initial="hidden"
-          animate="show"
-        >
+        <section className="h-full relative text-center lg:h-1/4">
           <div className="px-8 text-left dark:text-gray-50 md:px-0 md:text-center">
-            <h1 className="text-2xl md:text-3xl md:text-gray-800">
-              Recepti, savjeti i više
-            </h1>
-            <p className="mt-2 md:text-gray-800">
+            <h1 className="text-2xl md:text-3xl">Recepti, savjeti i više</h1>
+            <p className="mt-2">
               Tekstura je namijenjena za dijeljenje izvrsne hrane sa drugima.
             </p>
           </div>
@@ -86,14 +57,9 @@ export function Home() {
               </div>
             </form>
           </aside>
-        </motion.section>
+        </section>
 
-        <motion.section
-          className="h-1/2 relative text-center"
-          variants={variants.recipe}
-          initial="hidden"
-          animate="show"
-        >
+        <section className="h-1/2 relative text-center">
           <img
             className="h-full w-full object-cover"
             src="/images/dish.webp"
@@ -110,7 +76,7 @@ export function Home() {
             </Link>
           </div>
           <div className="absolute inset-0 bg-gradient-to-t from-gray-900"></div>
-        </motion.section>
+        </section>
       </main>
     </Layout>
   )
