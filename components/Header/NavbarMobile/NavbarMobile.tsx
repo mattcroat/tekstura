@@ -31,13 +31,13 @@ export function NavbarMobile() {
     : 'text-gray-800 dark:text-gray-50'
 
   return (
-    <header className={`${headerColor} pt-8 px-8 md:hidden transition`}>
+    <header
+      className={`${headerColor} pt-8 px-8 font-bold transition md:hidden`}
+    >
       <div className="flex justify-between">
-        <div>
+        <div className={`${logoTextColor} text-2xl font-heading font-bold`}>
           <Link href="/">
-            <a className={`${logoTextColor} text-2xl font-heading font-bold`}>
-              Tekstura
-            </a>
+            <a>Tekstura</a>
           </Link>
         </div>
         <MenuButton isOpen={isOpen} toggle={() => setIsOpen(!isOpen)} />
@@ -54,25 +54,28 @@ export function NavbarMobile() {
               variants={variants.menu}
             >
               <motion.li variants={variants.item}>
-                <Link href="/">
-                  <a className="font-bold border-b-2 border-gray-800 border-opacity-0 hover:border-opacity-100 transition">
-                    Početna
-                  </a>
-                </Link>
+                <div className="inline-block group">
+                  <Link href="/">
+                    <a>Početna</a>
+                  </Link>
+                  <div className="h-0.5 scale-x-0 origin-left bg-gray-800 transform group-hover:scale-x-100 transition"></div>
+                </div>
               </motion.li>
               <motion.li variants={variants.item}>
-                <Link href="/recepti">
-                  <a className="font-bold border-b-2 border-gray-800 border-opacity-0 hover:border-opacity-100 transition">
-                    Recepti
-                  </a>
-                </Link>
+                <div className="inline-block group">
+                  <Link href="/recepti">
+                    <a>Recepti</a>
+                  </Link>
+                  <div className="h-0.5 scale-x-0 origin-left bg-gray-800 transform group-hover:scale-x-100 transition"></div>
+                </div>
               </motion.li>
               <motion.li variants={variants.item}>
-                <Link href="/saznaj-vise">
-                  <a className="font-bold border-b-2 border-gray-800 border-opacity-0 hover:border-opacity-100 transition">
-                    Saznaj više
-                  </a>
-                </Link>
+                <div className="inline-block group">
+                  <Link href="/saznaj-vise">
+                    <a>Saznaj više</a>
+                  </Link>
+                  <div className="h-0.5 scale-x-0 origin-left bg-gray-800 transform group-hover:scale-x-100 transition"></div>
+                </div>
               </motion.li>
               <motion.li variants={variants.item}>
                 <ThemeToggle />

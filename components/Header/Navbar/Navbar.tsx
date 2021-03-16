@@ -4,39 +4,40 @@ import { ThemeToggle } from '@/root/components/shared/ThemeToggle'
 
 export function Navbar() {
   return (
-    <header className="hidden md:flex justify-between items-center mt-16 px-16">
-      <div>
+    <header className="hidden text-gray-800 dark:text-gray-50 mt-16 px-16 md:flex md:justify-between md:items-center">
+      <div className="text-2xl font-heading font-bold md:text-3xl">
         <Link href="/">
-          <a className="text-2xl md:text-3xl text-gray-800 font-heading font-bold dark:text-gray-50">
-            Tekstura
-          </a>
+          <a>Tekstura</a>
         </Link>
       </div>
 
       <nav>
-        <ul className="flex gap-x-6">
+        <ul className="flex gap-x-6 font-bold">
           <li>
-            <Link href="/">
-              <a className="font-bold border-b-2 border-gray-800 border-opacity-0 hover:border-opacity-100 transition dark:text-gray-50">
-                Početna
-              </a>
-            </Link>
+            <div className="group">
+              <Link href="/">
+                <a>Početna</a>
+              </Link>
+              <div className="h-0.5 scale-x-0 origin-left bg-gray-800 dark:bg-gray-50 transform group-hover:scale-x-100 transition"></div>
+            </div>
           </li>
           <li>
-            <Link href="/recepti">
-              <a className="font-bold border-b-2 border-gray-800 border-opacity-0 hover:border-opacity-100 transition dark:text-gray-50">
-                Recepti
-              </a>
-            </Link>
+            <div className="group">
+              <Link href="/recepti">
+                <a>Recepti</a>
+              </Link>
+              <div className="h-0.5 scale-x-0 origin-left bg-gray-800 dark:bg-gray-50 transform group-hover:scale-x-100 transition"></div>
+            </div>
           </li>
           <li>
-            <Link href="/saznaj-vise">
-              <a className="font-bold border-b-2 border-gray-800 border-opacity-0 hover:border-opacity-100 transition dark:text-gray-50">
-                Saznaj više
-              </a>
-            </Link>
+            <div className="group">
+              <Link href="/saznaj-vise">
+                <a>Saznaj više</a>
+              </Link>
+              <div className="h-0.5 scale-x-0 origin-left bg-gray-800 dark:bg-gray-50 transform group-hover:scale-x-100 transition"></div>
+            </div>
           </li>
-          <li className="dark:text-gray-50">
+          <li>
             <ThemeToggle />
           </li>
         </ul>
