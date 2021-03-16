@@ -6,16 +6,16 @@ import { Layout } from '@/root/components/Layout'
 export function Home() {
   return (
     <Layout>
-      <main className="h-screen flex flex-col mt-8 md:mt-16 md:px-16">
-        <section className="h-full relative text-center lg:h-1/4">
-          <div className="px-8 text-left dark:text-gray-50 md:px-0 md:text-center">
+      <main className="mt-8 md:mt-16 md:px-16">
+        <section className="relative pt-8 text-center bg-yellow-300 lg:h-60">
+          <div className="px-8 text-left dark:text-gray-800 md:px-0 md:text-center">
             <h1 className="text-2xl md:text-3xl">Recepti, savjeti i više</h1>
             <p className="mt-2">
               Tekstura je namijenjena za dijeljenje izvrsne hrane sa drugima.
             </p>
           </div>
 
-          <aside className="flex flex-col items-center mt-8 p-8 space-y-4 bg-gray-50 lg:mt-0 md:border md:border-opacity-10 md:shadow-sm lg:z-10 lg:absolute lg:bottom-0 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:translate-y-1/2">
+          <aside className="flex flex-col items-center mt-8 p-8 space-y-4 bg-gray-50 md:border md:border-opacity-10 md:shadow-sm lg:mt-0 lg:z-10 lg:absolute lg:bottom-0 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:translate-y-1/2">
             <img
               className="h-16 w-16 object-cover rounded-full"
               src="/images/avatar.webp"
@@ -25,7 +25,7 @@ export function Home() {
               Besplatno primajte obavijesti u sandučić
             </h2>
             <form className="w-full md:w-auto">
-              <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:border md:border-opacity-10 shadow-sm">
+              <div className="flex flex-col space-y-4 shadow-sm md:flex-row md:space-y-0 md:border md:border-opacity-10">
                 <label className="sr-only" htmlFor="email">
                   Email
                 </label>
@@ -59,21 +59,22 @@ export function Home() {
           </aside>
         </section>
 
-        <section className="h-1/2 relative text-center">
+        <section className="relative text-center md:h-80">
           <img
             className="h-full w-full object-cover"
             src="/images/dish.webp"
             alt="Dish"
           />
           <div className="h-full w-full absolute top-0 flex flex-col justify-center items-center px-2 text-gray-50 z-10">
-            <h3 className="text-xl md:text-3xl md:px-16">
+            <h3 className="text-xl md:text-3xl md:pt-8 md:px-16">
               Svako Jutro Jedno Jaje Organizmu Snagu Daje
             </h3>
-            <Link href="/recepti/nevjerojatni-recept">
-              <a className="mt-2 font-heading text-xl text-yellow-400 border-b-2 border-yellow-400 border-opacity-0 hover:border-opacity-100 transition">
-                recept
-              </a>
-            </Link>
+            <div className="mt-2 group">
+              <Link href="/recepti/nevjerojatni-recept">
+                <a className="font-heading text-xl text-yellow-400">recept</a>
+              </Link>
+              <div className="h-0.5 scale-x-0 origin-left bg-yellow-400 transform group-hover:scale-x-100 transition"></div>
+            </div>
           </div>
           <div className="absolute inset-0 bg-gradient-to-t from-gray-900"></div>
         </section>
