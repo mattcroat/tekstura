@@ -105,7 +105,7 @@ export function Recipe() {
 
   return (
     <Layout>
-      <div className="h-96 mt-8 md:mt-16 px-8 md:px-16">
+      <div className="h-96 mt-8 px-8 md:mt-16 md:px-16">
         <img
           className="h-full w-full object-cover"
           src="/images/dish.webp"
@@ -157,7 +157,7 @@ export function Recipe() {
               <Ingredients ingredients={ingredients} />
             </div>
 
-            <div className="max-w-lg mx-auto mt-8 p-6 md:mr-8 border border-gray-800 dark:border-gray-50 border-opacity-10 dark:border-opacity-10 shadow-sm">
+            <div className="max-w-lg mx-auto mt-8 p-6 border border-gray-800 dark:border-gray-50 border-opacity-10 dark:border-opacity-10 shadow-sm md:mr-8">
               <h2 className="text-xl">Budite obaviješteni</h2>
               <form className="flex flex-col gap-y-2 mt-4">
                 <label className="sr-only" htmlFor="email">
@@ -196,9 +196,9 @@ export function Recipe() {
           </div>
         </div>
 
-        <section className="space-y-8 md:w-full leading-relaxed">
+        <section className="space-y-8 leading-relaxed md:w-full">
           <div>
-            <h1 className="mt-8 md:mt-0 text-2xl md:text-3xl text-yellow-400 capitalize">
+            <h1 className="mt-8 text-2xl text-yellow-400 capitalize md:mt-0 md:text-3xl">
               Svako Jutro Jedno Jaje Organizmu Snagu Daje
             </h1>
             <div className="h-1 w-16 mt-4 bg-yellow-400"></div>
@@ -220,11 +220,11 @@ export function Recipe() {
             alt="Dish"
           />
 
-          <div className="p-8 md:p-0 border border-gray-50 border-opacity-10 md:border-0 md:flex md:items-center md:gap-x-8">
+          <div className="p-8 border border-gray-50 border-opacity-10 md:p-0 md:border-0 md:flex md:items-center md:gap-x-8">
             <div className="h-16 w-16 flex flex-shrink-0 justify-center items-center mx-auto text-gray-800 bg-yellow-400 rounded-full">
               <span className="text-3xl font-bold">1</span>
             </div>
-            <div className="mt-8 md:mt-0 space-y-8">
+            <div className="mt-8 space-y-8 md:mt-0">
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Cupiditate illum minus dolorem iusto voluptatum asperiores
@@ -234,11 +234,11 @@ export function Recipe() {
             </div>
           </div>
 
-          <div className="p-8 md:p-0 border border-gray-50 border-opacity-10 md:border-0 md:flex md:items-center md:gap-x-8">
+          <div className="p-8 border border-gray-50 border-opacity-10 md:p-0 md:border-0 md:flex md:items-center md:gap-x-8">
             <div className="h-16 w-16 flex flex-shrink-0 justify-center items-center mx-auto text-gray-800 bg-yellow-400 rounded-full">
-              <span className="text-3xl font-bold">2</span>
+              <span className="text-3xl font-bold">1</span>
             </div>
-            <div className="mt-8 md:mt-0 space-y-8">
+            <div className="mt-8 space-y-8 md:mt-0">
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Cupiditate illum minus dolorem iusto voluptatum asperiores

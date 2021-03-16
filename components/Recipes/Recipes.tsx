@@ -77,8 +77,8 @@ export function Recipes() {
 
   return (
     <Layout>
-      <main className="px-8 md:px-16 dark:text-gray-50">
-        <h1 className="mt-8 md:mt-16 text-2xl">Pretraga</h1>
+      <main className="px-8 dark:text-gray-50 md:px-16">
+        <h1 className="mt-8 text-2xl md:mt-16">Pretraga</h1>
         <div className="relative mt-4 text-gray-800">
           <label
             className="sr-only"
@@ -100,7 +100,7 @@ export function Recipes() {
             />
           </svg>
           <input
-            className="w-full lg:w-search py-2 pl-12 bg-white border border-gray-200 shadow-sm"
+            className="w-full py-2 pl-12 bg-white border border-gray-200 shadow-sm lg:w-search"
             onChange={handleChange}
             type="text"
             id="recipe-search"
@@ -110,7 +110,7 @@ export function Recipes() {
         </div>
 
         <motion.section
-          className="md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-4 my-8"
+          className="my-8 md:grid md:grid-cols-2 md:gap-4 lg:grid-cols-3"
           initial="hidden"
           animate="show"
           variants={variants.cards}
