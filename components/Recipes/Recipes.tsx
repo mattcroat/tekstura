@@ -77,8 +77,8 @@ export function Recipes() {
 
   return (
     <Layout>
-      <main className="px-8 dark:text-gray-50 md:px-16">
-        <h1 className="mt-8 text-2xl md:mt-16">Pretraga</h1>
+      <main className="px-8 md:px-16">
+        <h1 className="mt-8 text-2xl dark:text-gray-50 md:mt-16">Pretraga</h1>
         <div className="relative mt-4 text-gray-800">
           <label
             className="sr-only"
@@ -118,21 +118,23 @@ export function Recipes() {
           {searchResults?.map(({ id, title, src }) => (
             <motion.article
               key={id}
-              className="shadow-sm"
+              className="border-2 border-gray-50 hover:border-yellow-400 dark:border-gray-800 dark:hover:border-yellow-400 transition"
               variants={variants.card}
             >
               <Link href="#">
                 <a>
-                  <div className="relative">
+                  <div className="relative group overflow-hidden">
                     <img
-                      className="h-80 w-full object-cover"
+                      className="h-80 w-full object-cover transform group-hover:scale-110 transition"
                       src={src}
                       alt={title}
                     />
                     <div className="absolute bottom-0 z-10">
-                      <h3 className="p-4 text-lg capitalize">{title}</h3>
+                      <h3 className="p-4 text-2xl text-yellow-400 capitalize">
+                        {title}
+                      </h3>
                     </div>
-                    <div className="absolute inset-0 bg-black bg-opacity-60 hover:bg-opacity-0 transition"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-800 dark:from-gray-900"></div>
                   </div>
                 </a>
               </Link>
