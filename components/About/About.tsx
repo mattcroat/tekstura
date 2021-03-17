@@ -4,7 +4,7 @@ import { Layout } from '@/root/components/Layout'
 export function About() {
   return (
     <Layout>
-      <main className="mt-8 md:m-16 bg-yellow-300">
+      <main className="mt-8 md:m-16 dark:text-gray-50">
         <section className="mt-8 p-8 space-y-8 lg:w-1/2 lg:mx-auto">
           <img
             className="h-24 w-24 mx-auto object-cover rounded-full"
