@@ -153,7 +153,7 @@ export function Recipe() {
             </div>
 
             <div className="mt-8 md:mr-8">
-              <h2 className="text-xl text-yellow-400">Sastojci</h2>
+              <h2 className="text-xl dark:text-yellow-400">Sastojci</h2>
               <Ingredients ingredients={ingredients} />
             </div>
 
@@ -198,7 +198,7 @@ export function Recipe() {
 
         <section className="space-y-8 leading-relaxed md:w-full">
           <div>
-            <h1 className="mt-8 text-2xl text-yellow-400 capitalize md:mt-0 md:text-3xl">
+            <h1 className="mt-8 text-2xl dark:text-yellow-400 capitalize md:mt-0 md:text-3xl">
               Svako Jutro Jedno Jaje Organizmu Snagu Daje
             </h1>
             <div className="h-1 w-16 mt-4 bg-yellow-400"></div>
