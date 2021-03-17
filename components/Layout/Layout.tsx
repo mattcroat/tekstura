@@ -1,8 +1,9 @@
 import { Header } from '@/root/components/Header'
 import { motion } from 'framer-motion'
 
-type Props = {
+type LayoutProps = {
   children: React.ReactNode
+  layout?: { landingPage: boolean }
 }
 
 const variants = {
@@ -12,7 +13,16 @@ const variants = {
   },
 }
 
-export function Layout({ children }: Props) {
+export function Layout({ children, layout }: LayoutProps) {
+  if (layout?.landingPage) {
+    return (
+      <div className="h-screen flex flex-col">
+        <Header />
+        {children}
+      </div>
+    )
+  }
+
   return (
     <>
       <div className="xl:max-w-7xl xl:mx-auto">
