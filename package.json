@@ -5,10 +5,8 @@
   "description": "A site for discovering recipes",
   "scripts": {
     "dev": "concurrently \"next dev\" \"cd studio && sanity start\"",
-    "build": "npm run build:next && npm run build:sanity",
-    "start": "next start",
-    "build:next": "next build",
-    "build:sanity": "cd studio && npx sanity build ../public/studio -y && cd .."
+    "build": "cd studio && sanity build ../public/studio -y && cd .. && next build",
+    "start": "next start"
   },
   "dependencies": {
     "@sanity/client": "^2.2.6",
