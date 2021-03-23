@@ -9,8 +9,8 @@ type URL = string
 
 // config
 const config: Config = {
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET ?? '',
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ?? '',
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET ?? '',
   useCdn: true,
 }
 
