@@ -4,15 +4,15 @@ import Link from 'next/link'
 import { Layout } from '@/root/components/Layout'
 
 type HomeProps = {
-  latestPost: {
-    slug: string
+  latestRecipe: {
     title: string
+    slug: string
     imageUrl: string
   }
 }
 
-export function Home({ latestPost }: HomeProps) {
-  const { slug, title, imageUrl } = latestPost
+export function Home({ latestRecipe }: HomeProps) {
+  const { slug, title, imageUrl } = latestRecipe
 
   return (
     <Layout layout={{ landingPage: true }}>
