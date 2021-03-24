@@ -3,7 +3,17 @@ import Link from 'next/link'
 
 import { Layout } from '@/root/components/Layout'
 
-export function Home() {
+type HomeProps = {
+  latestPost: {
+    slug: string
+    title: string
+    imageUrl: string
+  }
+}
+
+export function Home({ latestPost }: HomeProps) {
+  const { slug, title, imageUrl } = latestPost
+
   return (
     <Layout layout={{ landingPage: true }}>
       <section className="flex-1 relative mt-8 md:mt-16 lg:px-16">
@@ -61,21 +71,19 @@ export function Home() {
       <main className="h-1/2 relative text-center">
         <img
           className="h-full w-full object-cover"
-          src="/images/dish.webp"
-          alt="Dish"
+          src={imageUrl}
+          alt={title}
         />
         <div className="h-full w-full absolute top-0 flex flex-col justify-center items-center px-2 text-gray-50 z-10">
-          <h3 className="text-xl md:text-3xl md:pt-8 md:px-16">
-            Svako Jutro Jedno Jaje Organizmu Snagu Daje
-          </h3>
+          <h3 className="text-xl md:text-3xl md:pt-8 md:px-16">{title}</h3>
           <div className="mt-2 group">
-            <Link href="/recepti/nevjerojatni-recept">
+            <Link href={`/recepti/${slug}`}>
               <a className="font-heading text-xl text-yellow-400">recept</a>
             </Link>
             <div className="h-0.5 scale-x-0 origin-left bg-yellow-400 transform group-hover:scale-x-100 transition"></div>
           </div>
         </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-900"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black"></div>
       </main>
     </Layout>
   )
