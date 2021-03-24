@@ -9,8 +9,8 @@ export default {
       title: 'Number',
     },
     {
-      name: 'description',
-      type: 'text',
+      name: 'step',
+      type: 'recipeStepText',
       title: 'Step',
     },
   ],

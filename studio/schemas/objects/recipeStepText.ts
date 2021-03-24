@@ -1,17 +1,13 @@
 export default {
-  title: 'Block Content',
-  name: 'blockContent',
+  name: 'recipeStepText',
+  title: 'Recipe Step Text',
   type: 'array',
   of: [
     {
       title: 'Block',
       type: 'block',
-      styles: [
-        { title: 'Normal', value: 'normal' },
-        { title: 'H2', value: 'h2' },
-        { title: 'H3', value: 'h3' },
-      ],
-      lists: [{ title: 'Bullet', value: 'bullet' }],
+      styles: [],
+      lists: [],
       marks: {
         decorators: [
           { title: 'Strong', value: 'strong' },
@@ -32,14 +28,6 @@ export default {
           },
         ],
       },
-    },
-    {
-      type: 'image',
-      options: { hotspot: true },
-    },
-    {
-      title: 'Recipe step',
-      type: 'recipeStep',
     },
   ],
 }

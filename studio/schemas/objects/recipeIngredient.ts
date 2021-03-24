@@ -44,7 +44,7 @@ export default {
       }
 
       return {
-        title: `${amount} ${unit} of ${ingredient}`,
+        title: `${amount} ${unit} ${ingredient}`,
       }
     },
   },
