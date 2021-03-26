@@ -98,9 +98,12 @@ function formatAmount(amount: Amount): Amount {
 
 function formatUnit(amount: Amount, unit: string): string {
   const threshold = 1000
+
   const units: Units = {
     g: { singular: 'gram', plural: 'grama', greater: 'kg' },
     kg: { singular: 'kilogram', plural: 'kilograma' },
+    mL: { singular: 'mililitar', plural: 'mililitra', greater: 'L' },
+    L: { singular: 'litra', plural: 'litre' },
     žličica: { singular: 'žličica', plural: 'žličice' },
     žlica: { singular: 'žlica', plural: 'žlice' },
   }
