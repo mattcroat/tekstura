@@ -5,6 +5,7 @@ import {
 } from '@/root/utils/fraction'
 
 export type Ingredient = {
+  _key?: string
   id: number
   amount: Amount
   ingredient: string
