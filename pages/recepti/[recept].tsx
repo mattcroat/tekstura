@@ -1,89 +1,63 @@
 import { Recipe } from '@/root/components/Recipe'
+import { sanityClient } from '@/root/lib/sanity/client'
 
-export default function RecipePage() {
-  return <Recipe />
+import type { Ingredient } from '@/root/utils/recipe'
+
+type RecipeProps = {
+  title: string
+  imageUrl: string
+  preparation: number
+  amount: number
+  ingredients: Ingredient[]
+  content: any
+}
+
+type Slug = string
+
+type Params = { recept: string }
+
+export default function RecipePage({ recipe }: { recipe: RecipeProps }) {
+  return <Recipe recipe={recipe} />
 }
 
 export async function getStaticPaths() {
+  const pathsFromSlugs: Slug[] = await sanityClient.fetch(`
+    *[_type == 'recipe'] {
+      'recept': slug.current
+    }
+  `)
+
   return {
-    paths: [
-      {
-        params: {
-          recept: 'nevjerojatni-recept',
-        },
-      },
-    ],
+    paths: pathsFromSlugs.map((slug) => ({ params: slug })),
     fallback: false,
   }
 }
 
-export async function getStaticProps() {
-  const recipeIngredients = [
-    {
-      id: 1,
-      amount: '400',
-      ingredient: 'bijele riže',
-      unit: 'g',
-    },
-    {
-      id: 2,
-      amount: '1',
-      ingredient: 'rižinog vinskog octa',
-      unit: 'žlica',
-    },
-    {
-      id: 3,
-      amount: '2',
-      ingredient: 'ulja sezama',
-      unit: 'žlica',
-    },
-    {
-      id: 4,
-      amount: '1',
-      ingredient: 'brašna',
-      unit: 'kg',
-    },
-    {
-      id: 5,
-      amount: '1',
-      ingredient: 'čili umaka',
-      unit: 'žličica',
-    },
-    {
-      id: 6,
-      amount: '4',
-      ingredient: 'majoneze',
-      unit: 'žličica',
-    },
-    {
-      id: 7,
-      amount: '1/2',
-      ingredient: 'krastavaca',
-      unit: '',
-    },
-    {
-      id: 8,
-      amount: '1 1/2',
-      ingredient: 'kupusa',
-      unit: '',
-    },
-    {
-      id: 9,
-      amount: '',
-      ingredient: 'morska sol',
-      unit: '',
-    },
-    {
-      id: 10,
-      amount: '',
-      ingredient: 'crni papar',
-      unit: '',
-    },
-  ]
+export async function getStaticProps({ params }: { params: Params }) {
+  const recipe: RecipeProps = await sanityClient.fetch(
+    `
+    *[_type == 'recipe' && slug.current == $slug][0] {
+      'title': title,
+      'imageUrl': mainImage.asset->url,
+      'preparation': preparationTime,
+      'amount': portionAmount,
+      'ingredients': ingredients,
+      'content': body,
+    }
+  `,
+    { slug: params.recept }
+  )
+
+  const ingredients = recipe?.ingredients?.map((field) => ({
+    id: field._key,
+    amount: field.amount ?? '',
+    ingredient: field.ingredient,
+    unit: field.unit ?? '',
+  }))
 
   return {
     props: {
-      recipeIngredients,
+      recipe: { ...recipe, ingredients },
     },
   }
 }

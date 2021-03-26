@@ -4,12 +4,12 @@ export default {
   title: 'Step',
   fields: [
     {
-      name: 'number',
+      name: 'stepNumber',
       type: 'number',
-      title: 'Number',
+      title: 'Step Number',
     },
     {
-      name: 'step',
+      name: 'stepText',
       type: 'recipeStepText',
       title: 'Step',
     },

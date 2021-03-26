@@ -1,11 +1,26 @@
 import {
   createClient,
   createImageUrlBuilder,
+  createPortableTextComponent,
   createPreviewSubscriptionHook,
 } from 'next-sanity'
 
+import { RecipeStep } from '@/root/components/shared/RecipeStep'
+
 type Config = { dataset: string; projectId: string; useCdn: boolean }
+
 type URL = string
+
+type RecipeStepNode = {
+  node: {
+    _key: string
+    _type: string
+    number: number
+    step: {
+      [key: string]: unknown
+    }[]
+  }
+}
 
 // config
 const config: Config = {
@@ -23,6 +38,16 @@ export function urlFor(source: URL) {
 }
 
 // portable text components
+export const PortableText = createPortableTextComponent({
+  ...config,
+  serializers: {
+    types: {
+      recipeStep: ({ node }: RecipeStepNode) => (
+        <RecipeStep stepNumber={node.number} stepText={node.step} />
+      ),
+    },
+  },
+})
 
 // client
 export const sanityClient = createClient(config)
