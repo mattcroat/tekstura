@@ -1,3 +1,9 @@
+type IngredientPreview = {
+  amount: string | number
+  ingredient: string
+  unit: string
+}
+
 export default {
   name: 'recipeIngredient',
   type: 'object',
@@ -36,15 +42,15 @@ export default {
       unit: 'unit',
       ingredient: 'ingredient',
     },
-    prepare({ amount = '', unit, ingredient }) {
+    prepare({ amount, unit, ingredient }: IngredientPreview) {
       if (!unit) {
         return {
-          title: `${amount} ${ingredient}`,
+          title: `${amount ?? ''} ${ingredient}`,
         }
       }
 
       return {
-        title: `${amount} ${unit} ${ingredient}`,
+        title: `${amount ?? ''} ${unit} ${ingredient}`,
       }
     },
   },

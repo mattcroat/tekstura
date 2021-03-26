@@ -1,3 +1,5 @@
+type StepPreview = { step: number }
+
 export default {
   name: 'recipeStep',
   type: 'object',
@@ -18,9 +20,9 @@ export default {
     select: {
       step: 'number',
     },
-    prepare({ step = '' }) {
+    prepare({ step }: StepPreview) {
       return {
-        title: `Step ${step}`,
+        title: `Step ${step ?? ''}`,
       }
     },
   },
