@@ -2,6 +2,10 @@ export default {
   name: 'recipe',
   title: 'Recipe',
   type: 'document',
+  initialValue: {
+    preparationTime: 30,
+    portionAmount: 2,
+  },
   fields: [
     {
       name: 'title',
@@ -40,6 +44,18 @@ export default {
       name: 'publishedAt',
       title: 'Published',
       type: 'datetime',
+    },
+    {
+      name: 'preparationTime',
+      title: 'Preparation',
+      type: 'number',
+      description: 'Enter preparation time in minutes',
+    },
+    {
+      name: 'portionAmount',
+      title: 'Portion',
+      type: 'number',
+      description: 'Leave default, or change it',
     },
     {
       name: 'ingredients',
