@@ -3,39 +3,14 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 
 import { Layout } from '@/root/components/Layout'
+import { sanityClient } from '@/root/lib/sanity/client'
 
-const recipes = [
-  {
-    id: 1,
-    title: 'Svako Jutro Jedno Jaje Organizmu Snagu Daje',
-    src: '/images/dish.webp',
-  },
-  {
-    id: 2,
-    title: 'Osveta je Najbolje Servirana Hladna',
-    src: '/images/dish.webp',
-  },
-  {
-    id: 3,
-    title: 'Jelo Utopljeno u Umaku, ti si Idući',
-    src: '/images/dish.webp',
-  },
-  {
-    id: 4,
-    title: 'Svako Jutro Jedno Jaje Organizmu Snagu Daje',
-    src: '/images/dish.webp',
-  },
-  {
-    id: 5,
-    title: 'Osveta je Najbolje Servirana Hladna',
-    src: '/images/dish.webp',
-  },
-  {
-    id: 6,
-    title: 'Jelo Utopljeno u Umaku, ti si Idući',
-    src: '/images/dish.webp',
-  },
-]
+type Recipe = {
+  id: string
+  title: string
+  imageUrl: string
+  slug: string
+}
 
 const variants = {
   cards: {
@@ -55,25 +30,24 @@ const variants = {
 }
 
 export function Recipes() {
-  const [searchTerm, setSearchTerm] = React.useState<string>('')
-  const [searchResults, setSearchResults] = React.useState<
-    {
-      id: number
-      title: string
-      src: string
-    }[]
-  >()
-
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setTimeout(() => setSearchTerm(e.target.value), 1000)
-  }
+  const [recipes, setRecipes] = React.useState<Recipe[]>([])
 
   React.useEffect(() => {
-    const results = recipes.filter((recipe) =>
-      recipe.title.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-    setSearchResults(results)
-  }, [searchTerm])
+    async function getRecipes() {
+      const recipes: Recipe[] = await sanityClient.fetch(`
+        *[_type == 'recipe'] | order(_createdAt desc) {
+          'id': _id,
+          'title': title,
+          'imageUrl': mainImage.asset->url,
+          'slug': slug.current
+        }
+      `)
+
+      setRecipes(recipes)
+    }
+
+    getRecipes()
+  }, [])
 
   return (
     <Layout>
@@ -101,7 +75,6 @@ export function Recipes() {
           </svg>
           <input
             className="w-full py-2 pl-12 bg-white border border-gray-200 shadow-sm lg:w-search"
-            onChange={handleChange}
             type="text"
             id="recipe-search"
             name="recipe-search"
@@ -110,31 +83,28 @@ export function Recipes() {
         </div>
 
         <motion.section
-          className="my-8 md:grid md:grid-cols-2 md:gap-4 lg:grid-cols-3"
+          className="my-8 md:grid md:grid-cols-2 md:gap-8 lg:grid-cols-3"
           initial="hidden"
           animate="show"
           variants={variants.cards}
         >
-          {searchResults?.map(({ id, title, src }) => (
+          {recipes?.map(({ id, title, imageUrl, slug }) => (
             <motion.article
               key={id}
-              className="border-2 border-gray-50 hover:border-yellow-400 dark:border-gray-800 dark:hover:border-yellow-400 transition"
+              className="mt-8 md:mt-0"
               variants={variants.card}
             >
-              <Link href="#">
+              <Link href={`/recepti/${slug}`}>
                 <a>
-                  <div className="relative group overflow-hidden">
+                  <div className="relative overflow-hidden">
                     <img
-                      className="h-80 w-full object-cover transform group-hover:scale-110 transition"
-                      src={src}
+                      className="h-72 w-full object-cover transform hover:scale-110 transition"
+                      src={`${imageUrl}?h=400`}
                       alt={title}
                     />
-                    <div className="absolute bottom-0 z-10">
-                      <h3 className="p-4 text-2xl text-yellow-400 capitalize">
-                        {title}
-                      </h3>
-                    </div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-gray-800 dark:from-gray-900"></div>
+                  </div>
+                  <div className="mt-2 text-lg dark:text-gray-50 font-bold">
+                    {title}
                   </div>
                 </a>
               </Link>
