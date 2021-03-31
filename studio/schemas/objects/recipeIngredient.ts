@@ -34,6 +34,7 @@ export default {
       name: 'ingredient',
       title: 'Ingredient',
       type: 'string',
+      validation: (Rule) => Rule.required(),
     },
   ],
   preview: {
