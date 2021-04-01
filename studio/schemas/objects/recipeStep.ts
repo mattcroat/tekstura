@@ -1,4 +1,4 @@
-type StepPreview = { step: number }
+import type { Rule, StepPreview } from '../../types/schemaTypes'
 
 export default {
   name: 'recipeStep',
@@ -9,13 +9,13 @@ export default {
       name: 'stepNumber',
       type: 'number',
       title: 'Step Number',
-      validation: (Rule) => Rule.required(),
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'stepText',
       type: 'recipeStepText',
       title: 'Step',
-      validation: (Rule) => Rule.required(),
+      validation: (Rule: Rule) => Rule.required(),
     },
   ],
   preview: {

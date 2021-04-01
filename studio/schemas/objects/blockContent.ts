@@ -1,3 +1,5 @@
+import type { Rule } from '../../types/schemaTypes'
+
 export default {
   title: 'Block Content',
   name: 'blockContent',
@@ -45,7 +47,7 @@ export default {
           options: {
             isHighlighted: true,
           },
-          validation: (Rule) => Rule.required(),
+          validation: (Rule: Rule) => Rule.required(),
         },
       ],
     },

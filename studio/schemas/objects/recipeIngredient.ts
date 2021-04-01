@@ -1,8 +1,4 @@
-type IngredientPreview = {
-  amount: string | number
-  ingredient: string
-  unit: string
-}
+import type { IngredientPreview, Rule } from '../../types/schemaTypes'
 
 export default {
   name: 'recipeIngredient',
@@ -34,7 +30,7 @@ export default {
       name: 'ingredient',
       title: 'Ingredient',
       type: 'string',
-      validation: (Rule) => Rule.required(),
+      validation: (Rule: Rule) => Rule.required(),
     },
   ],
   preview: {
