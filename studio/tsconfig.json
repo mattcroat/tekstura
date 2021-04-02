@@ -1,5 +1,6 @@
 {
   "include": [
+    "types/**/*",
     "./node_modules/@sanity/base/types/**/*.ts",
     "./**/*.ts",
     "./**/*.tsx"
