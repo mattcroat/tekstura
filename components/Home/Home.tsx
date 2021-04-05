@@ -39,13 +39,13 @@ export function Home({ latestRecipe }: HomeProps) {
                 Email
               </label>
               <input
-                className="p-2 bg-white border border-opacity-10 md:border-none"
+                className="p-2 transition bg-white border focus:outline-none focus:ring-2 focus:ring-yellow-500 border-opacity-10 md:border-none"
                 type="email"
                 id="email"
                 placeholder="budi@zakon.com"
               />
               <button
-                className="p-2 transition bg-yellow-400 shadow-sm hover:bg-yellow-300"
+                className="p-2 transition bg-yellow-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 hover:bg-yellow-300"
                 type="submit"
               >
                 <div className="flex items-center justify-center">
