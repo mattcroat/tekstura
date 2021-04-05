@@ -1,9 +1,9 @@
-interface Props {
+interface MenuButtonProps {
   isOpen: boolean
   toggle: () => void
 }
 
-export function MenuButton({ isOpen, toggle }: Props) {
+export function MenuButton({ isOpen, toggle }: MenuButtonProps) {
   const btnTextColor = isOpen
     ? 'text-gray-800'
     : 'text-gray-800 dark:text-gray-50'
@@ -11,7 +11,7 @@ export function MenuButton({ isOpen, toggle }: Props) {
   return (
     <button className={btnTextColor} onClick={toggle}>
       <svg
-        className="h-6 w-6"
+        className="w-6 h-6"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"

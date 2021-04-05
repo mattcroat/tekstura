@@ -8,7 +8,7 @@ type LayoutProps = {
 export function Layout({ children, layout }: LayoutProps) {
   if (layout?.landingPage) {
     return (
-      <div className="h-screen flex flex-col">
+      <div className="flex flex-col h-screen">
         <Header />
         {children}
       </div>

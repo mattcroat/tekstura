@@ -1,7 +1,7 @@
 export function Moon() {
   return (
     <svg
-      className="h-6 w-6"
+      className="w-6 h-6"
       aria-hidden="true"
       focusable="false"
       role="img"
@@ -17,7 +17,7 @@ export function Moon() {
 export function Sun() {
   return (
     <svg
-      className="h-6 w-6"
+      className="w-6 h-6"
       aria-hidden="true"
       focusable="false"
       role="img"

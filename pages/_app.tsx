@@ -24,7 +24,7 @@ export default function App({ Component, pageProps, router }: AppProps) {
         </motion.div>
         <motion.div
           key={router.route}
-          className="absolute inset-0 origin-right bg-yellow-400 z-50"
+          className="absolute inset-0 z-50 origin-right bg-yellow-400"
           initial={{ scaleX: 0 }}
           exit={{ scaleX: [0, 1] }}
           transition={{

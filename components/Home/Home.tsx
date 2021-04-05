@@ -16,7 +16,7 @@ export function Home({ latestRecipe }: HomeProps) {
 
   return (
     <Layout layout={{ landingPage: true }}>
-      <section className="flex-1 relative mt-8 md:mt-16 lg:px-16">
+      <section className="relative flex-1 mt-8 md:mt-16 lg:px-16">
         <div className="px-8 text-left dark:text-gray-50 md:px-0 md:text-center">
           <h1 className="text-2xl md:text-3xl">Recepti, savjeti i više</h1>
           <p className="mt-2">
@@ -24,9 +24,9 @@ export function Home({ latestRecipe }: HomeProps) {
           </p>
         </div>
 
-        <aside className="flex flex-col items-center mt-8 p-8 space-y-4 bg-gray-50 md:border md:border-opacity-10 md:shadow-sm lg:mt-0 lg:z-50 lg:absolute lg:bottom-0 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:translate-y-1/2">
+        <aside className="flex flex-col items-center p-8 mt-8 space-y-4 bg-gray-50 md:border md:border-opacity-10 md:shadow-sm lg:mt-0 lg:z-50 lg:absolute lg:bottom-0 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:translate-y-1/2">
           <img
-            className="h-16 w-16 object-cover rounded-full"
+            className="object-cover w-16 h-16 rounded-full"
             src="/images/avatar.webp"
             alt="Placeholder"
           />
@@ -47,7 +47,7 @@ export function Home({ latestRecipe }: HomeProps) {
               <button className="p-2 bg-yellow-400 shadow-sm" type="submit">
                 <div className="flex items-center justify-center">
                   <svg
-                    className="inline h-6 w-6 mx-1"
+                    className="inline w-6 h-6 mx-1"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
@@ -68,17 +68,17 @@ export function Home({ latestRecipe }: HomeProps) {
         </aside>
       </section>
 
-      <main className="h-1/2 relative text-center">
+      <main className="relative text-center h-1/2">
         <img
-          className="h-full w-full object-cover"
+          className="object-cover w-full h-full"
           src={imageUrl}
           alt={title}
         />
-        <div className="h-full w-full absolute top-0 flex flex-col justify-center items-center px-2 text-gray-50 z-10">
+        <div className="absolute top-0 z-10 flex flex-col items-center justify-center w-full h-full px-2 text-gray-50">
           <h3 className="text-xl md:text-3xl md:pt-8 md:px-16">{title}</h3>
           <div className="mt-2 group">
             <Link href={`/recepti/${slug}`}>
-              <a className="font-heading text-xl text-yellow-400">recept</a>
+              <a className="text-xl text-yellow-400 font-heading">recept</a>
             </Link>
             <div className="h-0.5 scale-x-0 origin-left bg-yellow-400 transform group-hover:scale-x-100 transition"></div>
           </div>

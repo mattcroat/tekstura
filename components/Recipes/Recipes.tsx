@@ -62,7 +62,7 @@ export function Recipes() {
             Search
           </label>
           <svg
-            className="absolute top-2 left-1 h-6 w-6 mx-2 text-gray-300"
+            className="absolute w-6 h-6 mx-2 text-gray-300 top-2 left-1"
             aria-hidden="true"
             focusable="false"
             xmlns="http://www.w3.org/2000/svg"
@@ -98,12 +98,12 @@ export function Recipes() {
                 <a>
                   <div className="relative overflow-hidden">
                     <img
-                      className="h-72 w-full object-cover transform hover:scale-110 transition"
+                      className="object-cover w-full transition transform h-72 hover:scale-110"
                       src={`${imageUrl}?h=400`}
                       alt={title}
                     />
                   </div>
-                  <div className="mt-2 text-lg dark:text-gray-50 font-bold">
+                  <div className="mt-2 text-lg font-bold dark:text-gray-50">
                     {title}
                   </div>
                 </a>

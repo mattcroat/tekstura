@@ -54,12 +54,12 @@ export function Recipe({ recipe }: { recipe: RecipeProps }) {
 
   return (
     <Layout>
-      <div className="h-96 mt-8 px-8 md:mt-16 md:px-16">
-        <img className="h-full w-full object-cover" src={imageUrl} alt="Dish" />
+      <div className="px-8 mt-8 h-96 md:mt-16 md:px-16">
+        <img className="object-cover w-full h-full" src={imageUrl} alt="Dish" />
       </div>
 
       <motion.main
-        className="my-8 md:my-16 px-8 md:px-16 dark:text-gray-50 md:flex md:gap-x-16"
+        className="px-8 my-8 md:my-16 md:px-16 dark:text-gray-50 md:flex md:gap-x-16"
         initial="hidden"
         animate="show"
         variants={variants.recipe}
@@ -89,7 +89,7 @@ export function Recipe({ recipe }: { recipe: RecipeProps }) {
 
               <div className="pl-6">
                 <h3 className="text-lg">Porcija</h3>
-                <div className="text-xl font-bold space-x-2">
+                <div className="space-x-2 text-xl font-bold">
                   <button onClick={decreasePortion}>-</button>
                   <span className="select-none">{portion}</span>
                   <button onClick={increasePortion}>+</button>
@@ -102,9 +102,9 @@ export function Recipe({ recipe }: { recipe: RecipeProps }) {
               <Ingredients ingredients={ingredients} />
             </div>
 
-            <div className="max-w-lg mx-auto mt-8 p-6 border border-gray-800 dark:border-gray-50 border-opacity-10 dark:border-opacity-10 shadow-sm md:mr-8">
+            <div className="max-w-lg p-6 mx-auto mt-8 border border-gray-800 shadow-sm dark:border-gray-50 border-opacity-10 dark:border-opacity-10 md:mr-8">
               <h2 className="text-xl">Budite obaviješteni</h2>
-              <form className="flex flex-col gap-y-2 mt-4">
+              <form className="flex flex-col mt-4 gap-y-2">
                 <label className="sr-only" htmlFor="email">
                   Email
                 </label>
@@ -120,7 +120,7 @@ export function Recipe({ recipe }: { recipe: RecipeProps }) {
                 >
                   <div className="flex items-center justify-center">
                     <svg
-                      className="inline h-6 w-6 mx-1"
+                      className="inline w-6 h-6 mx-1"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
@@ -143,10 +143,10 @@ export function Recipe({ recipe }: { recipe: RecipeProps }) {
 
         <section className="leading-relaxed md:w-full">
           <div>
-            <h1 className="mt-8 text-2xl dark:text-yellow-400 capitalize md:mt-0 md:text-3xl">
+            <h1 className="mt-8 text-2xl capitalize dark:text-yellow-400 md:mt-0 md:text-3xl">
               {title}
             </h1>
-            <div className="h-1 w-16 mt-4 bg-yellow-400"></div>
+            <div className="w-16 h-1 mt-4 bg-yellow-400"></div>
           </div>
 
           <PortableText blocks={content} className="mt-8 space-y-8" />

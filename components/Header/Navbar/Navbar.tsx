@@ -4,15 +4,15 @@ import { ThemeToggle } from '@/root/components/shared/ThemeToggle'
 
 export function Navbar() {
   return (
-    <header className="hidden text-gray-800 dark:text-gray-50 mt-16 px-16 md:flex md:justify-between md:items-center">
-      <div className="text-2xl font-heading font-bold md:text-3xl">
+    <header className="hidden px-16 mt-16 text-gray-800 dark:text-gray-50 md:flex md:justify-between md:items-center">
+      <div className="text-2xl font-bold font-heading md:text-3xl">
         <Link href="/">
           <a>Tekstura</a>
         </Link>
       </div>
 
       <nav>
-        <ul className="flex gap-x-6 font-bold">
+        <ul className="flex font-bold gap-x-6">
           <li>
             <div className="group">
               <Link href="/">
