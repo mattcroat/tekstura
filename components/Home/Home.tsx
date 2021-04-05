@@ -24,7 +24,7 @@ export function Home({ latestRecipe }: HomeProps) {
           </p>
         </div>
 
-        <aside className="flex flex-col items-center p-8 mt-8 space-y-4 bg-gray-50 md:border md:border-opacity-10 md:shadow-sm lg:mt-0 lg:z-50 lg:absolute lg:bottom-0 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:translate-y-1/2">
+        <aside className="flex flex-col items-center p-8 mt-8 space-y-4 transition bg-gray-50 md:border md:border-opacity-10 md:shadow-sm md:hover:shadow-lg lg:mt-0 lg:z-40 lg:absolute lg:bottom-0 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:translate-y-1/2">
           <img
             className="object-cover w-16 h-16 rounded-full"
             src="/images/avatar.webp"
