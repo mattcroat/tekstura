@@ -20,6 +20,10 @@ module.exports = {
       },
     },
   },
-  variants: {},
+  variants: {
+    extend: {
+      scale: ['group-hover'],
+    },
+  },
   plugins: [],
 }
