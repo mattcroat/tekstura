@@ -6,16 +6,7 @@ import { Ingredients } from '@/root/components/Recipe/Ingredients'
 import { PortableText } from '@/root/lib/sanity/client'
 import { formatIngredients } from '@/root/utils/recipe'
 
-import type { Ingredient } from '@/root/utils/recipe'
-
-type RecipeProps = {
-  title: string
-  imageUrl: string
-  preparation: number
-  amount: number
-  ingredients: Ingredient[]
-  content: any
-}
+import type { Ingredient, RecipeProps } from '@/root/types/recipe'
 
 const variants = {
   recipe: {

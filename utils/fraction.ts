@@ -1,4 +1,4 @@
-import type { Amount } from '@/root/utils/recipe'
+import type { Amount } from '@/root/types/recipe'
 
 export function isFraction(amount: Amount) {
   if (typeof amount === 'string') {

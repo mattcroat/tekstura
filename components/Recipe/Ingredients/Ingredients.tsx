@@ -1,4 +1,4 @@
-import { Ingredient } from '@/root/utils/recipe'
+import { Ingredient } from '@/root/types/recipe'
 
 type IngredientsProps = {
   ingredients: Ingredient[]

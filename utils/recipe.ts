@@ -4,40 +4,7 @@ import {
   numberToFraction,
 } from '@/root/utils/fraction'
 
-export type Ingredient = {
-  _key?: string
-  id: number
-  amount: Amount
-  ingredient: string
-  unit: string
-}
-
-export type Amount = string | number
-
-type Units = {
-  [key: string]: {
-    singular: string
-    plural: string
-    greater?: string
-  }
-  g: {
-    singular: string
-    plural: string
-    greater: string
-  }
-  kg: {
-    singular: string
-    plural: string
-  }
-  žličica: {
-    singular: string
-    plural: string
-  }
-  žlica: {
-    singular: string
-    plural: string
-  }
-}
+import type { Ingredient, Amount, Units } from '@/root/types/recipe'
 
 export function formatIngredients(
   ingredients: Ingredient[],

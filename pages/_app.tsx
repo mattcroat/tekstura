@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import type { AppProps } from 'next/app'
 import Head from 'next/head'
+
+import type { AppProps } from 'next/app'
 
 import '@/root/styles/global.css'
 

@@ -1,20 +1,7 @@
 import { Recipe } from '@/root/components/Recipe'
 import { sanityClient } from '@/root/lib/sanity/client'
 
-import type { Ingredient } from '@/root/utils/recipe'
-
-type RecipeProps = {
-  title: string
-  imageUrl: string
-  preparation: number
-  amount: number
-  ingredients: Ingredient[]
-  content: any
-}
-
-type Slug = string
-
-type Params = { recept: string }
+import type { Params, RecipeProps, Slug } from '@/root/types/recipe'
 
 export default function RecipePage({ recipe }: { recipe: RecipeProps }) {
   return <Recipe recipe={recipe} />
