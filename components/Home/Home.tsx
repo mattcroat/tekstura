@@ -44,7 +44,10 @@ export function Home({ latestRecipe }: HomeProps) {
                 id="email"
                 placeholder="budi@zakon.com"
               />
-              <button className="p-2 bg-yellow-400 shadow-sm" type="submit">
+              <button
+                className="p-2 transition bg-yellow-400 shadow-sm hover:bg-yellow-300"
+                type="submit"
+              >
                 <div className="flex items-center justify-center">
                   <svg
                     className="inline w-6 h-6 mx-1"

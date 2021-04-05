@@ -115,7 +115,7 @@ export function Recipe({ recipe }: { recipe: RecipeProps }) {
                   placeholder="budi@zakon.com"
                 />
                 <button
-                  className="p-2 text-gray-800 bg-yellow-400"
+                  className="p-2 text-gray-800 transition bg-yellow-400 hover:bg-yellow-300"
                   type="submit"
                 >
                   <div className="flex items-center justify-center">
