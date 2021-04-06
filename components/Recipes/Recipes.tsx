@@ -29,25 +29,60 @@ const variants = {
   },
 }
 
+async function fetchRecipes(): Promise<Recipe[]> {
+  return sanityClient.fetch(`
+    *[_type == 'recipe'] | order(_createdAt desc) {
+      'id': _id,
+      'title': title,
+      'imageUrl': mainImage.asset->url,
+      'slug': slug.current
+    }[0...20]
+  `)
+}
+
+async function queryRecipes(searchQuery: string): Promise<Recipe[]> {
+  return sanityClient.fetch(
+    `
+    *[_type == 'recipe' && title match $title || $tag in tags] {
+      'id': _id,
+      'title': title,
+      'imageUrl': mainImage.asset->url,
+      'slug': slug.current
+    }[0...20]
+  `,
+    {
+      title: `${searchQuery}*`,
+      tag: searchQuery,
+    }
+  )
+}
+
 export function Recipes() {
+  const [searchQuery, setSearchQuery] = React.useState<string>('')
   const [recipes, setRecipes] = React.useState<Recipe[]>([])
 
-  React.useEffect(() => {
-    async function getRecipes() {
-      const recipes: Recipe[] = await sanityClient.fetch(`
-        *[_type == 'recipe'] | order(_createdAt desc) {
-          'id': _id,
-          'title': title,
-          'imageUrl': mainImage.asset->url,
-          'slug': slug.current
-        }
-      `)
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setSearchQuery(e.target.value)
+  }
 
+  React.useEffect(() => {
+    async function latestRecipes() {
+      const recipes = await fetchRecipes()
       setRecipes(recipes)
     }
 
-    getRecipes()
-  }, [])
+    async function searchResults() {
+      const recipes = await queryRecipes(searchQuery)
+      setRecipes(recipes)
+    }
+
+    if (searchQuery) {
+      searchResults()
+      return
+    }
+
+    latestRecipes()
+  }, [searchQuery])
 
   return (
     <Layout>
@@ -74,14 +109,15 @@ export function Recipes() {
             />
           </svg>
           <input
+            onChange={handleChange}
             className="w-full py-2 pl-12 bg-white border border-gray-200 shadow-sm lg:w-search"
             type="text"
             id="recipe-search"
             name="recipe-search"
             placeholder="Pretražite recepte"
+            value={searchQuery}
           />
         </div>
-
         <motion.section
           className="my-8 md:grid md:grid-cols-2 md:gap-8 lg:grid-cols-3"
           initial="hidden"
