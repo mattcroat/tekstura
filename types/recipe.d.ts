@@ -45,3 +45,10 @@ export type RecipeProps = {
 export type Slug = string
 
 export type Params = { recept: string }
+
+export type Recipe = {
+  id: string
+  title: string
+  imageUrl: string
+  slug: string
+}
