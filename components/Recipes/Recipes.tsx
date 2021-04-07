@@ -3,14 +3,10 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 
 import { Layout } from '@/root/components/Layout'
-import { sanityClient } from '@/root/lib/sanity/client'
+import { fetchRecipes, queryRecipes } from '@/root/lib/api'
+import { debounce } from '@/root/utils/general'
 
-type Recipe = {
-  id: string
-  title: string
-  imageUrl: string
-  slug: string
-}
+import type { Recipe } from '@/root/types/recipe'
 
 const variants = {
   cards: {
@@ -29,59 +25,22 @@ const variants = {
   },
 }
 
-async function fetchRecipes(): Promise<Recipe[]> {
-  return sanityClient.fetch(`
-    *[_type == 'recipe'] | order(_createdAt desc) {
-      'id': _id,
-      'title': title,
-      'imageUrl': mainImage.asset->url,
-      'slug': slug.current
-    }[0...20]
-  `)
-}
-
-async function queryRecipes(searchQuery: string): Promise<Recipe[]> {
-  return sanityClient.fetch(
-    `
-    *[_type == 'recipe' && title match $title || $tag in tags] {
-      'id': _id,
-      'title': title,
-      'imageUrl': mainImage.asset->url,
-      'slug': slug.current
-    }[0...20]
-  `,
-    {
-      title: `${searchQuery}*`,
-      tag: searchQuery,
-    }
-  )
-}
-
 export function Recipes() {
   const [searchQuery, setSearchQuery] = React.useState<string>('')
   const [recipes, setRecipes] = React.useState<Recipe[]>([])
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setSearchQuery(e.target.value)
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    event.persist()
+    setSearchQuery(event.target.value)
   }
 
   React.useEffect(() => {
-    async function latestRecipes() {
-      const recipes = await fetchRecipes()
-      setRecipes(recipes)
-    }
-
-    async function searchResults() {
-      const recipes = await queryRecipes(searchQuery)
-      setRecipes(recipes)
-    }
-
     if (searchQuery) {
-      searchResults()
+      queryRecipes(searchQuery).then(setRecipes)
       return
     }
 
-    latestRecipes()
+    fetchRecipes().then(setRecipes)
   }, [searchQuery])
 
   return (
@@ -109,13 +68,12 @@ export function Recipes() {
             />
           </svg>
           <input
-            onChange={handleChange}
-            className="w-full py-2 pl-12 bg-white border border-gray-200 shadow-sm lg:w-search"
+            onChange={debounce(handleChange, 1000)}
+            className="w-full py-2 pl-12 transition bg-white border border-gray-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 lg:w-search"
             type="text"
             id="recipe-search"
             name="recipe-search"
             placeholder="Pretražite recepte"
-            value={searchQuery}
           />
         </div>
         <motion.section
