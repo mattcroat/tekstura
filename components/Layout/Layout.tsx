@@ -1,4 +1,5 @@
 import { Header } from '@/root/components/Header'
+import { SlideEffect } from '@/root/components/shared/SlideEffect'
 
 type LayoutProps = {
   children: React.ReactNode
@@ -11,6 +12,7 @@ export function Layout({ children, layout }: LayoutProps) {
       <div className="flex flex-col h-screen">
         <Header />
         {children}
+        <SlideEffect />
       </div>
     )
   }
@@ -20,6 +22,7 @@ export function Layout({ children, layout }: LayoutProps) {
       <div className="xl:max-w-7xl xl:mx-auto">
         <Header />
         {children}
+        <SlideEffect />
       </div>
     </>
   )
