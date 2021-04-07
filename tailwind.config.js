@@ -16,7 +16,7 @@ module.exports = {
     },
     extend: {
       spacing: {
-        search: '23.2rem',
+        search: '22.8rem',
       },
     },
   },
