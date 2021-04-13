@@ -1,4 +1,5 @@
 import React from 'react'
+import { motion } from 'framer-motion'
 import Link from 'next/link'
 
 import { Layout } from '@/root/components/Layout'
@@ -16,7 +17,11 @@ export function Home({ latestRecipe }: HomeProps) {
 
   return (
     <Layout layout={{ landingPage: true }}>
-      <section className="relative flex-1 mt-8 md:mt-16 lg:px-16">
+      <motion.section
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="relative z-20 flex-1 mt-8 md:mt-16 lg:px-16"
+      >
         <div className="px-8 text-left dark:text-gray-50 md:px-0 md:text-center">
           <h1 className="text-2xl md:text-3xl">Recepti, savjeti i više</h1>
           <p className="mt-2">
@@ -24,7 +29,7 @@ export function Home({ latestRecipe }: HomeProps) {
           </p>
         </div>
 
-        <aside className="flex flex-col items-center p-8 mt-8 space-y-4 transition bg-gray-50 md:border md:border-opacity-10 md:shadow-sm md:hover:shadow-lg lg:mt-0 lg:z-40 lg:absolute lg:bottom-0 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:translate-y-1/2">
+        <aside className="flex flex-col items-center p-8 mt-8 space-y-4 transition bg-gray-50 md:border md:border-opacity-10 md:shadow-sm md:hover:shadow-lg lg:mt-0 lg:absolute lg:bottom-0 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:translate-y-1/2">
           <img
             className="object-cover w-16 h-16 rounded-full"
             src="/images/avatar.webp"
@@ -69,9 +74,13 @@ export function Home({ latestRecipe }: HomeProps) {
             </div>
           </form>
         </aside>
-      </section>
+      </motion.section>
 
-      <main className="relative text-center h-1/2">
+      <motion.main
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="relative text-center h-1/2"
+      >
         <img
           className="object-cover w-full h-full"
           src={imageUrl}
@@ -87,7 +96,7 @@ export function Home({ latestRecipe }: HomeProps) {
           </div>
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-black"></div>
-      </main>
+      </motion.main>
     </Layout>
   )
 }
