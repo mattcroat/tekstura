@@ -29,12 +29,24 @@ export function Home({ latestRecipe }: HomeProps) {
           </p>
         </div>
 
-        <aside className="flex flex-col items-center p-8 mt-8 space-y-4 transition bg-gray-50 md:border md:border-opacity-10 md:shadow-sm md:hover:shadow-lg lg:mt-0 lg:absolute lg:bottom-0 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:translate-y-1/2">
-          <img
-            className="object-cover w-16 h-16 rounded-full"
-            src="/images/avatar.webp"
-            alt="Placeholder"
-          />
+        <aside className="flex flex-col items-center p-8 mt-8 space-y-4 transition bg-gray-50 lg:border lg:border-opacity-10 md:shadow-sm md:hover:shadow-lg lg:mt-0 lg:absolute lg:bottom-0 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:translate-y-1/2">
+          <div className="flex items-center justify-center w-16 h-16 bg-yellow-500 rounded-full">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-8 h-8 transform rotate-45 -translate-y-0.5 translate-x-0.5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.2}
+                d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+              />
+            </svg>
+          </div>
+
           <h2 className="text-center">
             Besplatno primajte obavijesti u sandučić
           </h2>
@@ -50,7 +62,7 @@ export function Home({ latestRecipe }: HomeProps) {
                 placeholder="budi@zakon.com"
               />
               <button
-                className="p-2 transition bg-yellow-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 hover:bg-yellow-300"
+                className="p-2 transition bg-yellow-500 shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 hover:bg-yellow-400"
                 type="submit"
               >
                 <div className="flex items-center justify-center">
@@ -87,12 +99,12 @@ export function Home({ latestRecipe }: HomeProps) {
           alt={title}
         />
         <div className="absolute top-0 z-10 flex flex-col items-center justify-center w-full h-full px-2 text-gray-50">
-          <h3 className="text-xl md:text-3xl md:pt-8 md:px-16">{title}</h3>
+          <h3 className="text-2xl md:text-3xl md:pt-8 md:px-16">{title}</h3>
           <div className="mt-2 group">
             <Link href={`/recepti/${slug}`}>
-              <a className="text-xl text-yellow-400 font-heading">recept</a>
+              <a className="text-xl text-yellow-500 font-heading">recept</a>
             </Link>
-            <div className="h-0.5 scale-x-0 origin-left bg-yellow-400 transform group-hover:scale-x-100 transition"></div>
+            <div className="h-0.5 scale-x-0 origin-left bg-yellow-500 transform group-hover:scale-x-100 transition"></div>
           </div>
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-black"></div>

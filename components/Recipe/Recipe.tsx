@@ -108,7 +108,7 @@ export function Recipe({ recipe }: { recipe: RecipeProps }) {
             </div>
 
             <div className="mt-8 md:mr-8">
-              <h2 className="text-xl dark:text-yellow-400">Sastojci</h2>
+              <h2 className="text-xl">Sastojci</h2>
               <Ingredients ingredients={ingredients} />
             </div>
 
@@ -119,13 +119,13 @@ export function Recipe({ recipe }: { recipe: RecipeProps }) {
                   Email
                 </label>
                 <input
-                  className="p-2 text-gray-800 shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 "
+                  className="p-2 border border-gray-800 shadow-sm border-opacity-10 focus:outline-none focus:ring-2 focus:ring-yellow-500"
                   type="email"
                   id="email"
                   placeholder="budi@zakon.com"
                 />
                 <button
-                  className="p-2 text-gray-800 transition bg-yellow-400 hover:bg-yellow-300 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                  className="p-2 transition bg-yellow-500 dark:text-gray-800 hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-500"
                   type="submit"
                 >
                   <div className="flex items-center justify-center">
@@ -153,10 +153,10 @@ export function Recipe({ recipe }: { recipe: RecipeProps }) {
 
         <section className="leading-relaxed md:w-full">
           <div>
-            <h1 className="mt-8 text-2xl capitalize dark:text-yellow-400 md:mt-0 md:text-3xl">
+            <h1 className="mt-8 text-2xl capitalize md:mt-0 md:text-3xl">
               {title}
             </h1>
-            <div className="w-16 h-1 mt-4 bg-yellow-400"></div>
+            <div className="w-16 h-1 mt-4 bg-yellow-500"></div>
           </div>
 
           <PortableText blocks={content} className="mt-8 space-y-8" />

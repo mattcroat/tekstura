@@ -47,7 +47,7 @@ export function Recipes() {
     <Layout>
       <main className="px-8 md:px-16">
         <h1 className="mt-8 text-2xl dark:text-gray-50 md:mt-16">Pretraga</h1>
-        <div className="relative mt-4 text-gray-800">
+        <div className="relative mt-4">
           <label
             className="sr-only"
             aria-hidden="false"

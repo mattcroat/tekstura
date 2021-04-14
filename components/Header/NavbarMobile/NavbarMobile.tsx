@@ -25,10 +25,8 @@ const variants = {
 
 export function NavbarMobile() {
   const [isOpen, setIsOpen] = useState(false)
-  const headerColor = isOpen ? 'bg-yellow-400' : ''
-  const logoTextColor = isOpen
-    ? 'text-gray-800'
-    : 'text-gray-800 dark:text-gray-50'
+  const headerColor = isOpen ? 'bg-yellow-500' : ''
+  const logoTextColor = !isOpen ? 'dark:text-gray-50' : ''
 
   return (
     <header
