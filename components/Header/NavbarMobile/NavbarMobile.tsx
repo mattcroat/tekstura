@@ -32,7 +32,7 @@ export function NavbarMobile() {
     <header
       className={`${headerColor} pt-8 px-8 font-bold transition md:hidden`}
     >
-      <div className="flex justify-between">
+      <div className="flex items-center justify-between">
         <div className={`${logoTextColor} text-2xl font-heading font-bold`}>
           <Link href="/">
             <a>Tekstura</a>
@@ -45,7 +45,7 @@ export function NavbarMobile() {
         {isOpen && (
           <nav>
             <motion.ul
-              className="py-8 space-y-4"
+              className="py-8 space-y-4 list-none"
               initial="hidden"
               animate="show"
               exit="yeet"
