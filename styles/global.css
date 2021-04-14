@@ -9,25 +9,29 @@
   }
 
   body {
-    font-family: 'Merriweather', serif;
+    @apply font-serif;
   }
 
   h1,
   h2,
   h3 {
-    font-family: 'Playfair Display', serif;
+    @apply font-heading;
+  }
+
+  ul {
+    @apply list-disc list-inside;
+  }
+
+  blockquote {
+    @apply pl-4 italic border-l-2 border-yellow-500;
   }
 
   ::-webkit-scrollbar {
-    width: 6px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background-color: none;
+    @apply w-1.5;
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: theme('colors.yellow.400');
+    @apply bg-yellow-500;
   }
 }
 
