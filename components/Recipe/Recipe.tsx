@@ -55,7 +55,11 @@ export function Recipe({ recipe }: { recipe: RecipeProps }) {
   return (
     <Layout>
       <div className="px-8 mt-8 h-96 md:mt-16 md:px-16">
-        <img className="object-cover w-full h-full" src={imageUrl} alt="Dish" />
+        <img
+          className="object-cover w-full h-full"
+          src={imageUrl}
+          alt={title}
+        />
       </div>
 
       <motion.main
@@ -158,7 +162,6 @@ export function Recipe({ recipe }: { recipe: RecipeProps }) {
             </h1>
             <div className="w-16 h-1 mt-4 bg-yellow-500"></div>
           </div>
-
           <PortableText blocks={content} className="mt-8 space-y-8" />
         </section>
       </motion.main>
