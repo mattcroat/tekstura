@@ -1,7 +1,9 @@
 import React from 'react'
 import { Moon, Sun } from '@/root/components/shared/ThemeToggle/Icons'
 
-export function ThemeToggle() {
+type ThemeToggleProps = { focus: string }
+
+export function ThemeToggle({ focus }: ThemeToggleProps) {
   const [isMounted, setIsMounted] = React.useState(false)
   const [isDarkMode, setIsDarkMode] = React.useState(() => {
     if (typeof window !== 'undefined') {
@@ -25,6 +27,7 @@ export function ThemeToggle() {
 
   return (
     <button
+      className={focus}
       aria-label="Theme toggle"
       onClick={() => setIsDarkMode(!isDarkMode)}
     >

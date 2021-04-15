@@ -4,7 +4,9 @@ interface MenuButtonProps {
 }
 
 export function MenuButton({ isOpen, toggle }: MenuButtonProps) {
-  const btnTextColor = !isOpen ? 'dark:text-gray-50' : ''
+  const btnTextColor = !isOpen
+    ? 'dark:text-gray-50'
+    : 'focus:outline-none focus:ring-2 focus:ring-black'
 
   return (
     <button className={btnTextColor} onClick={toggle}>

@@ -27,6 +27,7 @@ export function NavbarMobile() {
   const [isOpen, setIsOpen] = useState(false)
   const headerColor = isOpen ? 'bg-yellow-500' : ''
   const logoTextColor = !isOpen ? 'dark:text-gray-50' : ''
+  const focus = isOpen ? 'focus:outline-none focus:ring-2 focus:ring-black' : ''
 
   return (
     <header
@@ -35,7 +36,7 @@ export function NavbarMobile() {
       <div className="flex items-center justify-between">
         <div className={`${logoTextColor} text-2xl font-heading font-bold`}>
           <Link href="/">
-            <a>Tekstura</a>
+            <a className={focus}>Tekstura</a>
           </Link>
         </div>
         <MenuButton isOpen={isOpen} toggle={() => setIsOpen(!isOpen)} />
@@ -54,7 +55,7 @@ export function NavbarMobile() {
               <motion.li variants={variants.item}>
                 <div className="inline-block group">
                   <Link href="/">
-                    <a>Početna</a>
+                    <a className={focus}>Početna</a>
                   </Link>
                   <div className="h-0.5 scale-x-0 origin-left bg-gray-800 transform group-hover:scale-x-100 transition"></div>
                 </div>
@@ -62,7 +63,7 @@ export function NavbarMobile() {
               <motion.li variants={variants.item}>
                 <div className="inline-block group">
                   <Link href="/recepti">
-                    <a>Recepti</a>
+                    <a className={focus}>Recepti</a>
                   </Link>
                   <div className="h-0.5 scale-x-0 origin-left bg-gray-800 transform group-hover:scale-x-100 transition"></div>
                 </div>
@@ -70,13 +71,13 @@ export function NavbarMobile() {
               <motion.li variants={variants.item}>
                 <div className="inline-block group">
                   <Link href="/saznaj-vise">
-                    <a>Saznaj više</a>
+                    <a className={focus}>Saznaj više</a>
                   </Link>
                   <div className="h-0.5 scale-x-0 origin-left bg-gray-800 transform group-hover:scale-x-100 transition"></div>
                 </div>
               </motion.li>
               <motion.li variants={variants.item}>
-                <ThemeToggle />
+                <ThemeToggle focus={focus} />
               </motion.li>
             </motion.ul>
           </nav>
