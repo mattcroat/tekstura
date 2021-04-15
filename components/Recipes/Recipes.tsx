@@ -71,7 +71,7 @@ export function Recipes() {
           </svg>
           <input
             onChange={debounce(handleChange, 1000)}
-            className="w-full py-2 pl-12 transition bg-white border border-gray-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 lg:w-search"
+            className="w-full py-2 pl-12 transition bg-white border border-gray-200 shadow-sm lg:w-search"
             type="text"
             id="recipe-search"
             name="recipe-search"

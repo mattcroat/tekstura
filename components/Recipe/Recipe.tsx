@@ -94,19 +94,9 @@ export function Recipe({ recipe }: { recipe: RecipeProps }) {
               <div className="pl-6">
                 <h3 className="text-lg">Porcija</h3>
                 <div className="space-x-2 text-xl font-bold">
-                  <button
-                    className="focus:outline-none focus:ring-2 focus:ring-yellow-500"
-                    onClick={decreasePortion}
-                  >
-                    -
-                  </button>
+                  <button onClick={decreasePortion}>-</button>
                   <span className="select-none">{portion}</span>
-                  <button
-                    className="focus:outline-none focus:ring-2 focus:ring-yellow-500"
-                    onClick={increasePortion}
-                  >
-                    +
-                  </button>
+                  <button onClick={increasePortion}>+</button>
                 </div>
               </div>
             </div>
@@ -123,13 +113,13 @@ export function Recipe({ recipe }: { recipe: RecipeProps }) {
                   Email
                 </label>
                 <input
-                  className="p-2 border border-gray-800 shadow-sm border-opacity-10 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                  className="p-2 border border-gray-800 shadow-sm border-opacity-10"
                   type="email"
                   id="email"
                   placeholder="budi@zakon.com"
                 />
                 <button
-                  className="p-2 transition bg-yellow-500 dark:text-gray-800 hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                  className="p-2 transition bg-yellow-500 dark:text-gray-800 hover:bg-yellow-400"
                   type="submit"
                 >
                   <div className="flex items-center justify-center">

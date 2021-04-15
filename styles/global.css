@@ -26,6 +26,10 @@
     @apply pl-4 italic border-l-2 border-yellow-500;
   }
 
+  :focus {
+    @apply focus:outline-none focus:ring-2 focus:ring-yellow-500;
+  }
+
   ::-webkit-scrollbar {
     @apply w-1.5;
   }
