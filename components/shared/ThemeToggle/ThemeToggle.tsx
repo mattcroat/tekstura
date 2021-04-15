@@ -4,25 +4,25 @@ import { Moon, Sun } from '@/root/components/shared/ThemeToggle/Icons'
 type ThemeToggleProps = { focus?: string }
 
 export function ThemeToggle({ focus }: ThemeToggleProps) {
-  const [isMounted, setIsMounted] = React.useState(false)
-  const [isDarkMode, setIsDarkMode] = React.useState(() => {
-    if (typeof window !== 'undefined') {
-      return !!window.localStorage.getItem('theme')
-    }
-  })
+  const [isDarkMode, setIsDarkMode] = React.useState<boolean>(false)
 
-  React.useEffect(() => {
-    setIsMounted(true)
-  }, [])
-
-  React.useEffect(() => {
+  function setTheme(isDarkMode: boolean) {
     if (isDarkMode) {
       document.documentElement.classList.add('dark')
       window.localStorage.setItem('theme', 'dark')
-    } else {
+    }
+
+    if (!isDarkMode) {
       document.documentElement.classList.remove('dark')
       window.localStorage.removeItem('theme')
     }
+  }
+  React.useEffect(() => {
+    setIsDarkMode(!!window.localStorage.getItem('theme'))
+  }, [])
+
+  React.useEffect(() => {
+    setTheme(isDarkMode)
   }, [isDarkMode])
 
   return (
@@ -31,7 +31,8 @@ export function ThemeToggle({ focus }: ThemeToggleProps) {
       aria-label="Theme toggle"
       onClick={() => setIsDarkMode(!isDarkMode)}
     >
-      {isMounted && !isDarkMode ? <Moon /> : <Sun />}
+      {/* {isMounted && !isDarkMode ? <Moon /> : <Sun />} */}
+      {!isDarkMode ? <Moon /> : <Sun />}
     </button>
   )
 }
