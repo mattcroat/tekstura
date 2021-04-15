@@ -1,7 +1,7 @@
 import React from 'react'
 import { Moon, Sun } from '@/root/components/shared/ThemeToggle/Icons'
 
-type ThemeToggleProps = { focus: string }
+type ThemeToggleProps = { focus?: string }
 
 export function ThemeToggle({ focus }: ThemeToggleProps) {
   const [isMounted, setIsMounted] = React.useState(false)
