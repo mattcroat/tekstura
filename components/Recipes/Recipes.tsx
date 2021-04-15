@@ -56,6 +56,8 @@ export function Recipes() {
             Search
           </label>
           <svg
+            height="24"
+            width="24"
             className="absolute w-6 h-6 mx-2 text-gray-300 top-2 left-1"
             aria-hidden="true"
             focusable="false"

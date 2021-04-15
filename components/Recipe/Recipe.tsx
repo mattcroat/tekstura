@@ -134,6 +134,8 @@ export function Recipe({ recipe }: { recipe: RecipeProps }) {
                 >
                   <div className="flex items-center justify-center">
                     <svg
+                      height="24"
+                      width="24"
                       className="inline w-6 h-6 mx-1"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"

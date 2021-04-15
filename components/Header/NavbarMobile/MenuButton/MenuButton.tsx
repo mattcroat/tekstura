@@ -9,6 +9,8 @@ export function MenuButton({ isOpen, toggle }: MenuButtonProps) {
   return (
     <button className={btnTextColor} onClick={toggle}>
       <svg
+        height="24"
+        width="24"
         className="w-6 h-6"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"

@@ -32,8 +32,10 @@ export function Home({ latestRecipe }: HomeProps) {
         <aside className="flex flex-col items-center p-8 mt-8 space-y-4 transition bg-gray-50 lg:border lg:border-opacity-10 md:shadow-sm md:hover:shadow-lg lg:mt-0 lg:absolute lg:bottom-0 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:translate-y-1/2">
           <div className="flex items-center justify-center w-16 h-16 bg-yellow-500 rounded-full">
             <svg
-              xmlns="http://www.w3.org/2000/svg"
+              height="32"
+              width="32"
               className="w-8 h-8 transform rotate-45 -translate-y-0.5 translate-x-0.5"
+              xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -67,6 +69,8 @@ export function Home({ latestRecipe }: HomeProps) {
               >
                 <div className="flex items-center justify-center">
                   <svg
+                    height="24"
+                    width="24"
                     className="inline w-6 h-6 mx-1"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"

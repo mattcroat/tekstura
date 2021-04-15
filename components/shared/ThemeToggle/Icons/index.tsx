@@ -1,6 +1,8 @@
 export function Moon() {
   return (
     <svg
+      height="24"
+      width="24"
       className="w-6 h-6"
       aria-hidden="true"
       focusable="false"
@@ -17,6 +19,8 @@ export function Moon() {
 export function Sun() {
   return (
     <svg
+      height="24"
+      width="24"
       className="w-6 h-6"
       aria-hidden="true"
       focusable="false"
