@@ -18,7 +18,7 @@ export function Navbar() {
               <Link href="/">
                 <a>Početna</a>
               </Link>
-              <div className="h-0.5 scale-x-0 origin-left bg-yellow-500 transform group-hover:scale-x-100 transition"></div>
+              <div className="h-0.5 scale-x-0 origin-left bg-gold transform group-hover:scale-x-100 transition"></div>
             </div>
           </li>
           <li>
@@ -26,7 +26,7 @@ export function Navbar() {
               <Link href="/recepti">
                 <a>Recepti</a>
               </Link>
-              <div className="h-0.5 scale-x-0 origin-left bg-yellow-500 transform group-hover:scale-x-100 transition"></div>
+              <div className="h-0.5 scale-x-0 origin-left bg-gold transform group-hover:scale-x-100 transition"></div>
             </div>
           </li>
           <li>
@@ -34,7 +34,7 @@ export function Navbar() {
               <Link href="/saznaj-vise">
                 <a>Saznaj više</a>
               </Link>
-              <div className="h-0.5 scale-x-0 origin-left bg-yellow-500 transform group-hover:scale-x-100 transition"></div>
+              <div className="h-0.5 scale-x-0 origin-left bg-gold transform group-hover:scale-x-100 transition"></div>
             </div>
           </li>
           <li>

@@ -7,7 +7,7 @@ export function About() {
       <main className="m-8 md:m-16 dark:text-gray-50">
         <section className="lg:w-1/2">
           <h1 className="text-2xl">Što je Tekstura?</h1>
-          <div className="w-16 h-1 mt-2 bg-yellow-500"></div>
+          <div className="w-16 h-1 mt-2 bg-gold"></div>
           <div className="mt-8 space-y-8">
             <p>
               Distinctio amet, rerum, accusantium saepe quam, ducimus possimus

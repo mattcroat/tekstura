@@ -30,7 +30,7 @@ export function Home({ latestRecipe }: HomeProps) {
         </div>
 
         <aside className="flex flex-col items-center p-8 mt-8 space-y-4 transition bg-white lg:border lg:border-opacity-10 md:shadow-sm md:hover:shadow-lg lg:mt-0 lg:absolute lg:bottom-0 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:translate-y-1/2">
-          <div className="flex items-center justify-center w-16 h-16 bg-yellow-500 rounded-full">
+          <div className="flex items-center justify-center w-16 h-16 text-black rounded-full bg-gold">
             <svg
               height="32"
               width="32"
@@ -64,7 +64,7 @@ export function Home({ latestRecipe }: HomeProps) {
                 placeholder="budi@zakon.com"
               />
               <button
-                className="p-2 transition bg-yellow-500 shadow-sm hover:bg-yellow-400"
+                className="p-2 text-black transition shadow-sm bg-gold hover:bg-gold-light"
                 type="submit"
               >
                 <div className="flex items-center justify-center">
@@ -106,9 +106,9 @@ export function Home({ latestRecipe }: HomeProps) {
           <h3 className="text-2xl md:text-3xl md:pt-8 md:px-16">{title}</h3>
           <div className="mt-2 group">
             <Link href={`/recepti/${slug}`}>
-              <a className="text-xl text-yellow-500 font-heading">recept</a>
+              <a className="text-xl text-white font-heading">recept</a>
             </Link>
-            <div className="h-0.5 scale-x-0 origin-left bg-yellow-500 transform group-hover:scale-x-100 transition"></div>
+            <div className="h-0.5 origin-left bg-gold transform group-hover:scale-x-0 transition"></div>
           </div>
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-black"></div>

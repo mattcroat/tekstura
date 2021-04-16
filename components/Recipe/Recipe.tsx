@@ -119,7 +119,7 @@ export function Recipe({ recipe }: { recipe: RecipeProps }) {
                   placeholder="budi@zakon.com"
                 />
                 <button
-                  className="p-2 transition bg-yellow-500 dark:text-gray-800 hover:bg-yellow-400"
+                  className="p-2 text-black transition bg-gold hover:bg-gold-light"
                   type="submit"
                 >
                   <div className="flex items-center justify-center">
@@ -152,7 +152,7 @@ export function Recipe({ recipe }: { recipe: RecipeProps }) {
             <h1 className="mt-8 text-2xl capitalize md:mt-0 md:text-3xl">
               {title}
             </h1>
-            <div className="w-16 h-1 mt-4 bg-yellow-500"></div>
+            <div className="w-16 h-1 mt-4 bg-gold"></div>
           </div>
           <PortableText blocks={content} className="mt-8 space-y-8" />
         </section>
