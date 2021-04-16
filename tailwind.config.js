@@ -9,6 +9,14 @@ module.exports = {
       yellow: colors.amber,
       white: colors.white,
       black: colors.black,
+      gold: {
+        light: '#e2b04f',
+        DEFAULT: '#d3a241',
+        dark: '#ba8e38',
+      },
+      dark: {
+        DEFAULT: '#1d1c19',
+      },
     },
     fontFamily: {
       heading: ['Playfair Display', 'system-ui'],
