@@ -4,7 +4,7 @@
 
 @layer base {
   html {
-    scrollbar-color: theme('colors.yellow.500') transparent;
+    scrollbar-color: theme('colors.gold.DEFAULT') transparent;
     scrollbar-width: thin;
   }
 
@@ -23,19 +23,7 @@
   }
 
   blockquote {
-    @apply pl-4 italic border-l-2 border-yellow-500;
-  }
-
-  :focus {
-    @apply focus:outline-none focus:ring-2 focus:ring-yellow-500;
-  }
-
-  ::-webkit-scrollbar {
-    @apply w-1.5;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    @apply bg-yellow-500;
+    @apply pl-4 italic border-l-2 border-gold;
   }
 }
 
@@ -43,4 +31,23 @@
   .scrollbar-thin {
     scrollbar-width: thin;
   }
+}
+
+::selection {
+  color: theme('colors.gray.800');
+  background-color: theme('backgroundColor.gold.DEFAULT');
+}
+
+:focus,
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px theme('colors.gold.DEFAULT');
+}
+
+::-webkit-scrollbar {
+  width: theme('width[1.5]');
+}
+
+::-webkit-scrollbar-thumb {
+  background: theme('backgroundColor.gold.DEFAULT');
 }
