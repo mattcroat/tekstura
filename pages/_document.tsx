@@ -16,7 +16,7 @@ class MyDocument extends Document {
             rel="stylesheet"
           />
         </Head>
-        <body className="text-gray-800 transition duration-1000 bg-white dark:bg-gray-800">
+        <body className="text-gray-800 transition duration-1000 bg-white dark:bg-dark">
           <Main />
           <NextScript />
         </body>
