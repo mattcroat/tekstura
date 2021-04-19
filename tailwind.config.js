@@ -10,9 +10,9 @@ module.exports = {
       white: colors.white,
       black: colors.black,
       gold: {
-        light: '#e2b04f',
-        DEFAULT: '#d3a241',
-        dark: '#ba8e38',
+        light: '#edb955',
+        DEFAULT: '#e2b04f',
+        dark: '#d3a241',
       },
       dark: {
         DEFAULT: '#1d1c19',
