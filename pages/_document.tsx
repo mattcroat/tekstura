@@ -5,7 +5,13 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <link rel="icon" href="/favicon.ico" />
+          <link rel="icon" href="/icons/favicon.svg" />
+          <link
+            href="/icons/favicon-16x16.png"
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+          />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
             href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;700&display=swap"
