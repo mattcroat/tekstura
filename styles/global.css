@@ -33,6 +33,30 @@
   }
 }
 
+@font-face {
+  font-family: 'Merriweather';
+  font-style: normal;
+  font-weight: 300;
+  font-display: optional;
+  src: url('/fonts/merriweather/Merriweather-Light.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Merriweather';
+  font-style: normal;
+  font-weight: 700;
+  font-display: optional;
+  src: url('/fonts/merriweather/Merriweather-Bold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 700;
+  font-display: optional;
+  src: url('/fonts/playfair-display/PlayfairDisplay-Bold.woff2') format('woff2');
+}
+
 ::selection {
   color: theme('colors.gray.800');
   background-color: theme('backgroundColor.gold.DEFAULT');

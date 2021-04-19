@@ -5,21 +5,33 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+          <link
+            rel="preload"
+            href="/fonts/merriweather/Merriweather-Light.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preload"
+            href="/fonts/merriweather/Merriweather-Bold.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preload"
+            href="/fonts/playfair-display/PlayfairDisplay-Bold.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
           <link rel="icon" href="/icons/favicon.svg" />
           <link
             href="/icons/favicon-16x16.png"
             rel="icon"
             type="image/png"
             sizes="16x16"
-          />
-          <link rel="preconnect" href="https://fonts.gstatic.com" />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;700&display=swap"
-            rel="stylesheet"
-          />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap"
-            rel="stylesheet"
           />
         </Head>
         <body className="text-gray-800 transition duration-1000 bg-white dark:bg-dark">
