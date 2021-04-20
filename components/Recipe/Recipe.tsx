@@ -53,7 +53,7 @@ export function Recipe({ recipe }: { recipe: RecipeProps }) {
   }
 
   return (
-    <Layout>
+    <Layout title={title} image={imageUrl} type="article">
       <div className="px-8 mt-8 h-96 md:mt-16 md:px-16">
         <img
           className="object-cover w-full h-full"
