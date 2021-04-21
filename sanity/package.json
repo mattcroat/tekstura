@@ -3,7 +3,8 @@
   "private": true,
   "main": "package.json",
   "scripts": {
-    "start": "sanity start"
+    "start": "sanity start",
+    "build": "sanity build"
   },
   "dependencies": {
     "@sanity/base": "^2.6.4",

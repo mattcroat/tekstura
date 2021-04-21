@@ -5,8 +5,8 @@
     "basePath": "/studio"
   },
   "api": {
-    "projectId": "projectId",
-    "dataset": "dataset"
+    "projectId": "cw43bwmg",
+    "dataset": "production"
   },
   "plugins": [
     "@sanity/base",
