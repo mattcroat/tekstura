@@ -40,6 +40,7 @@ export type RecipeProps = {
   amount: number
   ingredients: Ingredient[]
   content: any
+  slug: string
 }
 
 export type Slug = string

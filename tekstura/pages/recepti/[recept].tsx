@@ -1,10 +1,16 @@
+import { useRouter } from 'next/router'
+
 import { Recipe } from '@/root/components/Recipe'
+import { useRecipePreview } from '@/root/lib/hooks/useRecipePreview'
 import { sanityClient } from '@/root/lib/sanity/client'
 
 import type { Params, RecipeProps, Slug } from '@/root/types/recipe'
 
 export default function RecipePage({ recipe }: { recipe: RecipeProps }) {
-  return <Recipe recipe={recipe} />
+  const { query } = useRouter()
+  const recipePreview = useRecipePreview(recipe, query?.preview)
+
+  return <Recipe recipe={recipePreview} />
 }
 
 export async function getStaticPaths() {
@@ -30,6 +36,7 @@ export async function getStaticProps({ params }: { params: Params }) {
       'amount': portionAmount,
       'ingredients': ingredients,
       'content': body,
+      'slug': slug.current
     }
   `,
     { slug: params.recept }
