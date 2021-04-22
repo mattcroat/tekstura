@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "concurrently \"next dev\" \"cd ../sanity && sanity start\"",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "build:sanity": "cd ../sanity && sanity build ../tekstura/public/studio -y"
   },
   "dependencies": {
     "@sanity/client": "^2.8.0",
