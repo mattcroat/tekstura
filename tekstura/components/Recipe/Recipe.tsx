@@ -54,7 +54,7 @@ export function Recipe({ recipe }: { recipe: RecipeProps }) {
 
   return (
     <Layout title={title} image={imageUrl} type="article">
-      <div className="px-8 mt-8 h-96 md:mt-16 md:px-16">
+      <div className="px-8 mt-8 h-96 md:mt-16 md:px-16 print:hidden">
         <img
           className="object-cover w-full h-full"
           src={imageUrl}
@@ -106,7 +106,7 @@ export function Recipe({ recipe }: { recipe: RecipeProps }) {
               <Ingredients ingredients={ingredients} />
             </div>
 
-            <div className="max-w-lg p-6 mx-auto mt-8 border border-gray-800 shadow-sm dark:border-gray-50 border-opacity-10 dark:border-opacity-10 md:mr-8">
+            <div className="max-w-lg p-6 mx-auto mt-8 border border-gray-800 shadow-sm print:hidden dark:border-gray-50 border-opacity-10 dark:border-opacity-10 md:mr-8">
               <h2 className="text-xl">Budite obaviješteni</h2>
               <form className="flex flex-col mt-4 gap-y-2">
                 <label className="sr-only" htmlFor="email">

@@ -23,6 +23,9 @@ module.exports = {
       serif: ['Merriweather', 'system-ui'],
     },
     extend: {
+      screens: {
+        print: { raw: 'print' },
+      },
       spacing: {
         search: '22.8rem',
       },

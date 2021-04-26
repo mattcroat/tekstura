@@ -31,7 +31,7 @@ export function NavbarMobile() {
 
   return (
     <header
-      className={`${headerColor} pt-8 px-8 font-bold transition md:hidden`}
+      className={`${headerColor} pt-8 px-8 font-bold transition md:hidden print:hidden`}
     >
       <div className="flex items-center justify-between">
         <div className={`${logoTextColor} text-2xl font-heading font-bold`}>
