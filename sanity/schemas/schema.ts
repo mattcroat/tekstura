@@ -7,6 +7,7 @@ import blockContent from './objects/blockContent'
 import recipeIngredient from './objects/recipeIngredient'
 import recipeStep from './objects/recipeStep'
 import recipeStepText from './objects/recipeStepText'
+import siteSettings from './settings/siteSettings'
 
 export default createSchema({
   name: 'default',
@@ -16,5 +17,6 @@ export default createSchema({
     recipeIngredient,
     recipeStep,
     recipeStepText,
+    siteSettings,
   ]),
 })
