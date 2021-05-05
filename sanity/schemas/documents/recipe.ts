@@ -1,7 +1,8 @@
 export default {
   name: 'recipe',
-  title: 'Recipe',
+  title: 'Recipes',
   type: 'document',
+  icon: () => '🍲',
   initialValue: {
     preparationTime: 30,
     portionAmount: 2,

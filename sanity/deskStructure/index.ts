@@ -1,6 +1,14 @@
 import S from '@sanity/desk-tool/structure-builder'
 
+import about from './about'
+import home from './home'
+import settings from './settings'
+
 import { RecipePreview } from '../components/RecipePreview'
+
+function hiddenDocumentTypes(listItem: any) {
+  return !['about', 'home', 'settings'].includes(listItem.getId())
+}
 
 // adds live preview tab to any recipe
 export function getDefaultDocumentNode({ schemaType }) {
@@ -15,16 +23,12 @@ export function getDefaultDocumentNode({ schemaType }) {
 // left sidebar in studio
 export default () =>
   S.list()
-    .showIcons(false)
     .title('Options')
     .items([
-      ...S.documentTypeListItems().filter(
-        (listItem: any) => !['siteSettings'].includes(listItem.getId())
-      ),
+      ...S.documentTypeListItems().filter(hiddenDocumentTypes),
       S.divider(),
-      S.listItem()
-        .title('Settings')
-        .child(
-          S.document().schemaType('siteSettings').documentId('siteSettings')
-        ),
+      home,
+      about,
+      S.divider(),
+      settings,
     ])

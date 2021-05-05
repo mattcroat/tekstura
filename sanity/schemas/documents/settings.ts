@@ -1,12 +1,7 @@
 export default {
-  name: 'siteSettings',
+  name: 'settings',
   title: 'Site Settings',
   type: 'document',
-  initialValue: {
-    title: 'Tekstura',
-    description:
-      'Tekstura je namijenjena za dijeljenje izvrsne hrane sa drugima',
-  },
   fields: [
     {
       name: 'title',
