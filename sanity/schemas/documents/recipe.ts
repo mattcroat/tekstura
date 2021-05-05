@@ -1,6 +1,6 @@
 export default {
   name: 'recipe',
-  title: 'Recipes',
+  title: 'Recipe',
   type: 'document',
   icon: () => '🍲',
   initialValue: {
