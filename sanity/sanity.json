@@ -28,6 +28,10 @@
     {
       "name": "part:@sanity/desk-tool/structure",
       "path": "./deskStructure"
+    },
+    {
+      "name": "part:@sanity/base/new-document-structure",
+      "path": "./newDocumentStructure"
     }
   ]
 }
