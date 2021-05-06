@@ -25,9 +25,10 @@ export default () =>
       ...S.documentTypeListItems().filter((document: any) =>
         hiddenDocumentTypes(document, { document: true })
       ),
-      S.divider(),
-      home,
-      about,
+      S.listItem()
+        .icon(() => '📄')
+        .title('Pages')
+        .child(S.list().title('Pages').items([home, about])),
       S.divider(),
       settings,
     ])
