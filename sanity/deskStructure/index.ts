@@ -5,10 +5,7 @@ import home from './home'
 import settings from './settings'
 
 import { RecipePreview } from '../components/RecipePreview'
-
-function hiddenDocumentTypes(listItem: any) {
-  return !['about', 'home', 'settings'].includes(listItem.getId())
-}
+import { hiddenDocumentTypes } from '../utils'
 
 // adds live preview tab to any recipe
 export function getDefaultDocumentNode({ schemaType }) {
@@ -25,7 +22,9 @@ export default () =>
   S.list()
     .title('Options')
     .items([
-      ...S.documentTypeListItems().filter(hiddenDocumentTypes),
+      ...S.documentTypeListItems().filter((document: any) =>
+        hiddenDocumentTypes(document, { document: true })
+      ),
       S.divider(),
       home,
       about,

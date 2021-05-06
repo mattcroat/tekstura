@@ -1,9 +1,9 @@
 import S from '@sanity/base/structure-builder'
 
-function hiddenDocumentTypes(document: any) {
-  return !['about', 'home', 'settings'].includes(document.spec.templateId)
-}
+import { hiddenDocumentTypes } from '../utils'
 
 export default [
-  ...S.defaultInitialValueTemplateItems().filter(hiddenDocumentTypes),
+  ...S.defaultInitialValueTemplateItems().filter((document: any) =>
+    hiddenDocumentTypes(document, { newDocument: true })
+  ),
 ]
