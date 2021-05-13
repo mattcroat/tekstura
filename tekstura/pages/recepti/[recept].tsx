@@ -1,20 +1,23 @@
-import { useRouter } from 'next/router'
-
 import { Recipe } from '@/root/components/Recipe'
 import { useRecipePreview } from '@/root/lib/hooks/useRecipePreview'
-import { sanityClient } from '@/root/lib/sanity/client'
+import { getClient } from '@/root/lib/sanity/client'
 
 import type { Params, RecipeProps, Slug } from '@/root/types/recipe'
 
-export default function RecipePage({ recipe }: { recipe: RecipeProps }) {
-  const { query } = useRouter()
-  const recipePreview = useRecipePreview(recipe, query?.preview)
+type RecipePageProps = {
+  recipe: RecipeProps
+  preview: boolean
+  slug: string
+}
+
+export default function RecipePage({ recipe, preview, slug }: RecipePageProps) {
+  const recipePreview = useRecipePreview(recipe, preview, slug)
 
   return <Recipe recipe={recipePreview} />
 }
 
 export async function getStaticPaths() {
-  const pathsFromSlugs: Slug[] = await sanityClient.fetch(`
+  const pathsFromSlugs: Slug[] = await getClient().fetch(`
     *[_type == 'recipe'] {
       'recept': slug.current
     }
@@ -22,12 +25,14 @@ export async function getStaticPaths() {
 
   return {
     paths: pathsFromSlugs.map((slug) => ({ params: slug })),
-    fallback: false,
+    fallback: true,
   }
 }
 
-export async function getStaticProps({ params }: { params: Params }) {
-  const recipe: RecipeProps = await sanityClient.fetch(
+export async function getStaticProps({ params = {}, preview = false }: Params) {
+  const slug = params.recept
+
+  const recipe: RecipeProps = await getClient(preview).fetch(
     `
     *[_type == 'recipe' && slug.current == $slug][0] {
       'title': title,
@@ -39,19 +44,25 @@ export async function getStaticProps({ params }: { params: Params }) {
       'slug': slug.current
     }
   `,
-    { slug: params.recept }
+    { slug }
   )
 
-  const ingredients = recipe?.ingredients?.map((field) => ({
-    id: field._key,
-    amount: field.amount ?? '',
-    ingredient: field.ingredient,
-    unit: field.unit ?? '',
-  }))
+  const ingredients =
+    recipe?.ingredients?.map((field) => ({
+      id: field._key,
+      amount: field.amount ?? '',
+      ingredient: field.ingredient,
+      unit: field.unit ?? '',
+    })) || null
 
   return {
     props: {
-      recipe: { ...recipe, ingredients },
+      recipe: {
+        ...recipe,
+        ingredients,
+      },
+      preview,
+      slug,
     },
   }
 }

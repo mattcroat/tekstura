@@ -22,6 +22,8 @@ type RecipeStepNode = {
   }
 }
 
+type UsePreview = boolean
+
 // config
 const config: Config = {
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ?? '',
@@ -51,3 +53,14 @@ export const PortableText = createPortableTextComponent({
 
 // client
 export const sanityClient = createClient(config)
+
+// preview client
+export const previewClient = createClient({
+  ...config,
+  useCdn: false,
+})
+
+// easily switch between normal client, and preview client
+export function getClient(usePreview?: UsePreview) {
+  return usePreview ? previewClient : sanityClient
+}

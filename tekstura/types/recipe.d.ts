@@ -45,7 +45,12 @@ export type RecipeProps = {
 
 export type Slug = string
 
-export type Params = { recept: string }
+export type Params = {
+  params: {
+    recept?: string
+  }
+  preview: boolean
+}
 
 export type Recipe = {
   id: string

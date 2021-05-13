@@ -26,9 +26,9 @@ export function Recipe({ recipe }: { recipe: RecipeProps }) {
     imageUrl,
     preparation,
     amount,
-    ingredients: listOfIngredients,
+    ingredients: listOfIngredients = [],
     content,
-  } = recipe
+  } = recipe || {}
 
   const [portion, setPortion] = React.useState<number>(amount)
   const [ingredients, setIngredients] = React.useState<Ingredient[]>([])
