@@ -1,4 +1,5 @@
 import S from '@sanity/desk-tool/structure-builder'
+import { FaFileAlt } from 'react-icons/fa'
 
 import about from './about'
 import home from './home'
@@ -26,7 +27,7 @@ export default () =>
         hiddenDocumentTypes(document, { document: true })
       ),
       S.listItem()
-        .icon(() => '📄')
+        .icon(FaFileAlt)
         .title('Pages')
         .child(S.list().title('Pages').items([home, about])),
       S.divider(),

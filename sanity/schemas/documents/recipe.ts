@@ -1,8 +1,10 @@
+import { FaPencilAlt } from 'react-icons/fa'
+
 export default {
   name: 'recipe',
   title: 'Recipe',
   type: 'document',
-  icon: () => '🍲',
+  icon: FaPencilAlt,
   initialValue: {
     preparationTime: 30,
     portionAmount: 2,

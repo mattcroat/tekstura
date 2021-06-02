@@ -1,7 +1,8 @@
 import S from '@sanity/desk-tool/structure-builder'
+import { FaFileAlt } from 'react-icons/fa'
 
 export default S.listItem()
-  .icon(() => '📄')
+  .icon(FaFileAlt)
   .title('Home')
   .child(
     S.document()
