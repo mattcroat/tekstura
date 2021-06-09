@@ -5,6 +5,7 @@ import {
 } from '@/root/utils/fraction'
 
 import type { Ingredient, Amount, Units } from '@/root/types/recipe'
+import { units } from '@/root/utils/units'
 
 export function formatIngredients(
   ingredients: Ingredient[],
@@ -18,7 +19,7 @@ export function formatIngredients(
         id,
         ingredient,
         amount: formatAmount(totalAmount),
-        unit: formatUnit(totalAmount, unit),
+        unit: formatUnit(totalAmount, unit as Units),
       }
     }
   )
@@ -64,24 +65,16 @@ function formatAmount(amount: Amount): Amount {
   return totalAmount
 }
 
-function formatUnit(amount: Amount, unit: string): string {
+function formatUnit(amount: Amount, unit: Units): string {
   const threshold = 1000
-
-  const units: Units = {
-    g: { singular: 'gram', plural: 'grama', greater: 'kg' },
-    kg: { singular: 'kilogram', plural: 'kilograma' },
-    mL: { singular: 'mililitar', plural: 'mililitra', greater: 'L' },
-    L: { singular: 'litra', plural: 'litre' },
-    žličica: { singular: 'žličica', plural: 'žličice' },
-    žlica: { singular: 'žlica', plural: 'žlice' },
-  }
 
   if (units[unit]) {
     if (amount <= 1 && amount < threshold) return units[unit].singular
     if (amount >= 1 && amount < threshold) return units[unit].plural
 
     if (amount >= threshold) {
-      const greater = units[unit].greater ?? unit
+      const greater = (units[unit].greater as Units) ?? unit
+
       return amount === threshold
         ? units[greater].singular
         : units[greater].plural

@@ -1,3 +1,5 @@
+import type { units } from '@/root/utils/units'
+
 export type Ingredient = {
   _key?: string
   id: number
@@ -8,30 +10,7 @@ export type Ingredient = {
 
 export type Amount = string | number
 
-export type Units = {
-  [key: string]: {
-    singular: string
-    plural: string
-    greater?: string
-  }
-  g: {
-    singular: string
-    plural: string
-    greater: string
-  }
-  kg: {
-    singular: string
-    plural: string
-  }
-  žličica: {
-    singular: string
-    plural: string
-  }
-  žlica: {
-    singular: string
-    plural: string
-  }
-}
+export type Units = keyof typeof units
 
 export type RecipeProps = {
   title: string
