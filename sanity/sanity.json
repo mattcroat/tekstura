@@ -14,11 +14,12 @@
     "@sanity/default-layout",
     "@sanity/default-login",
     "@sanity/desk-tool",
-    "dark-theme-blue"
+    "dark-theme-blue",
+    "intl-input"
   ],
   "env": {
     "development": {
-      "plugins": ["@sanity/vision"]
+      "plugins": ["@sanity/vision", "intl-input"]
     }
   },
   "parts": [

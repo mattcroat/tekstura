@@ -1,9 +1,12 @@
 import { FaPencilAlt } from 'react-icons/fa'
 
+import { i18n } from '../translation/documentTranslation'
+
 export default {
   name: 'recipe',
   title: 'Recipe',
   type: 'document',
+  i18n,
   icon: FaPencilAlt,
   initialValue: {
     preparationTime: 30,
