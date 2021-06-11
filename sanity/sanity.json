@@ -29,11 +29,11 @@
     },
     {
       "name": "part:@sanity/desk-tool/structure",
-      "path": "./deskStructure"
+      "path": "./deskStructure/deskStructure.ts"
     },
     {
       "name": "part:@sanity/base/new-document-structure",
-      "path": "./newDocumentStructure"
+      "path": "./newDocumentStructure/newDocumentStructure.ts"
     }
   ]
 }
