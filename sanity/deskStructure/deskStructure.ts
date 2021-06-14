@@ -1,4 +1,4 @@
-import { FaFileAlt } from 'react-icons/fa'
+import { FaFileAlt, FaPencilAlt } from 'react-icons/fa'
 import * as Structure from 'sanity-plugin-intl-input/lib/structure'
 import S from '@sanity/desk-tool/structure-builder'
 
@@ -7,9 +7,10 @@ import home from './home'
 import settings from './settings'
 
 import { RecipePreview } from '../components/RecipePreview'
-import { hiddenDocumentTypes } from '../utils'
+import { i18n } from '../schemas/translation/documentTranslation'
 
 export function getDefaultDocumentNode({ schemaType }) {
+  // returns the form and translations view
   const [, translations] = Structure.getDocumentNodeViewsForSchemaType(
     schemaType
   )
@@ -33,9 +34,24 @@ export default () =>
     // left side pane
     .title('Options')
     .items([
-      ...S.documentTypeListItems().filter((document: any) =>
-        hiddenDocumentTypes(document, { document: true })
-      ),
+      // recipes category
+      S.listItem()
+        .title('Recipes')
+        .icon(FaPencilAlt)
+        .schemaType('recipe')
+        .child(
+          S.documentList()
+            .title('Posts')
+            .filter(
+              // get all recipe documents for the base language
+              '_type == "recipe" && (!defined(_lang) || _lang == $baseLang)'
+            )
+            .params({ baseLang: i18n.base })
+            .canHandleIntent((_name: any, params: any, _context: any) => {
+              // can handle all actions for recipe documents
+              return params.type === 'recipe'
+            })
+        ),
       // pages category
       S.listItem()
         .icon(FaFileAlt)
