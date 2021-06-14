@@ -3,7 +3,7 @@ import { useInfiniteQuery } from 'react-query'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 
-import { fetchRecipes } from '@/root/lib/api'
+import { fetchRecipes } from '@/root/lib/api/sanity'
 import { useIntersectionObserver } from '@/root/lib/hooks/useIntersectionObserver'
 import { Recipe } from '@/root/types/recipe'
 import { variants } from '@/root/variants/recipes'

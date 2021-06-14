@@ -2,7 +2,7 @@ import { useQuery } from 'react-query'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 
-import { queryRecipes } from '@/root/lib/api'
+import { queryRecipes } from '@/root/lib/api/sanity'
 import { variants } from '@/root/variants/recipes'
 
 type SearchResultsProps = {
