@@ -7,7 +7,7 @@ type DocumentType = {
   newDocument?: boolean
 }
 
-export function hiddenDocumentTypes(
+export function hideDocumentTypes(
   document: Document,
   documentType: DocumentType
 ) {
