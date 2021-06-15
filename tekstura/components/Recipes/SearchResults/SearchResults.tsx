@@ -1,6 +1,7 @@
 import { useQuery } from 'react-query'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 import { queryRecipes } from '@/root/lib/api/sanity'
 import { variants } from '@/root/variants/recipes'
@@ -10,8 +11,9 @@ type SearchResultsProps = {
 }
 
 export function SearchResults({ searchQuery }: SearchResultsProps) {
+  const { locale = 'hr' } = useRouter()
   const { data: searchResults, error: searchError } = useQuery(
-    ['search', searchQuery],
+    ['search', searchQuery, locale],
     queryRecipes,
     {
       refetchOnWindowFocus: false,

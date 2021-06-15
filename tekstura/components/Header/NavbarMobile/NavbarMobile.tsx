@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 import { MenuButton } from '@/root/components/Header/NavbarMobile/MenuButton'
 import { ThemeToggle } from '@/root/components/shared/ThemeToggle'
@@ -24,7 +25,9 @@ const variants = {
 }
 
 export function NavbarMobile() {
+  const { asPath, locale } = useRouter()
   const [isOpen, setIsOpen] = useState(false)
+
   const headerColor = isOpen ? 'bg-gold' : ''
   const logoTextColor = !isOpen ? 'dark:text-gray-50' : ''
   const focus = isOpen ? 'focus:outline-none focus:ring-2 focus:ring-black' : ''
@@ -75,6 +78,31 @@ export function NavbarMobile() {
                   </Link>
                   <div className="h-0.5 scale-x-0 origin-left bg-gray-800 transform group-hover:scale-x-100 transition"></div>
                 </div>
+              </motion.li>
+              <motion.li variants={variants.item}>
+                {locale === 'hr' ? (
+                  <Link href={asPath} locale="en">
+                    <a className="flex gap-x-2">
+                      <img
+                        alt="Flag of The United Kingdom"
+                        className="inline-block"
+                        src="/images/gb-24.png"
+                      />
+                      <span>(EN)</span>
+                    </a>
+                  </Link>
+                ) : (
+                  <Link href={asPath} locale="hr">
+                    <a className="flex gap-x-2">
+                      <img
+                        alt="Flag of Croatia"
+                        className="inline-block"
+                        src="/images/hr-24.png"
+                      />
+                      <span>(HR)</span>
+                    </a>
+                  </Link>
+                )}
               </motion.li>
               <motion.li variants={variants.item}>
                 <ThemeToggle focus={focus} />

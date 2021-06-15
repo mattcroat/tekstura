@@ -2,6 +2,7 @@ import React from 'react'
 import { useInfiniteQuery } from 'react-query'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 import { fetchRecipes } from '@/root/lib/api/sanity'
 import { useIntersectionObserver } from '@/root/lib/hooks/useIntersectionObserver'
@@ -9,6 +10,7 @@ import { Recipe } from '@/root/types/recipe'
 import { variants } from '@/root/variants/recipes'
 
 export function RecipesList() {
+  const { locale = 'hr' } = useRouter()
   const [isAnimating, setIsAnimating] = React.useState(false)
   const loadMoreRef = React.useRef<HTMLDivElement>(null)
   const {
@@ -16,7 +18,7 @@ export function RecipesList() {
     error: recipesError,
     fetchNextPage,
     hasNextPage,
-  } = useInfiniteQuery('recipes', fetchRecipes, {
+  } = useInfiniteQuery(['recipes', locale], fetchRecipes, {
     refetchOnWindowFocus: false,
     getNextPageParam: (lastPage) =>
       lastPage.hasNextPage ? lastPage.nextPage : false,

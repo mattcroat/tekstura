@@ -6,7 +6,7 @@ interface SeoProps {
 }
 
 export function Seo({ ...metadata }: SeoProps) {
-  const router = useRouter()
+  const { asPath, locale } = useRouter()
 
   const meta = {
     title: 'Tekstura',
@@ -19,6 +19,16 @@ export function Seo({ ...metadata }: SeoProps) {
   return (
     <Head>
       <title>{meta.title}</title>
+      <link
+        rel="alternate"
+        hrefLang="hr"
+        href={`https://tekstura.vercel.app/${locale}${asPath}`}
+      />
+      <link
+        rel="alternate"
+        hrefLang="en"
+        href={`https://tekstura.vercel.app/${locale}${asPath}`}
+      />
       <meta name="robots" content="index, follow" />
       <meta name="description" content={meta.description} />
       <meta property="og:title" content={meta.title} />
@@ -26,7 +36,7 @@ export function Seo({ ...metadata }: SeoProps) {
       <meta property="og:image" content={meta.image} />
       <meta
         property="og:url"
-        content={`https://tekstura.vercel.app/${router.asPath}`}
+        content={`https://tekstura.vercel.app${asPath}`}
       />
       <meta property="og:description" content={meta.description} />
       <meta property="og:site_name" content="Tekstura" />

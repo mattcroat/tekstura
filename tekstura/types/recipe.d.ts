@@ -22,9 +22,8 @@ export type RecipeProps = {
   slug: string
 }
 
-export type Slug = string
-
 export type Params = {
+  locale: string
   params: {
     recept?: string
   }

@@ -1,4 +1,9 @@
 module.exports = {
+  i18n: {
+    locales: ['hr', 'en'],
+    defaultLocale: 'hr',
+    localeDetection: false,
+  },
   async rewrites() {
     return [
       {
