@@ -59,7 +59,7 @@ export async function queryRecipes({
 
   return sanityClient.fetch(
     `
-    *[_type == 'recipe' && _lang == $language && title match $title || && _lang == $language && $tag in tags] {
+    *[_type == 'recipe' && _lang == $language && title match $title || _lang == $language && $tag in tags] {
       'id': _id,
       'title': title,
       'imageUrl': mainImage.asset->url,

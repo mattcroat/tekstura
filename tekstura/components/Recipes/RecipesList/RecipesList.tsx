@@ -56,7 +56,7 @@ export function RecipesList() {
                   variants={variants.recipe}
                 >
                   <Link href={`/recepti/${slug}`}>
-                    <a>
+                    <a className="inline-block w-full">
                       <div className="relative overflow-hidden">
                         <img
                           className="object-cover w-full transition transform h-72 hover:scale-110"
@@ -64,11 +64,11 @@ export function RecipesList() {
                           alt={title}
                         />
                       </div>
-                      <div className="mt-2 text-lg font-bold dark:text-gray-50">
-                        {title}
-                      </div>
                     </a>
                   </Link>
+                  <div className="mt-2 text-lg font-bold dark:text-gray-50">
+                    {title}
+                  </div>
                 </motion.article>
               ))
             )}
