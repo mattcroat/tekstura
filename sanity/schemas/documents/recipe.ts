@@ -73,7 +73,6 @@ export default {
       name: 'body',
       title: 'Content',
       type: 'blockContent',
-      description: '"A picture is worth a thousand words"',
     },
     {
       name: 'tags',
