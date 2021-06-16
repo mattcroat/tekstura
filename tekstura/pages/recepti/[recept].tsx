@@ -56,7 +56,7 @@ export async function getStaticProps({
     }
   `,
     {
-      language: locale === 'en_GB' ? 'en' : locale,
+      language: locale === 'en' ? 'en_GB' : locale,
       slug: params.recept,
     }
   )
