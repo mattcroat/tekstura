@@ -7,7 +7,12 @@ import {
 
 import { RecipeStep } from '@/root/components/shared/RecipeStep'
 
-type Config = { dataset: string; projectId: string; useCdn: boolean }
+type Config = {
+  apiVersion: string
+  dataset: string
+  projectId: string
+  useCdn: boolean
+}
 
 type URL = string
 
@@ -26,6 +31,7 @@ type UsePreview = boolean
 
 // config
 const config: Config = {
+  apiVersion: 'v1',
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ?? '',
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET ?? '',
   useCdn: true,
