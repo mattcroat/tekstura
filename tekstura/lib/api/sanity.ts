@@ -14,7 +14,7 @@ type FetchRecipeProps = {
 }
 
 type QueryRecipesProps = {
-  queryKey: [key: string, searchQuery: string, locale: string]
+  queryKey: string[]
 }
 
 const recipeLimit = 20
