@@ -4,12 +4,12 @@ import { FiFileText } from 'react-icons/fi'
 
 export default S.listItem()
   .icon(FiFileText)
-  .title('Početna')
+  .title('Recepti')
   .child(
     S.document()
-      .title('Početna')
-      .id('home')
-      .schemaType('home')
-      .documentId('home')
-      .views(Structure.getDocumentNodeViewsForSchemaType('home'))
+      .title('Recepti')
+      .id('recipeSearch')
+      .schemaType('recipeSearch')
+      .documentId('recipeSearch')
+      .views(Structure.getDocumentNodeViewsForSchemaType('recipeSearch'))
   )

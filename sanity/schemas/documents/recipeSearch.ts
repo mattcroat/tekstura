@@ -1,8 +1,8 @@
 import { i18n } from '../translation/documentTranslation'
 
 export default {
-  name: 'about',
-  title: 'About Page',
+  name: 'recipeSearch',
+  title: 'Recipe Search',
   type: 'document',
   i18n,
   fields: [
@@ -12,9 +12,9 @@ export default {
       type: 'string',
     },
     {
-      name: 'bio',
-      title: 'Bio',
-      type: 'blockContent',
+      name: 'placeholder',
+      title: 'Search Placeholder',
+      type: 'string',
     },
   ],
 }

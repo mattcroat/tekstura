@@ -4,6 +4,7 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 import about from './documents/about'
 import home from './documents/home'
 import recipe from './documents/recipe'
+import recipeSearch from './documents/recipeSearch'
 import settings from './documents/settings'
 
 import blockContent from './objects/blockContent'
@@ -19,8 +20,9 @@ export default createSchema({
     recipeIngredient,
     recipeStep,
     recipeStepText,
-    about,
     home,
+    recipeSearch,
+    about,
     settings,
   ]),
 })
