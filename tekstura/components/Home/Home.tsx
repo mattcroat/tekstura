@@ -25,7 +25,7 @@ export function Home({ latestRecipe }: HomeProps) {
         <div className="px-8 text-left dark:text-gray-50 md:px-0 md:text-center">
           <h1 className="text-2xl md:text-3xl">Recepti, savjeti i više</h1>
           <p className="mt-2">
-            Tekstura je namijenjena za dijeljenje izvrsne hrane sa drugima.
+            Tekstura je namijenjena za dijeljenje izvrsne hrane sa drugima
           </p>
         </div>
 
