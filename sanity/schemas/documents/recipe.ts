@@ -1,4 +1,4 @@
-import { FaPencilAlt } from 'react-icons/fa'
+import { FiEdit } from 'react-icons/fi'
 
 import { i18n } from '../translation/documentTranslation'
 
@@ -7,7 +7,7 @@ export default {
   title: 'Recipe',
   type: 'document',
   i18n,
-  icon: FaPencilAlt,
+  icon: FiEdit,
   initialValue: {
     preparationTime: 30,
     portionAmount: 2,
