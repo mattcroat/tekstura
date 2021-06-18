@@ -1,4 +1,5 @@
-import { FaFileAlt, FaPencilAlt } from 'react-icons/fa'
+import { FiEdit, FiLayers } from 'react-icons/fi'
+
 import * as Structure from 'sanity-plugin-intl-input/lib/structure'
 import S from '@sanity/desk-tool/structure-builder'
 
@@ -37,7 +38,7 @@ export default () =>
       // recipes category
       S.listItem()
         .title('Recipes')
-        .icon(FaPencilAlt)
+        .icon(FiEdit)
         .schemaType('recipe')
         .child(
           S.documentList()
@@ -54,7 +55,7 @@ export default () =>
         ),
       // pages category
       S.listItem()
-        .icon(FaFileAlt)
+        .icon(FiLayers)
         .title('Pages')
         .child(S.list().title('Pages').items([home, about])),
       S.divider(),

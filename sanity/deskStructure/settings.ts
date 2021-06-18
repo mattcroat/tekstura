@@ -1,8 +1,8 @@
 import S from '@sanity/desk-tool/structure-builder'
-import { FaWrench } from 'react-icons/fa'
+import { FiSettings } from 'react-icons/fi'
 
 export default S.listItem()
-  .icon(FaWrench)
+  .icon(FiSettings)
   .title('Settings')
   .child(
     S.document()

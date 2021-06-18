@@ -1,8 +1,8 @@
 import S from '@sanity/desk-tool/structure-builder'
-import { FaFileAlt } from 'react-icons/fa'
+import { FiFileText } from 'react-icons/fi'
 
 export default S.listItem()
-  .icon(FaFileAlt)
+  .icon(FiFileText)
   .title('About')
   .child(
     S.document()
