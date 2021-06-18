@@ -2,7 +2,7 @@ import { i18n } from '../translation/documentTranslation'
 
 export default {
   name: 'home',
-  title: 'Landing Page',
+  title: 'Početna',
   type: 'document',
   i18n,
   fieldsets: [

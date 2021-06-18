@@ -3,11 +3,11 @@ import { FiEdit, FiLayers } from 'react-icons/fi'
 import * as Structure from 'sanity-plugin-intl-input/lib/structure'
 import S from '@sanity/desk-tool/structure-builder'
 
-import about from './about'
-import home from './home'
+import aboutPage from './aboutPage'
+import homePage from './homePage'
 import recipePage from './recipePage'
-import recipeSearch from './recipeSearch'
-import settings from './settings'
+import recipeSearchPage from './recipeSearchPage'
+import settingsPage from './settingsPage'
 
 import { RecipePreview } from '../components/RecipePreview'
 import { i18n } from '../schemas/translation/documentTranslation'
@@ -60,9 +60,11 @@ export default () =>
         .icon(FiLayers)
         .title('Pages')
         .child(
-          S.list().title('Pages').items([home, recipePage, recipeSearch, about])
+          S.list()
+            .title('Pages')
+            .items([homePage, recipePage, recipeSearchPage, aboutPage])
         ),
       S.divider(),
       // settings category
-      settings,
+      settingsPage,
     ])

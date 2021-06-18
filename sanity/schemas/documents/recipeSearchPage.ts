@@ -2,7 +2,7 @@ import { i18n } from '../translation/documentTranslation'
 
 export default {
   name: 'recipeSearch',
-  title: 'Recipe Search',
+  title: 'Recepti',
   type: 'document',
   i18n,
   fields: [

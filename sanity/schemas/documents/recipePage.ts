@@ -2,7 +2,7 @@ import { i18n } from '../translation/documentTranslation'
 
 export default {
   name: 'recipePage',
-  title: 'Recipe Page',
+  title: 'Recept',
   type: 'document',
   i18n,
   fieldsets: [

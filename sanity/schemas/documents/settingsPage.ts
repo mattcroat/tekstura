@@ -2,7 +2,7 @@ import { i18n } from '../translation/documentTranslation'
 
 export default {
   name: 'settings',
-  title: 'Site Settings',
+  title: 'Postavke',
   type: 'document',
   i18n,
   fields: [
