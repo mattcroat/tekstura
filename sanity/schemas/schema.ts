@@ -6,6 +6,7 @@ import home from './documents/home'
 import recipe from './documents/recipe'
 import recipeSearch from './documents/recipeSearch'
 import settings from './documents/settings'
+import recipePage from './documents/recipePage'
 
 import blockContent from './objects/blockContent'
 import recipeIngredient from './objects/recipeIngredient'
@@ -21,6 +22,7 @@ export default createSchema({
     recipeStep,
     recipeStepText,
     home,
+    recipePage,
     recipeSearch,
     about,
     settings,

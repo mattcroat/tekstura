@@ -5,6 +5,7 @@ import S from '@sanity/desk-tool/structure-builder'
 
 import about from './about'
 import home from './home'
+import recipePage from './recipePage'
 import recipeSearch from './recipeSearch'
 import settings from './settings'
 
@@ -58,7 +59,9 @@ export default () =>
       S.listItem()
         .icon(FiLayers)
         .title('Pages')
-        .child(S.list().title('Pages').items([home, recipeSearch, about])),
+        .child(
+          S.list().title('Pages').items([home, recipePage, recipeSearch, about])
+        ),
       S.divider(),
       // settings category
       settings,
