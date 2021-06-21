@@ -4,12 +4,13 @@ import {
   numberToFraction,
 } from '@/root/utils/fraction'
 
-import type { Ingredient, Amount, Units } from '@/root/types/recipe'
-import { units } from '@/root/utils/units'
+import type { Ingredient, Amount, Units, Locale } from '@/root/types/recipe'
+import { unitsCroatian, unitsEnglish } from '@/root/utils/units'
 
 export function formatIngredients(
   ingredients: Ingredient[],
-  portion: number
+  portion: number,
+  locale: Locale
 ): Ingredient[] {
   const formatIngredients = ingredients.map(
     ({ id, amount, ingredient, unit }) => {
@@ -19,7 +20,7 @@ export function formatIngredients(
         id,
         ingredient,
         amount: formatAmount(totalAmount),
-        unit: formatUnit(totalAmount, unit as Units),
+        unit: formatUnit(totalAmount, unit as Units, locale),
       }
     }
   )
@@ -65,8 +66,9 @@ function formatAmount(amount: Amount): Amount {
   return totalAmount
 }
 
-function formatUnit(amount: Amount, unit: Units): string {
+function formatUnit(amount: Amount, unit: Units, locale: Locale): string {
   const threshold = 1000
+  const units = locale === 'hr' ? unitsCroatian : unitsEnglish
 
   if (units[unit]) {
     if (amount <= 1 && amount < threshold) return units[unit].singular

@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { useRouter } from 'next/router'
 
 import { Layout } from '@/root/components/Layout'
 import { Ingredients } from '@/root/components/Recipe/Ingredients'
@@ -32,15 +33,20 @@ export function Recipe({ recipe }: { recipe: RecipeProps }) {
 
   const [portion, setPortion] = React.useState<number>(amount)
   const [ingredients, setIngredients] = React.useState<Ingredient[]>([])
+  const { locale } = useRouter()
 
   React.useEffect(() => {
     if (portion >= 1) {
-      const newIngredients = formatIngredients(listOfIngredients, portion)
+      const newIngredients = formatIngredients(
+        listOfIngredients,
+        portion,
+        locale as string
+      )
       setIngredients(newIngredients)
     } else {
       setIngredients(listOfIngredients)
     }
-  }, [listOfIngredients, portion])
+  }, [listOfIngredients, portion, locale])
 
   function increasePortion() {
     if (portion >= 6) return
