@@ -32,3 +32,12 @@ export type Params = {
   }
   preview: boolean
 }
+
+export type TranslatedRecipeText = {
+  priprema: string
+  porcija: string
+  sastojci: string
+  newsletterTitle: string
+  newsletterPlaceholder: string
+  newsletterText: string
+}

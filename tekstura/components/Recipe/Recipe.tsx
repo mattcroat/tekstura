@@ -7,7 +7,16 @@ import { Ingredients } from '@/root/components/Recipe/Ingredients'
 import { PortableText } from '@/root/lib/sanity/client'
 import { formatIngredients } from '@/root/utils/recipe'
 
-import type { Ingredient, RecipeProps } from '@/root/types/recipe'
+import type {
+  Ingredient,
+  RecipeItems,
+  TranslatedRecipeText,
+} from '@/root/types/recipe'
+
+type RecipeTextProps = {
+  recipe: RecipeItems
+  translatedText: TranslatedRecipeText
+}
 
 const variants = {
   recipe: {
@@ -21,7 +30,7 @@ const variants = {
   },
 }
 
-export function Recipe({ recipe }: { recipe: RecipeProps }) {
+export function Recipe({ recipe, translatedText }: RecipeTextProps) {
   const {
     title,
     imageUrl,
@@ -78,7 +87,7 @@ export function Recipe({ recipe }: { recipe: RecipeProps }) {
           <div className="lg:sticky lg:top-8">
             <div className="flex">
               <div className="pr-6 border-r border-gray-50 border-opacity-10">
-                <h3 className="text-lg">Priprema</h3>
+                <h3 className="text-lg">{translatedText.priprema}</h3>
                 <div className="flex items-center gap-1 mt-1">
                   <svg
                     height="16"
@@ -98,7 +107,7 @@ export function Recipe({ recipe }: { recipe: RecipeProps }) {
               </div>
 
               <div className="pl-6">
-                <h3 className="text-lg">Porcija</h3>
+                <h3 className="text-lg">{translatedText.porcija}</h3>
                 <div className="space-x-2 text-xl font-bold">
                   <button onClick={decreasePortion}>-</button>
                   <span className="select-none">{portion}</span>
@@ -108,12 +117,14 @@ export function Recipe({ recipe }: { recipe: RecipeProps }) {
             </div>
 
             <div className="mt-8 md:mr-8">
-              <h2 className="text-xl">Sastojci</h2>
+              <h2 className="text-xl">{translatedText.sastojci}</h2>
               <Ingredients ingredients={ingredients} />
             </div>
 
             <div className="max-w-lg p-6 mx-auto mt-8 border border-gray-800 shadow-sm print:hidden dark:border-gray-50 border-opacity-10 dark:border-opacity-10 md:mr-8">
-              <h2 className="text-xl">Budite obaviješteni</h2>
+              <h2 className="text-xl capitalize">
+                {translatedText.newsletterTitle}
+              </h2>
               <form className="flex flex-col mt-4 gap-y-2">
                 <label className="sr-only" htmlFor="email">
                   Email
@@ -122,7 +133,7 @@ export function Recipe({ recipe }: { recipe: RecipeProps }) {
                   className="p-2 border border-gray-800 shadow-sm border-opacity-10"
                   type="email"
                   id="email"
-                  placeholder="budi@zakon.com"
+                  placeholder={translatedText.newsletterPlaceholder}
                 />
                 <button
                   className="p-2 text-black transition bg-gold hover:bg-gold-light"
@@ -145,7 +156,7 @@ export function Recipe({ recipe }: { recipe: RecipeProps }) {
                         d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                       />
                     </svg>
-                    <span>Prijava</span>
+                    <span>{translatedText.newsletterText}</span>
                   </div>
                 </button>
               </form>
