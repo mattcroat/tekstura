@@ -33,6 +33,15 @@ export type Params = {
   preview: boolean
 }
 
+export type TranslatedHomeText = {
+  siteTitle: string
+  siteSubtitle: string
+  newsletterHeading: string
+  newsletterPlaceholder: string
+  newsletterText: string
+  latestRecipe: string
+}
+
 export type TranslatedRecipeText = {
   priprema: string
   porcija: string

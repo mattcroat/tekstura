@@ -1,7 +1,7 @@
 import { Home } from '@/root/components/Home'
 import { sanityClient } from '@/root/lib/sanity/client'
 
-import type { Params } from '@/root/types/recipe'
+import type { Params, TranslatedHomeText } from '@/root/types/recipe'
 
 type IndexPageProps = {
   latestRecipe: {
@@ -9,10 +9,14 @@ type IndexPageProps = {
     slug: string
     imageUrl: string
   }
+  translatedText: TranslatedHomeText
 }
 
-export default function IndexPage({ latestRecipe }: IndexPageProps) {
-  return <Home latestRecipe={latestRecipe} />
+export default function IndexPage({
+  latestRecipe,
+  translatedText,
+}: IndexPageProps) {
+  return <Home latestRecipe={latestRecipe} translatedText={translatedText} />
 }
 
 export async function getStaticProps({ locale }: Params) {
@@ -29,7 +33,23 @@ export async function getStaticProps({ locale }: Params) {
     }
   )
 
+  const translatedText: TranslatedHomeText = await sanityClient.fetch(
+    `
+    *[_type == 'homePage' && _lang == $language][0] {
+      siteTitle,
+      siteSubtitle,
+      newsletterHeading,
+      newsletterPlaceholder,
+      newsletterText,
+      latestRecipe
+    }
+  `,
+    {
+      language: locale === 'en' ? 'en_GB' : locale,
+    }
+  )
+
   return {
-    props: { latestRecipe },
+    props: { latestRecipe, translatedText },
   }
 }

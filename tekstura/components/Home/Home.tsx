@@ -4,15 +4,18 @@ import Link from 'next/link'
 
 import { Layout } from '@/root/components/Layout'
 
+import { TranslatedHomeText } from '@/root/types/recipe'
+
 type HomeProps = {
   latestRecipe: {
     title: string
     slug: string
     imageUrl: string
   }
+  translatedText: TranslatedHomeText
 }
 
-export function Home({ latestRecipe }: HomeProps) {
+export function Home({ latestRecipe, translatedText }: HomeProps) {
   const { slug, title, imageUrl } = latestRecipe
 
   return (
@@ -23,10 +26,8 @@ export function Home({ latestRecipe }: HomeProps) {
         className="relative z-20 flex-1 mt-8 md:mt-16 lg:px-16"
       >
         <div className="px-8 text-left dark:text-gray-50 md:px-0 md:text-center">
-          <h1 className="text-2xl md:text-3xl">Recepti, savjeti i više</h1>
-          <p className="mt-2">
-            Tekstura je namijenjena za dijeljenje izvrsne hrane sa drugima
-          </p>
+          <h1 className="text-2xl md:text-3xl">{translatedText.siteTitle}</h1>
+          <p className="mt-2">{translatedText.siteSubtitle}</p>
         </div>
 
         <aside className="flex flex-col items-center p-8 mt-8 space-y-4 transition bg-white lg:border lg:border-opacity-10 md:shadow-sm md:hover:shadow-lg lg:mt-0 lg:absolute lg:bottom-0 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:translate-y-1/2">
@@ -49,9 +50,7 @@ export function Home({ latestRecipe }: HomeProps) {
             </svg>
           </div>
 
-          <h2 className="text-center">
-            Besplatno primajte obavijesti u sandučić
-          </h2>
+          <h2 className="text-center">{translatedText.newsletterHeading}</h2>
           <form className="w-full md:w-auto">
             <div className="flex flex-col space-y-4 shadow-sm md:flex-row md:space-y-0 md:border md:border-opacity-10">
               <label className="sr-only" htmlFor="email">
@@ -61,7 +60,7 @@ export function Home({ latestRecipe }: HomeProps) {
                 className="p-2 transition bg-white border border-opacity-10 md:border-none"
                 type="email"
                 id="email"
-                placeholder="budi@zakon.com"
+                placeholder={translatedText.newsletterPlaceholder}
               />
               <button
                 className="p-2 text-black transition shadow-sm bg-gold hover:bg-gold-light"
@@ -84,7 +83,7 @@ export function Home({ latestRecipe }: HomeProps) {
                       d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                     />
                   </svg>
-                  <span>Prijava</span>
+                  <span>{translatedText.newsletterText}</span>
                 </div>
               </button>
             </div>
@@ -106,7 +105,9 @@ export function Home({ latestRecipe }: HomeProps) {
           <h3 className="text-2xl md:text-3xl md:pt-8 md:px-16">{title}</h3>
           <div className="mt-2 group">
             <Link href={`/recepti/${slug}`}>
-              <a className="text-xl text-white font-heading">recept</a>
+              <a className="text-xl text-white font-heading">
+                {translatedText.latestRecipe}
+              </a>
             </Link>
             <div className="h-0.5 origin-left bg-gold transform group-hover:scale-x-0 transition"></div>
           </div>
