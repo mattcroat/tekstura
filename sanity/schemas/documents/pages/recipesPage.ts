@@ -1,7 +1,7 @@
 import { i18n } from '../../translation/documentTranslation'
 
 export default {
-  name: 'recipeSearch',
+  name: 'recipesPage',
   title: 'Recepti',
   type: 'document',
   i18n,

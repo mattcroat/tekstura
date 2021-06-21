@@ -1,7 +1,7 @@
 import { i18n } from '../../translation/documentTranslation'
 
 export default {
-  name: 'about',
+  name: 'aboutPage',
   title: 'Saznaj više',
   type: 'document',
   i18n,

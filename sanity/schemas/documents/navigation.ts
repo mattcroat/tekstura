@@ -1,4 +1,4 @@
-import { i18n } from '../../translation/documentTranslation'
+import { i18n } from '../translation/documentTranslation'
 
 export default {
   name: 'navigation',

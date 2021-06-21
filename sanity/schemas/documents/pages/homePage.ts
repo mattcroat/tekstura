@@ -1,7 +1,7 @@
 import { i18n } from '../../translation/documentTranslation'
 
 export default {
-  name: 'home',
+  name: 'homePage',
   title: 'Početna',
   type: 'document',
   i18n,
