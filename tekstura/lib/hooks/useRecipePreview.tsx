@@ -2,13 +2,13 @@ import { useRouter } from 'next/router'
 
 import { usePreviewSubscription } from '@/root/lib/sanity/client'
 
-import type { RecipeProps } from '@/root/types/recipe'
+import type { RecipeItems } from '@/root/types/recipe'
 
 export function useRecipePreview(
-  recipe: RecipeProps,
+  recipe: RecipeItems,
   preview: boolean,
   slug: string
-): RecipeProps {
+): RecipeItems {
   const router = useRouter()
 
   const { data: recipePreview } = usePreviewSubscription(

@@ -15,7 +15,7 @@ export type Units = keyof typeof unitsCroatian | keyof typeof unitsEnglish
 
 export type Locale = string
 
-export type RecipeProps = {
+export type RecipeItems = {
   title: string
   imageUrl: string
   preparation: number
@@ -31,11 +31,4 @@ export type Params = {
     recept?: string
   }
   preview: boolean
-}
-
-export type Recipe = {
-  id: string
-  title: string
-  imageUrl: string
-  slug: string
 }
