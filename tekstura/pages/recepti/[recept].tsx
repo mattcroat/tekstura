@@ -74,12 +74,12 @@ export async function getStaticProps({
   const translatedText: TranslatedRecipeText = await getClient(preview).fetch(
     `
     *[_type == 'recipePage' && _lang == $language][0] {
-      priprema,
-      porcija,
-      sastojci,
-      newsletterTitle,
-      newsletterPlaceholder,
-      newsletterText
+      preparation,
+      portion,
+      ingredients,
+      subscribeTitle,
+      subscribePlaceholder,
+      subscribeCallToAction
     }
   `,
     {

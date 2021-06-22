@@ -43,10 +43,10 @@ export type TranslatedHomeText = {
 }
 
 export type TranslatedRecipeText = {
-  priprema: string
-  porcija: string
-  sastojci: string
-  newsletterTitle: string
-  newsletterPlaceholder: string
-  newsletterText: string
+  preparation: string
+  portion: string
+  ingredients: string
+  subscribeTitle: string
+  subscribePlaceholder: string
+  subscribeCallToAction: string
 }
