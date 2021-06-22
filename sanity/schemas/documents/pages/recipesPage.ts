@@ -8,12 +8,12 @@ export default {
   fields: [
     {
       name: 'title',
-      title: 'Page Title',
+      title: 'Title',
       type: 'string',
     },
     {
       name: 'placeholder',
-      title: 'Search Placeholder',
+      title: 'Placeholder',
       type: 'string',
     },
   ],

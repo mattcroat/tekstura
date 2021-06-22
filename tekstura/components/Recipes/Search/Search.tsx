@@ -1,10 +1,13 @@
 import { debounce } from '@/root/utils/general'
 
+import type { TranslatedRecipesText } from '@/root/types/recipe'
+
 type SearchProps = {
   setSearchQuery: React.Dispatch<React.SetStateAction<string>>
+  translatedText: TranslatedRecipesText
 }
 
-export function Search({ setSearchQuery }: SearchProps) {
+export function Search({ setSearchQuery, translatedText }: SearchProps) {
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     event.persist()
     setSearchQuery(event.target.value)
@@ -35,7 +38,7 @@ export function Search({ setSearchQuery }: SearchProps) {
         type="text"
         id="recipe-search"
         name="recipe-search"
-        placeholder="Pretražite recepte"
+        placeholder={translatedText.placeholder}
       />
     </div>
   )

@@ -50,3 +50,8 @@ export type TranslatedRecipeText = {
   subscribePlaceholder: string
   subscribeCallToAction: string
 }
+
+export type TranslatedRecipesText = {
+  title: string
+  placeholder: string
+}

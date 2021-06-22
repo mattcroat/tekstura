@@ -21,10 +21,15 @@ export function SearchResults({ searchQuery }: SearchResultsProps) {
     }
   )
 
+  const noSearchResultsMessage =
+    locale === 'hr' ? 'Nije pronađeno.' : 'Not found.'
+  const searchErrorMessage =
+    locale === 'hr' ? 'Nešto je pošlo po krivu.' : 'Something went wrong.'
+
   return (
     <>
       {searchResults && searchResults.length < 1 && (
-        <div className="my-8 dark:text-gray-50">Nije pronađeno.</div>
+        <div className="my-8 dark:text-gray-50">{noSearchResultsMessage}</div>
       )}
       {searchResults && (
         <motion.section
@@ -34,7 +39,7 @@ export function SearchResults({ searchQuery }: SearchResultsProps) {
           animate="show"
         >
           {searchError && (
-            <span className="dark:text-gray-50">Nešto je pošlo po krivu.</span>
+            <span className="dark:text-gray-50">{searchErrorMessage}</span>
           )}
           {!searchError &&
             searchResults?.map(({ id, title, imageUrl, slug }) => (
