@@ -15,7 +15,7 @@ import type {
 
 type RecipeTextProps = {
   recipe: RecipeItems
-  translatedText: TranslatedRecipeText
+  translatedText: TranslatedRecipeText | Record<string, string>
 }
 
 const variants = {

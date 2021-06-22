@@ -10,7 +10,7 @@ import type {
 
 type RecipePageProps = {
   recipe: RecipeItems
-  translatedText: TranslatedRecipeText
+  translatedText: TranslatedRecipeText | Record<string, string>
   preview: boolean
   slug: string
 }
@@ -22,7 +22,7 @@ type PathsFromSlugs = {
 
 export default function RecipePage({
   recipe,
-  translatedText,
+  translatedText = {},
   preview,
   slug,
 }: RecipePageProps) {
