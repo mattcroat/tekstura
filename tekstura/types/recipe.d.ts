@@ -34,12 +34,12 @@ export type Params = {
 }
 
 export type TranslatedHomeText = {
-  siteTitle: string
-  siteSubtitle: string
-  newsletterHeading: string
-  newsletterPlaceholder: string
-  newsletterText: string
-  latestRecipe: string
+  title: string
+  secondaryTitle: string
+  subscribeTitle: string
+  subscribePlaceholder: string
+  subscribeCallToAction: string
+  recipeLink: string
 }
 
 export type TranslatedRecipeText = {

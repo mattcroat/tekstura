@@ -36,12 +36,12 @@ export async function getStaticProps({ locale }: Params) {
   const translatedText: TranslatedHomeText = await sanityClient.fetch(
     `
     *[_type == 'homePage' && _lang == $language][0] {
-      siteTitle,
-      siteSubtitle,
-      newsletterHeading,
-      newsletterPlaceholder,
-      newsletterText,
-      latestRecipe
+      title,
+      secondaryTitle,
+      subscribeTitle,
+      subscribePlaceholder,
+      subscribeCallToAction,
+      recipeLink
     }
   `,
     {
