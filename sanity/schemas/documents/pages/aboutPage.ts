@@ -8,12 +8,12 @@ export default {
   fields: [
     {
       name: 'title',
-      title: 'Page Title',
+      title: 'Title',
       type: 'string',
     },
     {
-      name: 'bio',
-      title: 'Bio',
+      name: 'description',
+      title: 'Description',
       type: 'blockContent',
     },
   ],

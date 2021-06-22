@@ -62,3 +62,8 @@ export type TranslatedRecipesText = {
   title: string
   placeholder: string
 }
+
+export type TranslatedAboutText = {
+  title: string
+  description: any
+}
