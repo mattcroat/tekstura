@@ -6,8 +6,9 @@ import { useRouter } from 'next/router'
 
 import { fetchRecipes } from '@/root/lib/api/sanity'
 import { useIntersectionObserver } from '@/root/lib/hooks/useIntersectionObserver'
-import { Recipe } from '@/root/types/recipe'
 import { variants } from '@/root/variants/recipes'
+
+import type { Recipe } from '@/root/types/recipe'
 
 export function RecipesList() {
   const { locale = 'hr' } = useRouter()
@@ -30,10 +31,15 @@ export function RecipesList() {
     enabled: !isAnimating && (hasNextPage as boolean),
   })
 
+  const recipesNotFoundMessage =
+    locale === 'hr' ? 'Nema recepta.' : 'There are no recipes.'
+  const recipesErrorMessage =
+    locale === 'hr' ? 'Nešto je pošlo po krivu.' : 'Something went wrong.'
+
   return (
     <>
       {!recipes?.pages && (
-        <div className="my-8 dark:text-gray-50">Nema recepta.</div>
+        <div className="my-8 dark:text-gray-50">{recipesNotFoundMessage}</div>
       )}
       {recipes?.pages && (
         <motion.section
@@ -45,7 +51,7 @@ export function RecipesList() {
           onAnimationComplete={() => setIsAnimating(false)}
         >
           {recipesError && (
-            <span className="dark:text-gray-50">Nešto je pošlo po krivu.</span>
+            <span className="dark:text-gray-50">{recipesErrorMessage}</span>
           )}
           {!recipesError &&
             recipes?.pages.map((recipe) =>

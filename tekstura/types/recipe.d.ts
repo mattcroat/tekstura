@@ -25,6 +25,13 @@ export type RecipeItems = {
   slug: string
 }
 
+export type Recipe = {
+  id: string
+  title: string
+  imageUrl: string
+  slug: string
+}
+
 export type Params = {
   locale: string
   params: {

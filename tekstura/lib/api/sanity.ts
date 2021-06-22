@@ -1,11 +1,6 @@
 import { sanityClient } from '@/root/lib/sanity/client'
 
-type Recipe = {
-  id: string
-  title: string
-  imageUrl: string
-  slug: string
-}
+import type { Recipe } from '@/root/types/recipe'
 
 type InfiniteRecipes = {
   data: Recipe[]
