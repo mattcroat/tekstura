@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 import { Layout } from '@/root/components/Layout'
 
-import { TranslatedHomeText } from '@/root/types/recipe'
+import type { TranslatedHomeText } from '@/root/types/recipe'
 
 type HomeProps = {
   latestRecipe: {
