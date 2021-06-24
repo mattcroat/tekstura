@@ -1,4 +1,11 @@
-const documentTypes = ['about', 'home', 'settings']
+const documentTypes = [
+  'navigation',
+  'homePage',
+  'recipePage',
+  'recipesPage',
+  'aboutPage',
+  'seo',
+]
 
 type Document = any
 
