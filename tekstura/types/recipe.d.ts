@@ -67,3 +67,19 @@ export type TranslatedAboutText = {
   title: string
   description: any
 }
+
+type TranslatedNavigationText = {
+  title: string
+  home: string
+  recipes: string
+  about: string
+}
+
+export type TranslatedSeoText = {
+  title: string
+  description?: string
+}
+
+export type TranslatedHeaderText =
+  | (TranslatedNavigationText & TranslatedSeoText)
+  | undefined

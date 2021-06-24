@@ -6,6 +6,12 @@ import { useRouter } from 'next/router'
 import { MenuButton } from '@/root/components/Header/NavbarMobile/MenuButton'
 import { ThemeToggle } from '@/root/components/shared/ThemeToggle'
 
+import type { TranslatedHeaderText } from '@/root/types/recipe'
+
+type NavbarMobileProps = {
+  translatedText: TranslatedHeaderText
+}
+
 const variants = {
   menu: {
     hidden: { opacity: 0, height: 0 },
@@ -24,7 +30,7 @@ const variants = {
   },
 }
 
-export function NavbarMobile() {
+export function NavbarMobile({ translatedText }: NavbarMobileProps) {
   const { asPath, locale } = useRouter()
   const [isOpen, setIsOpen] = useState(false)
 
@@ -39,7 +45,7 @@ export function NavbarMobile() {
       <div className="flex items-center justify-between">
         <div className={`${logoTextColor} text-2xl font-heading font-bold`}>
           <Link href="/">
-            <a className={focus}>Tekstura</a>
+            <a className={focus}>{translatedText?.title}</a>
           </Link>
         </div>
         <MenuButton isOpen={isOpen} toggle={() => setIsOpen(!isOpen)} />
@@ -58,7 +64,7 @@ export function NavbarMobile() {
               <motion.li variants={variants.item}>
                 <div className="inline-block group">
                   <Link href="/">
-                    <a className={focus}>Početna</a>
+                    <a className={focus}>{translatedText?.home}</a>
                   </Link>
                   <div className="h-0.5 scale-x-0 origin-left bg-gray-800 transform group-hover:scale-x-100 transition"></div>
                 </div>
@@ -66,7 +72,7 @@ export function NavbarMobile() {
               <motion.li variants={variants.item}>
                 <div className="inline-block group">
                   <Link href="/recepti">
-                    <a className={focus}>Recepti</a>
+                    <a className={focus}>{translatedText?.recipes}</a>
                   </Link>
                   <div className="h-0.5 scale-x-0 origin-left bg-gray-800 transform group-hover:scale-x-100 transition"></div>
                 </div>
@@ -74,7 +80,7 @@ export function NavbarMobile() {
               <motion.li variants={variants.item}>
                 <div className="inline-block group">
                   <Link href="/saznaj-vise">
-                    <a className={focus}>Saznaj više</a>
+                    <a className={focus}>{translatedText?.about}</a>
                   </Link>
                   <div className="h-0.5 scale-x-0 origin-left bg-gray-800 transform group-hover:scale-x-100 transition"></div>
                 </div>

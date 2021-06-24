@@ -3,14 +3,20 @@ import { useRouter } from 'next/router'
 
 import { ThemeToggle } from '@/root/components/shared/ThemeToggle'
 
-export function Navbar() {
+import type { TranslatedHeaderText } from '@/root/types/recipe'
+
+type NavbarProps = {
+  translatedText: TranslatedHeaderText
+}
+
+export function Navbar({ translatedText }: NavbarProps) {
   const { asPath, locale } = useRouter()
 
   return (
     <header className="hidden px-16 mt-16 dark:text-gray-50 md:flex md:justify-between md:items-baseline print:hidden">
       <div className="text-2xl font-bold font-heading md:text-3xl">
         <Link href="/">
-          <a>Tekstura</a>
+          <a>{translatedText?.title}</a>
         </Link>
       </div>
 
@@ -19,7 +25,7 @@ export function Navbar() {
           <li>
             <div className="group">
               <Link href="/">
-                <a>Početna</a>
+                <a>{translatedText?.home}</a>
               </Link>
               <div className="h-0.5 scale-x-0 origin-left bg-gold transform group-hover:scale-x-100 transition"></div>
             </div>
@@ -27,7 +33,7 @@ export function Navbar() {
           <li>
             <div className="group">
               <Link href="/recepti">
-                <a>Recepti</a>
+                <a>{translatedText?.recipes}</a>
               </Link>
               <div className="h-0.5 scale-x-0 origin-left bg-gold transform group-hover:scale-x-100 transition"></div>
             </div>
@@ -35,7 +41,7 @@ export function Navbar() {
           <li>
             <div className="group">
               <Link href="/saznaj-vise">
-                <a>Saznaj više</a>
+                <a>{translatedText?.about}</a>
               </Link>
               <div className="h-0.5 scale-x-0 origin-left bg-gold transform group-hover:scale-x-100 transition"></div>
             </div>
