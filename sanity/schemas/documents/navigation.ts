@@ -8,17 +8,17 @@ export default {
   fields: [
     {
       name: 'home',
-      title: 'Početna',
+      title: 'Home',
       type: 'string',
     },
     {
       name: 'recipes',
-      title: 'Recepti',
+      title: 'Recipes',
       type: 'string',
     },
     {
       name: 'about',
-      title: 'Saznaj više',
+      title: 'About',
       type: 'string',
     },
   ],

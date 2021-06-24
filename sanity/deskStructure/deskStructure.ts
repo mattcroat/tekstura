@@ -1,10 +1,10 @@
-import { FiEdit, FiLayers } from 'react-icons/fi'
+import { FiEdit, FiLayers, FiSettings } from 'react-icons/fi'
 
 import * as Structure from 'sanity-plugin-intl-input/lib/structure'
 import S from '@sanity/desk-tool/structure-builder'
 
 import navigation from './navigation'
-import settings from './settings'
+import seo from './seo'
 
 import aboutPage from './pages/aboutPage'
 import homePage from './pages/homePage'
@@ -74,5 +74,8 @@ export default () =>
         ),
       S.divider(),
       // settings category
-      settings,
+      S.listItem()
+        .icon(FiSettings)
+        .title('Settings')
+        .child(S.list().title('SEO').items([seo])),
     ])

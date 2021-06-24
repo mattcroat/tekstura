@@ -1,8 +1,8 @@
 import { i18n } from '../translation/documentTranslation'
 
 export default {
-  name: 'settings',
-  title: 'Postavke',
+  name: 'seo',
+  title: 'SEO',
   type: 'document',
   i18n,
   fields: [

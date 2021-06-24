@@ -8,7 +8,7 @@ import recipeSearchPage from './documents/pages/recipesPage'
 
 import navigation from './documents/navigation'
 import recipe from './documents/recipe'
-import settings from './documents/settings'
+import seo from './documents/seo'
 
 import blockContent from './objects/blockContent'
 import recipeIngredient from './objects/recipeIngredient'
@@ -28,6 +28,6 @@ export default createSchema({
     recipePage,
     recipeSearchPage,
     aboutPage,
-    settings,
+    seo,
   ]),
 })
