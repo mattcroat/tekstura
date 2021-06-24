@@ -1,16 +1,45 @@
-import Head from 'next/head'
+import { useQuery } from 'react-query'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
+
+import { sanityClient } from '@/root/lib/sanity/client'
+
+import type { TranslatedSeoText } from '@/root/types/recipe'
 
 interface SeoProps {
   [key: string]: any
 }
 
+async function getTranslatedText({
+  queryKey,
+}: any): Promise<TranslatedSeoText> {
+  const [, locale] = queryKey
+
+  const translatedSeoText = await sanityClient.fetch(
+    `
+    *[_type == 'seo' && _lang == $language][0] {
+      title,
+      description
+    }
+  `,
+    {
+      language: locale == 'en' ? 'en_GB' : locale,
+    }
+  )
+
+  return translatedSeoText
+}
+
 export function Seo({ ...metadata }: SeoProps) {
   const { asPath, locale } = useRouter()
+  const { data: translatedText } = useQuery(
+    ['translatedSeoText', locale],
+    getTranslatedText
+  )
 
   const meta = {
-    title: 'Tekstura',
-    description: `Tekstura je namijenjena za dijeljenje izvrsne hrane sa drugima`,
+    title: translatedText?.title,
+    description: translatedText?.description,
     image: 'https://tekstura.vercel.app/images/og-image.webp',
     type: 'website',
     ...metadata,
