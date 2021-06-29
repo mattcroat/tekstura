@@ -169,7 +169,9 @@ export function Recipe({ recipe, translatedText }: RecipeTextProps) {
             </h1>
             <div className="w-16 h-1 mt-4 bg-gold"></div>
           </div>
-          <PortableText blocks={content} className="mt-8 space-y-8" />
+          <div className="mt-8 space-y-8">
+            <PortableText blocks={content} />
+          </div>
         </section>
       </motion.main>
     </Layout>
