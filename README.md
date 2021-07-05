@@ -17,11 +17,16 @@ cd tekstura && mv .env.example .env
 You're going to be presented with:
 
 ```
+MAILCHIMP_API_KEY=
+MAILCHIMP_LIST_ID=
+
+NEXT_PUBLIC_GA_ID=
+
 NEXT_PUBLIC_SANITY_PROJECT_ID=
 NEXT_PUBLIC_SANITY_DATASET=
 ```
 
-These can be found in the dashboard of your Sanity project.
+The Sanity credentials can be found in the dashboard of your Sanity project.
 
 ## Tekstura (site frontend)
 
