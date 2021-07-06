@@ -1,10 +1,8 @@
 import { useQuery } from 'react-query'
-import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 import { queryRecipes } from '@/root/lib/api/sanity'
-import { variants } from '@/root/variants/recipes'
 
 type SearchResultsProps = {
   searchQuery: string
@@ -32,22 +30,13 @@ export function SearchResults({ searchQuery }: SearchResultsProps) {
         <div className="my-8 dark:text-gray-50">{noSearchResultsMessage}</div>
       )}
       {searchResults && (
-        <motion.section
-          className="my-8 md:grid md:grid-cols-2 md:gap-8 lg:grid-cols-3"
-          variants={variants.recipes}
-          initial="hidden"
-          animate="show"
-        >
+        <section className="my-8 md:grid md:grid-cols-2 md:gap-8 lg:grid-cols-3">
           {searchError && (
             <span className="dark:text-gray-50">{searchErrorMessage}</span>
           )}
           {!searchError &&
             searchResults?.map(({ id, title, imageUrl, slug }) => (
-              <motion.article
-                key={id}
-                className="mt-8 md:mt-0"
-                variants={variants.recipe}
-              >
+              <article key={id} className="mt-8 md:mt-0">
                 <Link href={`/recepti/${slug}`}>
                   <a className="inline-block w-full">
                     <div className="relative overflow-hidden">
@@ -62,9 +51,9 @@ export function SearchResults({ searchQuery }: SearchResultsProps) {
                 <div className="mt-2 text-lg font-bold dark:text-gray-50">
                   {title}
                 </div>
-              </motion.article>
+              </article>
             ))}
-        </motion.section>
+        </section>
       )}
     </>
   )

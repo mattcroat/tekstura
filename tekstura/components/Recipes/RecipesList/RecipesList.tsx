@@ -1,18 +1,15 @@
 import React from 'react'
 import { useInfiniteQuery } from 'react-query'
-import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 import { fetchRecipes } from '@/root/lib/api/sanity'
 import { useIntersectionObserver } from '@/root/lib/hooks/useIntersectionObserver'
-import { variants } from '@/root/variants/recipes'
 
 import type { Recipe } from '@/root/types/recipe'
 
 export function RecipesList() {
   const { locale = 'hr' } = useRouter()
-  const [isAnimating, setIsAnimating] = React.useState(false)
   const loadMoreRef = React.useRef<HTMLDivElement>(null)
   const {
     data: recipes,
@@ -28,7 +25,7 @@ export function RecipesList() {
   useIntersectionObserver({
     target: loadMoreRef,
     onIntersect: fetchNextPage,
-    enabled: !isAnimating && (hasNextPage as boolean),
+    enabled: hasNextPage as boolean,
   })
 
   const recipesNotFoundMessage =
@@ -42,25 +39,14 @@ export function RecipesList() {
         <div className="my-8 dark:text-gray-50">{recipesNotFoundMessage}</div>
       )}
       {recipes?.pages && (
-        <motion.section
-          className="my-8 md:grid md:grid-cols-2 md:gap-8 lg:grid-cols-3"
-          variants={variants.recipes}
-          initial="hidden"
-          animate="show"
-          onAnimationStart={() => setIsAnimating(true)}
-          onAnimationComplete={() => setIsAnimating(false)}
-        >
+        <section className="my-8 md:grid md:grid-cols-2 md:gap-8 lg:grid-cols-3">
           {recipesError && (
             <span className="dark:text-gray-50">{recipesErrorMessage}</span>
           )}
           {!recipesError &&
             recipes?.pages.map((recipe) =>
               recipe.data.map(({ id, title, imageUrl, slug }: Recipe) => (
-                <motion.article
-                  key={id}
-                  className="mt-8 md:mt-0"
-                  variants={variants.recipe}
-                >
+                <article key={id} className="mt-8 md:mt-0">
                   <Link href={`/recepti/${slug}`}>
                     <a className="inline-block w-full">
                       <div className="relative overflow-hidden">
@@ -75,11 +61,11 @@ export function RecipesList() {
                   <div className="mt-2 text-lg font-bold dark:text-gray-50">
                     {title}
                   </div>
-                </motion.article>
+                </article>
               ))
             )}
           <div ref={loadMoreRef}></div>
-        </motion.section>
+        </section>
       )}
     </>
   )
