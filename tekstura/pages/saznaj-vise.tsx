@@ -1,6 +1,5 @@
 import { About } from '@/root/components/About'
-
-import { sanityClient } from '@/root/lib/sanity/client'
+import { getTranslatedText } from '@/root/lib/api/sanity'
 
 import type { Params, TranslatedAboutText } from '@/root/types/recipe'
 
@@ -13,17 +12,14 @@ export default function AboutPage({ translatedText }: AboutPageProps) {
 }
 
 export async function getStaticProps({ locale }: Params) {
-  const translatedText: TranslatedAboutText = await sanityClient.fetch(
-    `
+  const query = `
     *[_type == 'aboutPage' && _lang == $language][0] {
       title,
       description
     }
-  `,
-    {
-      language: locale === 'en' ? 'en_GB' : locale,
-    }
-  )
+  `
+
+  const translatedText = await getTranslatedText(locale, query)
 
   return {
     props: {
