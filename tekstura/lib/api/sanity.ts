@@ -25,6 +25,8 @@ async function getRecipeAmount(): Promise<number> {
     .length
 }
 
+// inside Sanity the locale is `en_GB` but in Next `en`
+// because of routing so we flip them when doing a query
 export async function fetchRecipes({
   pageParam = recipeLimit,
   queryKey,
@@ -72,4 +74,30 @@ export async function queryRecipes({
       language: locale === 'en' ? 'en_GB' : locale,
     }
   )
+}
+
+export async function getLatestRecipe(locale: string) {
+  const query = `
+    *[_type == 'recipe' && _lang == $language] | order(_createdAt desc)[0] {
+      'title': title,
+      'slug': slug.current,
+      'imageUrl': mainImage.asset->url
+    }
+  `
+
+  const params = {
+    language: locale === 'en' ? 'en_GB' : locale,
+  }
+
+  const latestRecipe = await sanityClient.fetch(query, params)
+  return latestRecipe
+}
+
+export async function getTranslatedText(locale: string, query: string) {
+  const params = {
+    language: locale === 'en' ? 'en_GB' : locale,
+  }
+
+  const translatedText = await sanityClient.fetch(query, params)
+  return translatedText
 }
