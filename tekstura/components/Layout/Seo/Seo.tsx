@@ -1,41 +1,15 @@
-import { useQuery } from 'react-query'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 
-import { sanityClient } from '@/root/lib/sanity/client'
-
-import type { TranslatedSeoText } from '@/root/types/recipe'
+import type { TranslatedHeaderText } from '@/root/types/recipe'
 
 interface SeoProps {
+  translatedText: TranslatedHeaderText
   [key: string]: any
 }
 
-async function getTranslatedText({
-  queryKey,
-}: any): Promise<TranslatedSeoText> {
-  const [, locale] = queryKey
-
-  const translatedSeoText = await sanityClient.fetch(
-    `
-    *[_type == 'seo' && _lang == $language][0] {
-      title,
-      description
-    }
-  `,
-    {
-      language: locale == 'en' ? 'en_GB' : locale,
-    }
-  )
-
-  return translatedSeoText
-}
-
-export function Seo({ ...metadata }: SeoProps) {
+export function Seo({ translatedText, ...metadata }: SeoProps) {
   const { asPath, locale } = useRouter()
-  const { data: translatedText } = useQuery(
-    ['translatedSeoText', locale],
-    getTranslatedText
-  )
 
   const meta = {
     title: translatedText?.title,
