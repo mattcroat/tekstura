@@ -49,14 +49,16 @@ export type TranslatedHomeText = {
   recipeLink: string
 }
 
-export type TranslatedRecipeText = {
-  preparation: string
-  portion: string
-  ingredients: string
-  subscribeTitle: string
-  subscribePlaceholder: string
-  subscribeCallToAction: string
-}
+export type TranslatedRecipeText =
+  | {
+      preparation: string
+      portion: string
+      ingredients: string
+      subscribeTitle: string
+      subscribePlaceholder: string
+      subscribeCallToAction: string
+    }
+  | Record<string, any>
 
 export type TranslatedRecipesText = {
   title: string
@@ -82,4 +84,4 @@ export type TranslatedSeoText = {
 
 export type TranslatedHeaderText =
   | (TranslatedNavigationText & TranslatedSeoText)
-  | undefined
+  | Record<string, any>

@@ -1,14 +1,30 @@
-import { getTranslatedText } from '@/root/lib/api/sanity'
+import {
+  getTranslatedHeaderText,
+  getTranslatedText,
+} from '@/root/lib/api/sanity'
 import { Recipes } from '@/root/components/Recipes'
 
-import type { Params, TranslatedRecipesText } from '@/root/types/recipe'
+import type {
+  Params,
+  TranslatedHeaderText,
+  TranslatedRecipesText,
+} from '@/root/types/recipe'
 
 type RecipesPageProps = {
   translatedText: TranslatedRecipesText
+  translatedHeaderText: TranslatedHeaderText
 }
 
-export default function RecipesPage({ translatedText }: RecipesPageProps) {
-  return <Recipes translatedText={translatedText} />
+export default function RecipesPage({
+  translatedText,
+  translatedHeaderText,
+}: RecipesPageProps) {
+  return (
+    <Recipes
+      translatedText={translatedText}
+      translatedHeaderText={translatedHeaderText}
+    />
+  )
 }
 
 export async function getStaticProps({ locale }: Params) {
@@ -20,10 +36,12 @@ export async function getStaticProps({ locale }: Params) {
   `
 
   const translatedText = await getTranslatedText(locale, query)
+  const translatedHeaderText = await getTranslatedHeaderText(locale)
 
   return {
     props: {
       translatedText,
+      translatedHeaderText,
     },
   }
 }

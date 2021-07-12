@@ -2,6 +2,7 @@ import { Recipe } from '@/root/components/Recipe'
 import {
   getRecipe,
   getRecipePaths,
+  getTranslatedHeaderText,
   getTranslatedText,
 } from '@/root/lib/api/sanity'
 import { useRecipePreview } from '@/root/lib/hooks/useRecipePreview'
@@ -9,12 +10,14 @@ import { useRecipePreview } from '@/root/lib/hooks/useRecipePreview'
 import type {
   Params,
   RecipeItems,
+  TranslatedHeaderText,
   TranslatedRecipeText,
 } from '@/root/types/recipe'
 
 type RecipePageProps = {
   recipe: RecipeItems
-  translatedText: TranslatedRecipeText | Record<string, string>
+  translatedText: TranslatedRecipeText
+  translatedHeaderText: TranslatedHeaderText
   preview: boolean
   slug: string
 }
@@ -22,11 +25,18 @@ type RecipePageProps = {
 export default function RecipePage({
   recipe,
   translatedText = {},
+  translatedHeaderText,
   preview,
   slug,
 }: RecipePageProps) {
   const recipePreview = useRecipePreview(recipe, preview, slug)
-  return <Recipe recipe={recipePreview} translatedText={translatedText} />
+  return (
+    <Recipe
+      recipe={recipePreview}
+      translatedText={translatedText}
+      translatedHeaderText={translatedHeaderText}
+    />
+  )
 }
 
 export async function getStaticPaths() {
@@ -55,11 +65,13 @@ export async function getStaticProps({
   const slug = params.recept ?? ''
   const recipe = await getRecipe(locale, slug, preview)
   const translatedText = await getTranslatedText(locale, query)
+  const translatedHeaderText = await getTranslatedHeaderText(locale)
 
   return {
     props: {
       recipe,
       translatedText,
+      translatedHeaderText,
       preview,
       slug,
     },

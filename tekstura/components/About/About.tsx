@@ -3,15 +3,19 @@ import React from 'react'
 import { Layout } from '@/root/components/Layout'
 import { PortableText } from '@/root/lib/sanity/client'
 
-import type { TranslatedAboutText } from '@/root/types/recipe'
+import type {
+  TranslatedAboutText,
+  TranslatedHeaderText,
+} from '@/root/types/recipe'
 
 type AboutProps = {
   translatedText: TranslatedAboutText
+  translatedHeaderText: TranslatedHeaderText
 }
 
-export function About({ translatedText }: AboutProps) {
+export function About({ translatedText, translatedHeaderText }: AboutProps) {
   return (
-    <Layout>
+    <Layout translatedText={translatedHeaderText}>
       <main className="m-8 md:m-16 dark:text-gray-50">
         <section className="lg:w-1/2">
           <h1 className="text-2xl">{translatedText.title}</h1>

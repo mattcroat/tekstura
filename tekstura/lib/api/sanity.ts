@@ -1,4 +1,4 @@
-import { sanityClient } from '@/root/lib/sanity/client'
+import { getClient, sanityClient } from '@/root/lib/sanity/client'
 
 import type { Recipe, RecipeItems } from '@/root/types/recipe'
 
@@ -102,7 +102,34 @@ export async function getTranslatedText(locale: string, query: string) {
   return translatedText
 }
 
-import { getClient } from '@/root/lib/sanity/client'
+export async function getTranslatedHeaderText(locale: string) {
+  const seoTextQuery = `
+    *[_type == 'seo' && _lang == $language][0] {
+      title
+    }
+  `
+
+  const navigationTextQuery = `
+    *[_type == 'navigation' && _lang == $language][0] {
+      home,
+      recipes,
+      about
+    }
+  `
+
+  const translatedSeoText = await getTranslatedText(locale, seoTextQuery)
+  const translatedNavigationText = await getTranslatedText(
+    locale,
+    navigationTextQuery
+  )
+
+  const translatedText = {
+    ...translatedSeoText,
+    ...translatedNavigationText,
+  }
+
+  return translatedText
+}
 
 export async function getRecipePaths() {
   const query = `

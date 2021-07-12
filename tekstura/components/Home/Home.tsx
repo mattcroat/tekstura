@@ -4,7 +4,10 @@ import Link from 'next/link'
 
 import { Layout } from '@/root/components/Layout'
 
-import type { TranslatedHomeText } from '@/root/types/recipe'
+import type {
+  TranslatedHeaderText,
+  TranslatedHomeText,
+} from '@/root/types/recipe'
 
 type HomeProps = {
   latestRecipe: {
@@ -13,13 +16,21 @@ type HomeProps = {
     imageUrl: string
   }
   translatedText: TranslatedHomeText
+  translatedHeaderText: TranslatedHeaderText
 }
 
-export function Home({ latestRecipe, translatedText }: HomeProps) {
+export function Home({
+  latestRecipe,
+  translatedText,
+  translatedHeaderText,
+}: HomeProps) {
   const { slug, title, imageUrl } = latestRecipe
 
   return (
-    <Layout layout={{ landingPage: true }}>
+    <Layout
+      layout={{ landingPage: true }}
+      translatedText={translatedHeaderText}
+    >
       <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
