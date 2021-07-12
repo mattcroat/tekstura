@@ -1,6 +1,6 @@
 import { sanityClient } from '@/root/lib/sanity/client'
 
-import type { Recipe } from '@/root/types/recipe'
+import type { Recipe, RecipeItems } from '@/root/types/recipe'
 
 type InfiniteRecipes = {
   data: Recipe[]
@@ -100,4 +100,65 @@ export async function getTranslatedText(locale: string, query: string) {
 
   const translatedText = await sanityClient.fetch(query, params)
   return translatedText
+}
+
+import { getClient } from '@/root/lib/sanity/client'
+
+export async function getRecipePaths() {
+  const query = `
+    *[_type == 'recipe'] {
+      'locale': _lang,
+      'recept': slug.current
+    }
+  `
+
+  const pathsFromSlugs: {
+    recept: string
+    locale: string
+  }[] = await getClient().fetch(query)
+
+  const paths = pathsFromSlugs.map(({ locale, recept }) => ({
+    params: { recept },
+    locale: locale === 'en_GB' ? 'en' : locale,
+  }))
+
+  return paths
+}
+
+export async function getRecipe(
+  locale: string,
+  slug: string,
+  preview: boolean
+) {
+  const query = `
+    *[_type == 'recipe' && _lang == $language && slug.current == $slug][0] {
+      'title': title,
+      'imageUrl': mainImage.asset->url,
+      'preparation': preparationTime,
+      'amount': portionAmount,
+      'ingredients': ingredients,
+      'content': body,
+      'slug': slug.current
+    }
+  `
+
+  const params = {
+    language: locale === 'en' ? 'en_GB' : locale,
+    slug,
+  }
+
+  const recipe: RecipeItems = await getClient(preview).fetch(query, params)
+
+  const ingredients =
+    recipe?.ingredients?.map((field) => ({
+      id: field._key,
+      amount: field.amount ?? '',
+      ingredient: field.ingredient,
+      unit: field.unit ?? '',
+    })) || null
+
+  return {
+    ...recipe,
+    ingredients,
+  }
 }

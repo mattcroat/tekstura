@@ -1,6 +1,10 @@
 import { Recipe } from '@/root/components/Recipe'
+import {
+  getRecipe,
+  getRecipePaths,
+  getTranslatedText,
+} from '@/root/lib/api/sanity'
 import { useRecipePreview } from '@/root/lib/hooks/useRecipePreview'
-import { getClient } from '@/root/lib/sanity/client'
 
 import type {
   Params,
@@ -15,11 +19,6 @@ type RecipePageProps = {
   slug: string
 }
 
-type PathsFromSlugs = {
-  recept: string
-  locale: string
-}[]
-
 export default function RecipePage({
   recipe,
   translatedText = {},
@@ -27,23 +26,12 @@ export default function RecipePage({
   slug,
 }: RecipePageProps) {
   const recipePreview = useRecipePreview(recipe, preview, slug)
-
   return <Recipe recipe={recipePreview} translatedText={translatedText} />
 }
 
 export async function getStaticPaths() {
-  const pathsFromSlugs: PathsFromSlugs = await getClient().fetch(`
-    *[_type == 'recipe'] {
-      'locale': _lang,
-      'recept': slug.current
-    }
-  `)
-
   return {
-    paths: pathsFromSlugs.map(({ locale, recept }) => ({
-      params: { recept },
-      locale: locale === 'en_GB' ? 'en' : locale,
-    })),
+    paths: await getRecipePaths(),
     fallback: true,
   }
 }
@@ -53,26 +41,7 @@ export async function getStaticProps({
   params = {},
   preview = false,
 }: Params) {
-  const recipe: RecipeItems = await getClient(preview).fetch(
-    `
-    *[_type == 'recipe' && _lang == $language && slug.current == $slug][0] {
-      'title': title,
-      'imageUrl': mainImage.asset->url,
-      'preparation': preparationTime,
-      'amount': portionAmount,
-      'ingredients': ingredients,
-      'content': body,
-      'slug': slug.current
-    }
-  `,
-    {
-      language: locale === 'en' ? 'en_GB' : locale,
-      slug: params.recept,
-    }
-  )
-
-  const translatedText: TranslatedRecipeText = await getClient(preview).fetch(
-    `
+  const query = `
     *[_type == 'recipePage' && _lang == $language][0] {
       preparation,
       portion,
@@ -81,29 +50,18 @@ export async function getStaticProps({
       subscribePlaceholder,
       subscribeCallToAction
     }
-  `,
-    {
-      language: locale === 'en' ? 'en_GB' : locale,
-    }
-  )
+  `
 
-  const ingredients =
-    recipe?.ingredients?.map((field) => ({
-      id: field._key,
-      amount: field.amount ?? '',
-      ingredient: field.ingredient,
-      unit: field.unit ?? '',
-    })) || null
+  const slug = params.recept ?? ''
+  const recipe = await getRecipe(locale, slug, preview)
+  const translatedText = await getTranslatedText(locale, query)
 
   return {
     props: {
-      recipe: {
-        ...recipe,
-        ingredients,
-      },
+      recipe,
       translatedText,
       preview,
-      slug: params.recept,
+      slug,
     },
   }
 }
