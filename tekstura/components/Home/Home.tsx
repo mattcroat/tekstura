@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 
 import { Layout } from '@/root/components/Layout'
+import { useNewsletter } from '@/root/lib/hooks/useNewsletter'
 
 import type {
   TranslatedHeaderText,
@@ -24,6 +25,15 @@ export function Home({
   translatedText,
   translatedHeaderText,
 }: HomeProps) {
+  const inputEl = useRef<HTMLInputElement>(null)
+  const {
+    errorMessage,
+    isError,
+    isSubscribed,
+    subscribe,
+    subscribedMessage,
+  } = useNewsletter(inputEl)
+
   const { slug, title, imageUrl } = latestRecipe
 
   return (
@@ -62,40 +72,46 @@ export function Home({
           </div>
 
           <h2 className="text-center">{translatedText.subscribeTitle}</h2>
-          <form className="w-full md:w-auto">
+          <form onSubmit={subscribe} className="w-full md:w-auto">
             <div className="flex flex-col space-y-4 shadow-sm md:flex-row md:space-y-0 md:border md:border-opacity-10">
               <label className="sr-only" htmlFor="email">
                 Email
               </label>
               <input
+                ref={inputEl}
                 className="p-2 transition bg-white border border-opacity-10 md:border-none"
                 type="email"
                 id="email"
                 placeholder={translatedText.subscribePlaceholder}
               />
               <button
-                className="p-2 text-black transition shadow-sm bg-gold hover:bg-gold-light"
+                className="p-2 text-black transition shadow-sm disabled:opacity-50 bg-gold hover:bg-gold-light"
                 type="submit"
+                disabled={isSubscribed && true}
               >
-                <div className="flex items-center justify-center">
-                  <svg
-                    height="24"
-                    width="24"
-                    className="inline w-6 h-6 mx-1"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={1.2}
-                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    />
-                  </svg>
-                  <span>{translatedText.subscribeCallToAction}</span>
-                </div>
+                {!isError && !isSubscribed && (
+                  <div className="flex items-center justify-center">
+                    <svg
+                      height="24"
+                      width="24"
+                      className="inline w-6 h-6 mx-1"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={1.2}
+                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                      />
+                    </svg>
+                    <span>{translatedText.subscribeCallToAction}</span>
+                  </div>
+                )}
+                {isError && <span>{errorMessage}</span>}
+                {isSubscribed && <span>{subscribedMessage}</span>}
               </button>
             </div>
           </form>

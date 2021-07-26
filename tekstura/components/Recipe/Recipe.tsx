@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/router'
 
 import { Layout } from '@/root/components/Layout'
 import { Ingredients } from '@/root/components/Recipe/Ingredients'
+import { useNewsletter } from '@/root/lib/hooks/useNewsletter'
 import { PortableText } from '@/root/lib/sanity/client'
 import { formatIngredients } from '@/root/utils/recipe'
 
@@ -46,9 +47,17 @@ export function Recipe({
     content,
   } = recipe || {}
 
-  const [portion, setPortion] = React.useState<number>(amount)
-  const [ingredients, setIngredients] = React.useState<Ingredient[]>([])
   const { locale } = useRouter()
+  const [portion, setPortion] = useState<number>(amount)
+  const [ingredients, setIngredients] = useState<Ingredient[]>([])
+  const inputEl = useRef<HTMLInputElement>(null)
+  const {
+    errorMessage,
+    isError,
+    isSubscribed,
+    subscribe,
+    subscribedMessage,
+  } = useNewsletter(inputEl)
 
   React.useEffect(() => {
     if (portion >= 1) {
@@ -134,12 +143,13 @@ export function Recipe({
 
             <div className="max-w-lg p-6 mx-auto mt-8 border border-gray-800 shadow-sm print:hidden dark:border-gray-50 border-opacity-10 dark:border-opacity-10 md:mr-8">
               <h2 className="text-xl">{translatedText?.subscribeTitle}</h2>
-              <form className="flex flex-col mt-4 gap-y-2">
+              <form onSubmit={subscribe} className="flex flex-col mt-4 gap-y-2">
                 <label className="sr-only" htmlFor="email">
                   Email
                 </label>
                 <input
-                  className="p-2 border border-gray-800 shadow-sm border-opacity-10"
+                  ref={inputEl}
+                  className="p-2 text-black border border-gray-800 shadow-sm border-opacity-10"
                   type="email"
                   id="email"
                   placeholder={translatedText.subscribePlaceholder}
@@ -149,23 +159,29 @@ export function Recipe({
                   type="submit"
                 >
                   <div className="flex items-center justify-center">
-                    <svg
-                      height="24"
-                      width="24"
-                      className="inline w-6 h-6 mx-1"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={1.2}
-                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                      />
-                    </svg>
-                    <span>{translatedText.subscribeCallToAction}</span>
+                    {!isError && !isSubscribed && (
+                      <>
+                        <svg
+                          height="24"
+                          width="24"
+                          className="inline w-6 h-6 mx-1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={1.2}
+                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                          />
+                        </svg>
+                        <span>{translatedText.subscribeCallToAction}</span>
+                      </>
+                    )}
+                    {isError && <span>{errorMessage}</span>}
+                    {isSubscribed && <span>{subscribedMessage}</span>}
                   </div>
                 </button>
               </form>
