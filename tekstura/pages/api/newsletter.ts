@@ -32,7 +32,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     return res.status(201).json({ error: null })
   } catch (error) {
     return res.status(400).json({
-      error: 'Oops! 💩 Something went wrong.',
+      error: '💩 Something went wrong.',
     })
   }
 }
