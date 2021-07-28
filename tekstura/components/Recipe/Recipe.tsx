@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/router'
 
@@ -59,7 +59,7 @@ export function Recipe({
     subscribedMessage,
   } = useNewsletter(inputEl)
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (portion >= 1) {
       const newIngredients = formatIngredients(
         listOfIngredients,

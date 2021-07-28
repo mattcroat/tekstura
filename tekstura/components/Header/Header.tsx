@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { Navbar } from '@/root/components/Header/Navbar'
 import { NavbarMobile } from '@/root/components/Header/NavbarMobile'
 

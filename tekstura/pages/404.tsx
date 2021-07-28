@@ -1,4 +1,4 @@
-import React from 'react'
+import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 
 import { Layout } from '@/root/components/Layout'
@@ -6,7 +6,7 @@ import { Layout } from '@/root/components/Layout'
 export default function NotFound() {
   const router = useRouter()
 
-  React.useEffect(() => {
+  useEffect(() => {
     setTimeout(() => router.replace('/'), 4000)
   }, [router])
 

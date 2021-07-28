@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { Layout } from '@/root/components/Layout'
 import { PortableText } from '@/root/lib/sanity/client'
 

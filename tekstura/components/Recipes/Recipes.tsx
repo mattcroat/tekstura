@@ -1,4 +1,4 @@
-import React from 'react'
+import { useState } from 'react'
 
 import { RecipesList } from '@/root/components/Recipes/RecipesList'
 import { Search } from '@/root/components/Recipes/Search'
@@ -19,7 +19,7 @@ export function Recipes({
   translatedText,
   translatedHeaderText,
 }: RecipesProps) {
-  const [searchQuery, setSearchQuery] = React.useState<string>('')
+  const [searchQuery, setSearchQuery] = useState<string>('')
 
   return (
     <Layout translatedText={translatedHeaderText}>

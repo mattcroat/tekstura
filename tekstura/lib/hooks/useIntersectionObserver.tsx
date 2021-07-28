@@ -1,8 +1,8 @@
-import React from 'react'
+import { RefObject, useEffect } from 'react'
 
 type IntersectionObserverProps = {
-  root?: React.RefObject<HTMLElement>
-  target: React.RefObject<HTMLElement>
+  root?: RefObject<HTMLElement>
+  target: RefObject<HTMLElement>
   onIntersect: () => unknown
   threshold?: number
   rootMargin?: string
@@ -17,7 +17,7 @@ export function useIntersectionObserver({
   rootMargin = '0px',
   enabled = true,
 }: IntersectionObserverProps) {
-  React.useEffect(() => {
+  useEffect(() => {
     if (!enabled) {
       return
     }

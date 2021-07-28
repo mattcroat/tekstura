@@ -1,10 +1,10 @@
-import React from 'react'
+import { useEffect, useState } from 'react'
 import { Moon, Sun } from '@/root/components/shared/ThemeToggle/Icons'
 
 type ThemeToggleProps = { focus?: string }
 
 export function ThemeToggle({ focus }: ThemeToggleProps) {
-  const [isDarkMode, setIsDarkMode] = React.useState<boolean>(false)
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(false)
 
   function setTheme(isDarkMode: boolean) {
     if (isDarkMode) {
@@ -17,11 +17,12 @@ export function ThemeToggle({ focus }: ThemeToggleProps) {
       window.localStorage.removeItem('theme')
     }
   }
-  React.useEffect(() => {
+
+  useEffect(() => {
     setIsDarkMode(!!window.localStorage.getItem('theme'))
   }, [])
 
-  React.useEffect(() => {
+  useEffect(() => {
     setTheme(isDarkMode)
   }, [isDarkMode])
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import { useRef } from 'react'
 import { useInfiniteQuery } from 'react-query'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -10,7 +10,7 @@ import type { Recipe } from '@/root/types/recipe'
 
 export function RecipesList() {
   const { locale = 'hr' } = useRouter()
-  const loadMoreRef = React.useRef<HTMLDivElement>(null)
+  const loadMoreRef = useRef<HTMLDivElement>(null)
   const {
     data: recipes,
     error: recipesError,

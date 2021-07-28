@@ -1,4 +1,4 @@
-import React from 'react'
+import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 
 import { pageview } from '@/root/lib/api/analytics'
@@ -11,7 +11,7 @@ function handleRouteChange(url: URL) {
 export function useAnalytics() {
   const router = useRouter()
 
-  React.useEffect(() => {
+  useEffect(() => {
     router.events.on('routeChangeComplete', handleRouteChange)
 
     return function cleanup() {
